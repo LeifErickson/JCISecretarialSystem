@@ -1,4 +1,4 @@
-## Secretarial System using Laravel 5.2
+## A Secretarial System using Laravel 5.2
 
 ### Packages Used:
 -Laravel 5.* Boilerplate by Rappasoft <br />
