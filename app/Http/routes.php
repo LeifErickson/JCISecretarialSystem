@@ -18,6 +18,15 @@ Route::group(['middleware' => 'web'], function() {
     });
 });
 
+
+Route::resource('members','backend\MemberController');
+
+// Route::get('/admin/members',function(){
+//     return Redirect::action('MemberController@index' , array('id'=>Auth::id()) )->withErrors($validator->errors());
+//     // return view('backend.members');
+// });
+
+// 
 /**
  * Backend Routes
  * Namespaces indicate folder structure
@@ -31,6 +40,9 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
      *
      * Note: Administrator has all permissions so you do not have to specify the administrator role everywhere.
      */
+    Route::get('members', 'MemberController@home')->name('admin.members');
+    Route::get('projects', 'ProjectController@index')->name('admin.projects');
+    Route::get('events', 'EventController@index')->name('admin.events');
     require (__DIR__ . '/Routes/Backend/Dashboard.php');
     require (__DIR__ . '/Routes/Backend/Access.php');
     require (__DIR__ . '/Routes/Backend/LogViewer.php');
