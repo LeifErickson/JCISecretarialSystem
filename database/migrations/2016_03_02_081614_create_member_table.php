@@ -23,8 +23,8 @@ class CreateMemberTable extends Migration
             $table->string('status');
             $table->string('religion');
             $table->string('placeofbirth');
-            $table->string('jcisenatorialno');
-            $table->date('dateofinduction');
+            $table->string('jcisenatorialno')->nullable();
+            $table->date('dateofinduction')->default('0000-00-00');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at');
         });
