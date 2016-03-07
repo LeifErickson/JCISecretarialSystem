@@ -10,8 +10,8 @@ A Secretarial System
 
 
 ### NOTES:
-
-System is still incomplete
+=> See Wiki for installation instructions <br />
+=> System is still incomplete  
 
 ### Missing Features:
 
