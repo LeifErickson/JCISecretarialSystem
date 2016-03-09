@@ -15,6 +15,6 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('backend.project');
+        return view('backend.projects');
     }
 }

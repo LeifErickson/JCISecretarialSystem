@@ -49,5 +49,17 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
 });
 
 Route::group(['namespace' => 'Backend', 'prefix' => 'manage', 'middleware' => 'admin'], function () {
-Route::resource('members','MemberController');
+    Route::resource('members','MemberController');
+});
+ 
+Route::group(['prefix' => 'manage', 'middleware' => 'admin'], function () {   
+    Route::get('/projects', function () {
+        return redirect('/blog');
+    });
+
+    Route::get('projects', 'BlogController@index');
+    Route::get('projects/{slug}', 'BlogController@showPost');
+    Route::resource('admin/post', 'PostController', ['except' => 'show']);
+    Route::resource('admin/tag', 'TagController', ['except' => 'show']);
+    //Route::get('admin/upload', 'UploadController@index');
 });
