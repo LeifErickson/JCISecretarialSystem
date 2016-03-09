@@ -84,7 +84,7 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <a href="{{ url('members')}}" class="btn btn-primary">Back</a>
+                <a href="{{ url('manage.members')}}" class="btn btn-primary">Back</a>
             </div>
         </div>
     </form>

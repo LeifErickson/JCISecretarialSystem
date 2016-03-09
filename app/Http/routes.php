@@ -19,7 +19,7 @@ Route::group(['middleware' => 'web'], function() {
 });
 
 
-Route::resource('members','backend\MemberController');
+
 
 // Route::get('/admin/members',function(){
 //     return Redirect::action('MemberController@index' , array('id'=>Auth::id()) )->withErrors($validator->errors());
@@ -46,4 +46,8 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
     require (__DIR__ . '/Routes/Backend/Dashboard.php');
     require (__DIR__ . '/Routes/Backend/Access.php');
     require (__DIR__ . '/Routes/Backend/LogViewer.php');
+});
+
+Route::group(['namespace' => 'Backend', 'prefix' => 'manage', 'middleware' => 'admin'], function () {
+Route::resource('members','MemberController');
 });
