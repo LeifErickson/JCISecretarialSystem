@@ -8,10 +8,10 @@
 @endsection
 
 @section('content')
-    <iframe src="/members" __idm_frm__="9" mytubeid="mytube1" style="
+    <iframe src="/manage/members" __idm_frm__="9" mytubeid="mytube1" style="
         width: 1084px;
         height: 804px;
-        frameBorder="0";
-        ">
+        "
+        frameBorder="0">
     </iframe>
 @endsection

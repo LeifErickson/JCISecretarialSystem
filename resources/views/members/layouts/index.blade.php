@@ -42,10 +42,10 @@
              <td>{{ $member->dateofinduction }}</td>
              <td>{{ $member->created_at }}</td>
              <td>{{ $member->updated_at }}</td> -->
-             <td><a href="{{url('members',$member->id)}}" class="btn btn-primary">View</a></td>
-             <td><a href="{{route('members.edit',$member->id)}}" class="btn btn-warning">Update</a></td>
+             <td><a href="{{url('manage.members',$member->id)}}" class="btn btn-primary">View</a></td>
+             <td><a href="{{route('manage.members.edit',$member->id)}}" class="btn btn-warning">Update</a></td>
              <td>
-             {!! Form::open(['method' => 'DELETE', 'route'=>['members.destroy', $member->id]]) !!}
+             {!! Form::open(['method' => 'DELETE', 'route'=>['manage.members.destroy', $member->id]]) !!}
              {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
              {!! Form::close() !!}
              </td>
