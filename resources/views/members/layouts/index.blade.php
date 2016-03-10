@@ -2,9 +2,9 @@
 @extends('members/layouts/masters/template')
 
 @section('content')
- <h1>Members</h1>
+ <h1><strong><span>Members</span></strong></h1>
  <a href="{{url('/members/create')}}" class="btn btn-success">New Member</a>
- <hr>
+ <hr style="width: 1020px;">
  <table class="table table-striped table-bordered table-hover">
      <thead>
      <tr class="bg-info">

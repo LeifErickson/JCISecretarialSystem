@@ -7,9 +7,12 @@
   <link href="/assets/selectize/css/selectize.css" rel="stylesheet">
   <link href="/assets/selectize/css/selectize.bootstrap3.css" rel="stylesheet">
 @stop
-
 @section('content')
-  <div class="container-fluid">
+
+<h1><strong><span>Projects</span></strong></h1>
+<hr style="padding-left: 0px; width: 1040px; margin-left: 0px; ">
+
+  <div class="container-fluid" style="padding-left: 0px">
     <div class="row page-title-row">
       <div class="col-md-12">
         <h3>Posts <small>» Edit Post</small></h3>

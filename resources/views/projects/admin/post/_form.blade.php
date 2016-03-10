@@ -68,21 +68,38 @@
   </div>
   <div class="col-md-4">
     <div class="form-group">
-      <label for="publish_date" class="col-md-3 control-label">
+      <label for="publish_date" class="col-md-3 control-label" style="
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 8px;
+      ">
         Pub Date
       </label>
       <div class="col-md-8">
         <input class="form-control" name="publish_date" id="publish_date"
-               type="text" value="{{ $publish_date }}">
+               type="text" value="{{ $publish_date }}" style="
+               width: 206px;
+               padding-left: 66px;
+               ">
       </div>
     </div>
     <div class="form-group">
-      <label for="publish_time" class="col-md-3 control-label">
+      <label for="publish_time" class="col-md-3 control-label" style="
+      padding-left: 0px;
+      padding-top: 8px;
+      padding-right: 0px;
+      margin-left: 0px;
+      ">
         Pub Time
       </label>
       <div class="col-md-8">
         <input class="form-control" name="publish_time" id="publish_time"
-               type="text" value="{{ $publish_time }}">
+               type="text" value="{{ $publish_time }}" style="
+               width: 207px;
+               margin-left: 0px;
+               padding-left: 66px;
+               padding-right: 0px;
+               ">
       </div>
     </div>
     <div class="form-group">
