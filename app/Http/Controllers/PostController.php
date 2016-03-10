@@ -83,7 +83,7 @@ class PostController extends Controller
     }
 
     return redirect()
-        ->route('projects.admin.post.index')
+        ->route('manage.admin.post.index')
         ->withSuccess('Post saved.');
   }
 
@@ -100,7 +100,7 @@ class PostController extends Controller
     $post->delete();
 
     return redirect()
-        ->route('projects.admin.post.index')
+        ->route('manage.admin.post.index')
         ->withSuccess('Post deleted.');
   }
 }
