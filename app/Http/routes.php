@@ -53,9 +53,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'manage', 'middleware' => 'a
 });
  
 Route::group(['prefix' => 'manage', 'middleware' => 'admin'], function () {   
-    Route::get('/projects', function () {
-        return redirect('/blog');
-    });
+    
 
     Route::get('projects', 'BlogController@index');
     Route::get('projects/{slug}', 'BlogController@showPost');

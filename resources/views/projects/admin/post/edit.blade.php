@@ -28,7 +28,7 @@
             @include('projects.admin.partials.success')
 
             <form class="form-horizontal" role="form" method="POST"
-                  action="{{ route('admin.post.update', $id) }}">
+                  action="{{ route('manage.admin.post.update', $id) }}">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <input type="hidden" name="_method" value="PUT">
 
@@ -80,7 +80,7 @@
             </p>
           </div>
           <div class="modal-footer">
-            <form method="POST" action="{{ route('projects.admin.post.destroy', $id) }}">
+            <form method="POST" action="{{ route('manage.admin.post.destroy', $id) }}">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <input type="hidden" name="_method" value="DELETE">
               <button type="button" class="btn btn-default"

@@ -41,7 +41,7 @@
                      class="btn btn-xs btn-info">
                     <i class="fa fa-edit"></i> Edit
                   </a>
-                  <a href="/manage/admin/post/{{ $post->slug }}"
+                  <a href="/manage/projects/{{ $post->slug }}"
                      class="btn btn-xs btn-warning">
                     <i class="fa fa-eye"></i> View
                   </a>
