@@ -46,7 +46,7 @@ class PostController extends Controller
     $post->syncTags($request->get('tags', []));
 
     return redirect()
-        ->route('projects.admin.post.index')
+        ->route('manage.admin.post.index')
         ->withSuccess('New Post Successfully Created.');
   }
 
