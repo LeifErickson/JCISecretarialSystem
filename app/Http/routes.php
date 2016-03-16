@@ -52,7 +52,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'manage', 'middleware' => 'a
     Route::resource('members','MemberController');
 });
  
-Route::group(['prefix' => 'manage', 'middleware' => 'admin'], function () {   
+
     Route::get('/projects', function () {
         return redirect('/blog');
     });
@@ -62,4 +62,10 @@ Route::group(['prefix' => 'manage', 'middleware' => 'admin'], function () {
     Route::resource('admin/post', 'PostController', ['except' => 'show']);
     Route::resource('admin/tag', 'TagController', ['except' => 'show']);
     //Route::get('admin/upload', 'UploadController@index');
+ 
+//Route::group(['prefix' => 'manage', 'middleware' => 'admin'], function () {  
+Route::group(['prefix' => 'manage', 'middleware' => 'admin'], function () { 
+
 });
+
+
