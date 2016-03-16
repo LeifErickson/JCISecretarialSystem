@@ -6,15 +6,17 @@
 
 ### Introduction
 
-A Secretarial System for the JCI Iligan City Chapter.
+###### A Secretarial System for the JCI Iligan City Chapter.
 This system will manage the secretarial works in JCI.
 Manages memberships, manages events like projects or meetings,
 news or updates, send reminders and generate reports.
+
 member management that can,
   - add member(s) 
   - edit member detail(s) 
   - delete member(s) 
   - view member(s) 
+  
 event management that can,
   - add event(s) 
   - edit event detail(s) 
