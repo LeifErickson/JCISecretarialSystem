@@ -17,13 +17,6 @@ member management that can,
   - delete member(s) 
   - view member(s) 
   
-event management that can,
-  - add event(s) 
-  - edit event detail(s) 
-  - delete event(s) 
-  - view event(s) <br/>
-It has member management that can
-
 ### NOTES:
 => See Wiki for installation instructions
 => System is still incomplete  
