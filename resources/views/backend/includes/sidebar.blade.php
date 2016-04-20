@@ -4,26 +4,26 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel">
+        <!-- <div class="user-panel">
             <div class="pull-left image">
                 <img src="{!! access()->user()->picture !!}" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-                <p>{!! access()->user()->name !!}</p>
+                <p>{!! access()->user()->name !!}</p> -->
                 <!-- Status -->
-                <a href="#"><i class="fa fa-circle text-success"></i> {{ trans('strings.backend.general.status.online') }}</a>
+                <!-- <a href="#"><i class="fa fa-circle text-success"></i> {{ trans('strings.backend.general.status.online') }}</a>
             </div>
-        </div>
+        </div> -->
 
         <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
+       <!--  <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="{{ trans('strings.backend.general.search_placeholder') }}"/>
+                <input type="text" name="q" id="search" autocomplete="off" placeholder="Search Members.."/>
                   <span class="input-group-btn">
                     <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
                   </span>
             </div>
-        </form>
+        </form> -->
         <!-- /.search form -->
 
         <!-- Sidebar Menu -->
@@ -35,13 +35,21 @@
                 <a href="{!! route('admin.dashboard') !!}"><span>{{ trans('menus.backend.sidebar.dashboard') }}</span></a>
             </li>
             <li class="{{ Active::pattern('admin/members') }}">
-                <a href="{!! route('admin.members') !!}"><span>Member Management</span></a>
+                <a href="/admin/members"><span>Member Management</span></a>
             </li>
-            <li class="{{ Active::pattern('admin/projects') }}">
-                <a href="{!! route('admin.projects') !!}"><span>Project Management</span></a>
-            </li>
-            <li class="{{ Active::pattern('admin/events') }}">
-                <a href="{!! route('admin.events') !!}"><span>Event Management</span></a>
+            <li class="{{ Active::pattern('admin/log-viewer*') }} treeview">
+                <a href="#">
+                    <span>Event Management</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu {{ Active::pattern('admin/log-viewer*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/log-viewer*', 'display: block;') }}">
+                    <li class="{{ Active::pattern('admin/log-viewer') }}">
+                        <a href="{!! url('admin/log-viewer') !!}">Projects</a>
+                    </li>
+                    <li class="{{ Active::pattern('admin/log-viewer/logs') }}">
+                        <a href="{!! url('admin/log-viewer/logs') !!}">Events</a>
+                    </li>
+                </ul>
             </li>
 
 

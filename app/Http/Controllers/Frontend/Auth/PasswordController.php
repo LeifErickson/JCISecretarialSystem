@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend\Auth;
 use App\Http\Controllers\Controller;
 use App\Services\Access\Traits\ChangePasswords;
 use App\Services\Access\Traits\ResetsPasswords;
-use App\Repositories\Frontend\User\UserContract;
+use App\Repositories\Frontend\Access\User\UserRepositoryContract;
 
 /**
  * Class PasswordController
@@ -21,12 +21,12 @@ class PasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/';
 
     /**
-     * @param UserContract $user
+     * @param UserRepositoryContract $user
      */
-    public function __construct(UserContract $user)
+    public function __construct(UserRepositoryContract $user)
     {
         $this->user = $user;
     }
