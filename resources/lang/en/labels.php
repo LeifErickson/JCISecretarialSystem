@@ -89,6 +89,22 @@ return [
                 ],
             ],
 
+            'member' => [
+                'create' => 'Create Members',
+                'edit' => 'Edit Members',
+                'management' => 'Member Management',
+                'active' => 'All Members',
+                'show' => 'Member info',
+
+                'table' => [
+                    'number_of_users' => 'Number of Users',
+                    'permissions' => 'Permissions',
+                    'role' => 'Role',
+                    'sort' => 'Sort',
+                    'total' => 'role total|roles total',
+                ],
+            ],
+
             'users' => [
                 'active' => 'Active Users',
                 'all_permissions' => 'All Permissions',

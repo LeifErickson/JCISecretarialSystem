@@ -7,17 +7,15 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "laravelcollective/html": "5.2.*",
+        "laravelcollective/html": "^5.2",
         "laracasts/utilities": "~2.0",
         "laravel/socialite": "^2.0",
         "creativeorange/gravatar": "~1.0",
         "davejamesmiller/laravel-breadcrumbs": "^3.0",
         "hieu-le/active": "~2.0",
         "arcanedev/log-viewer": "~3.0",
-        "illuminate/html": "^5.0",
-        "doctrine/dbal": "^2.5",
-        "michelf/php-markdown": "^1.6",
-        "michelf/php-smartypants": "1.6.0-beta1"
+        "spatie/laravel-backup": "^3.0",
+        "appzcoder/crud-generator": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -25,7 +23,8 @@
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*",
-        "barryvdh/laravel-debugbar": "^2.1"
+        "barryvdh/laravel-debugbar": "^2.1",
+        "laracasts/generators": "^1.1"
     },
     "autoload": {
         "classmap": [
@@ -51,13 +50,11 @@
             "php artisan key:generate"
         ],
         "post-install-cmd": [
-            "php artisan clear-compiled",
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php artisan optimize"
         ],
-        "pre-update-cmd": [
-            "php artisan clear-compiled"
-        ],
         "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize"
         ]
     },

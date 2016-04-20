@@ -19,7 +19,7 @@ class FrontendController extends Controller
             'test' => 'it works!',
         ]);
 
-        return view('pages.home');
+        return view('frontend.index');
     }
 
     /**

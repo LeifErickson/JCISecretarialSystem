@@ -6,18 +6,32 @@
 
 ### Introduction
 
-A Secretarial System
+###### A Secretarial System for the JCI Iligan City Chapter.
+This system will manage the secretarial works in JCI.
+Manages memberships, manages events like projects or meetings,
+news or updates, send reminders and generate reports.
 
+member management that can,
+  - add member(s) 
+  - edit member detail(s) 
+  - delete member(s) 
+  - view member(s) 
+  
+event management that can,
+  - add event(s) 
+  - edit event detail(s) 
+  - delete event(s) 
+  - view event(s) <br/>
+It has member management that can
 
 ### NOTES:
-=> See Wiki for installation instructions <br />
+=> See Wiki for installation instructions
 => System is still incomplete  
 
-### Missing Features:
-
--CRUD Projects <br />
--CRUD Members (initial version @ develop branch) <br />
--CRUD Events <br />
--Attendance Module <br />
--Generate Report <br />
--Search Module <br />
+### Implementation of Features:
+- [x] CRUD Membership (initial version @ develop branch)
+- [x] CRUD Events (initial version @ project_event_management branch)
+- [ ] CRUD Payments
+- [ ] Attendance Module
+- [ ] Generate Report
+- [x] Search Module (initial version @ project_event_management branch)
