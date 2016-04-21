@@ -35,11 +35,11 @@
                     {!! $errors->first('birthdate', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-            <div class="form-group {{ $errors->has('contractno') ? 'has-error' : ''}}">
-                {!! Form::label('contractno', 'Contractno: ', ['class' => 'col-sm-3 control-label']) !!}
+            <div class="form-group {{ $errors->has('cellphonenumber') ? 'has-error' : ''}}">
+                {!! Form::label('cellphonenumber', 'Cellphonenumber: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('contractno', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('contractno', '<p class="help-block">:message</p>') !!}
+                    {!! Form::text('cellphonenumber', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('cellphonenumber', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('gender') ? 'has-error' : ''}}">

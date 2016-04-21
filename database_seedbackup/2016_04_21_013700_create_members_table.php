@@ -1,20 +1,25 @@
 <?php
-
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreateMembersTable extends Migration
+/**
+ * Class Members
+ *
+ * @author  The scaffold-interface created at 2016-04-21 01:37:00pm
+ * @link  https://github.com/amranidev/scaffold-interfac
+ */
+class Members extends Migration
 {
     /**
      * Run the migrations.
      *
-     * @return void
+     * @return  void
      */
     public function up()
     {
-        
-            Schema::create('members', function(Blueprint $table) {
-                $table->increments('id');
+        Schema::create('members',function (Blueprint $table){
+
+        $table->increments('id');
         
         $table->String('membershiptype');
         
@@ -95,18 +100,23 @@ class CreateMembersTable extends Migration
         $table->String('dateofinduction');
 
         $table->timestamps();
-            });
-            
+        
+        /**
+         * Foreignkeys section
+         */
+        
+        // type your addition here
+
+        });
     }
 
     /**
      * Reverse the migrations.
      *
-     * @return void
+     * @return  void
      */
     public function down()
     {
         Schema::drop('members');
-    }
-
+     }
 }

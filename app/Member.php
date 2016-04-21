@@ -19,6 +19,6 @@ class Member extends Model
      *
      * @var array
      */
-    protected $fillable = ['firstname', 'lastname', 'middlename', 'birthdate', 'contactno', 'gender', 'status', 'religion', 'placeofbirth', 'jcisenatorialno', 'dateofinduction'];
+    protected $fillable = ['firstname', 'lastname', 'middlename', 'birthdate', 'cellphonenumber', 'gender', 'status', 'religion', 'placeofbirth', 'jcisenatorialno', 'dateofinduction'];
 
 }
