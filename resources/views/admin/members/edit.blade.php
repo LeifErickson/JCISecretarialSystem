@@ -20,7 +20,7 @@
         'class' => 'form-horizontal'
     ]) !!}
 
-                <div class="form-group {{ $errors->has('firstname') ? 'has-error' : ''}}">
+            <div class="form-group {{ $errors->has('firstname') ? 'has-error' : ''}}">
                 {!! Form::label('firstname', 'Firstname: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::text('firstname', null, ['class' => 'form-control', 'required' => 'required']) !!}

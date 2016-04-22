@@ -52,7 +52,7 @@
     </div>
 @endsection
 
-    @section('after-scripts-end')
+@section('after-scripts-end')
     <!-- DataTables -->
     <script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>

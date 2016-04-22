@@ -36,7 +36,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
     require (__DIR__ . '/Routes/Backend/LogViewer.php');
 });
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['admin']], function () {
 	Route::resource('admin/members', 'Admin\\MembersController');
 });
 
