@@ -51,8 +51,28 @@
                     </li>
                 </ul>
             </li>
-
-
+				
+				
+				<!--START OF TEST SIDE BAR -->
+				<li class="{{ Active::pattern('admin/event*') }} treeview">
+                <a href="#">
+                    <span>Event (TESTING)</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu {{ Active::pattern('admin/event*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/event*', 'display: block;') }}">
+						  <li class="{{ Active::pattern('admin/event') }}">
+                        <a href="{!! url('admin/event') !!}">Events</a>
+                    </li>
+						  <li class="{{ Active::pattern('admin/event/add') }}">
+                        <a href="{!! url('admin/event/add') !!}">Add Event</a>
+                    </li>
+                   
+                </ul>
+            </li>
+				<!--END OF TEST SIDE BAR -->
+				
+				
+				
             @permission('view-access-management')
                 <li class="{{ Active::pattern('admin/access/*') }}">
                     <a href="{!!url('admin/access/users')!!}"><span>{{ trans('menus.backend.access.title') }}</span></a>
