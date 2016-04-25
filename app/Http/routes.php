@@ -34,9 +34,11 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
     require (__DIR__ . '/Routes/Backend/Dashboard.php');
     require (__DIR__ . '/Routes/Backend/Access.php');
     require (__DIR__ . '/Routes/Backend/LogViewer.php');
+	 require (__DIR__ . '/Routes/Backend/EventManagement.php');
 });
 
 Route::group(['middleware' => ['web']], function () {
 	Route::resource('admin/members', 'Admin\\MembersController');
 });
+
 
