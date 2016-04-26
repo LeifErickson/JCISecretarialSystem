@@ -15,7 +15,11 @@
         "hieu-le/active": "~2.0",
         "arcanedev/log-viewer": "~3.0",
         "spatie/laravel-backup": "^3.0",
-        "appzcoder/crud-generator": "^1.0"
+        "appzcoder/crud-generator": "^1.0",
+        "infyomlabs/laravel-generator": "dev-master",
+        "infyomlabs/core-templates": "dev-master",
+        "infyomlabs/generator-builder": "dev-master",
+        "doctrine/dbal": "~2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
