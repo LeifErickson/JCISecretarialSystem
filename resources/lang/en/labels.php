@@ -105,6 +105,54 @@ return [
                 ],
             ],
 
+            'project' => [
+                'create' => 'Create Project',
+                'edit' => 'Edit Project',
+                'management' => 'Project Management',
+                'active' => 'All Projects',
+                'show' => 'Project info',
+
+                'table' => [
+                    'number_of_users' => 'Number of Users',
+                    'permissions' => 'Permissions',
+                    'role' => 'Role',
+                    'sort' => 'Sort',
+                    'total' => 'role total|roles total',
+                ],
+            ],
+
+            'meeting' => [
+                'create' => 'Create Meeting',
+                'edit' => 'Edit Meeting',
+                'management' => 'Meeting Management',
+                'active' => 'Logs',
+                'show' => 'Meeting info',
+
+                'table' => [
+                    'number_of_users' => 'Number of Users',
+                    'permissions' => 'Permissions',
+                    'role' => 'Role',
+                    'sort' => 'Sort',
+                    'total' => 'role total|roles total',
+                ],
+            ],
+
+            'event' => [
+                'create' => 'Create Event',
+                'edit' => 'Edit Event',
+                'management' => 'Event Management',
+                'active' => 'All Events',
+                'show' => 'Event info',
+
+                'table' => [
+                    'number_of_users' => 'Number of Users',
+                    'permissions' => 'Permissions',
+                    'role' => 'Role',
+                    'sort' => 'Sort',
+                    'total' => 'role total|roles total',
+                ],
+            ],
+
             'users' => [
                 'active' => 'Active Users',
                 'all_permissions' => 'All Permissions',

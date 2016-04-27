@@ -82,7 +82,6 @@
                     {!! $errors->first('residenceaddress', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-        </div>
         <div class="form-group {{ $errors->has('officeaddress') ? 'has-error' : ''}}">
                 {!! Form::label('officeaddress', 'Office Address: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
@@ -111,6 +110,7 @@
                     {!! $errors->first('nameandaddressofcompany', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+        </div>
         <div id="second">
             <div class="form-group {{ $errors->has('profession') ? 'has-error' : ''}}">
                 {!! Form::label('profession', 'Profession: ', ['class' => 'col-sm-3 control-label']) !!}
@@ -351,5 +351,15 @@
                 return false; 
             });
         })
+        jQuery(function(){
+           jQuery('#get_third').click();
+        });
+        jQuery(function(){
+           jQuery('#get_second').click();
+        });
+        jQuery(function(){
+           jQuery('#get_first').click();
+        });
+
     </script>
 @endsection

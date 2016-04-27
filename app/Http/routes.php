@@ -16,6 +16,8 @@ Route::group(['middleware' => 'web'], function() {
         require (__DIR__ . '/Routes/Frontend/Frontend.php');
         require (__DIR__ . '/Routes/Frontend/Access.php');
     });
+
+    
 });
 
 /**
@@ -36,14 +38,13 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
     require (__DIR__ . '/Routes/Backend/LogViewer.php');
 });
 
-Route::group(['middleware' => ['admin']], function () {
-	Route::resource('admin/members', 'Admin\\MembersController');
+Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
+	Route::resource('members', 'Admin\\MembersController');
+    Route::resource('category', 'Admin\\CategoryController');
+    Route::resource('events/projects', 'ProjectController');
+    Route::resource('events/meetings', 'Admin\\MeetingsController');
 });
 
-
-Route::group(['middleware' => ['web']], function () {
-	Route::resource('admin/category', 'Admin\\CategoryController');
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -58,8 +59,11 @@ Route::group(['prefix' => 'api', 'namespace' => 'API'], function () {
 });
 
 
+/*
+|--------------------------------------------------------------------------
+| Generator routes
+|--------------------------------------------------------------------------
+*/
 Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder');
-
 Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate');
-
 Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate');

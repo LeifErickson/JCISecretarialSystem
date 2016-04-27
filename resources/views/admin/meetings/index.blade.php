@@ -1,44 +1,45 @@
 @extends ('backend.layouts.master')
 
-@section ('title', trans('labels.backend.access.member.management'))
+@section ('title', trans('labels.backend.access.meeting.management'))
 
 @section('page-header')
     <h1>
-        {{ trans('labels.backend.access.member.management') }}
-        <small>{{ trans('labels.backend.access.member.active') }}</small>
+        {{ trans('labels.backend.access.meeting.management') }}
+        <small>{{ trans('labels.backend.access.meeting.active') }}</small>
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">Members</h3>
+            <h3 class="box-title">Meetings</h3>
 
             <div class="box-tools pull-right">
-                <a href="{{ url('admin/members/create') }}" class="btn btn-primary pull-right btn-sm">Add New Member</a>
+                <a href="{{ url('admin/events/meetings/create') }}" class="btn btn-primary pull-right btn-sm">Add New Meeting</a>
             </div>
         </div><!-- /.box-header -->
+
     <div class="table">
-        <table id="example1" class="table table-bordered table-striped table-hover">
+        <table id="table" class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th>Firstname</th><th>Lastname</th><th>Middlename</th><th>Actions</th>
+                    <th>S.No</th><th>Description</th><th>Agenda</th><th>Type</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
             {{-- */$x=0;/* --}}
-            @foreach($members as $item)
+            @foreach($meetings as $item)
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
-                    <td><a href="{{ url('admin/members', $item->id) }}">{{ $item->firstname }}</a></td><td>{{ $item->lastname }}</td><td>{{ $item->middlename }}</td>
+                    <td><a href="{{ url('admin/events/meetings', $item->id) }}">{{ $item->description }}</a></td><td>{{ $item->agenda }}</td><td>{{ $item->type }}</td>
                     <td>
-                        <a href="{{ url('admin/members/' . $item->id . '/edit') }}">
+                        <a href="{{ url('admin/events/meetings/' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
                         </a> /
                         {!! Form::open([
                             'method'=>'DELETE',
-                            'url' => ['admin/members', $item->id],
+                            'url' => ['admin/events/meetings', $item->id],
                             'style' => 'display:inline'
                         ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
@@ -48,8 +49,9 @@
             @endforeach
             </tbody>
         </table>
-        <div class="pagination"> {!! $members->render() !!} </div>
+        <div class="pagination"> {!! $meetings->render() !!} </div>
     </div>
+
 @endsection
 
 @section('after-scripts-end')
@@ -64,11 +66,18 @@
     <script src="{{ asset('/plugins/datatables/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('/plugins/datatables/buttons.print.min.js') }}"></script>
     <script src="{{ asset('/plugins/datatables/buttons.colVis.min.js') }}"></script>
+    
     <!-- page script -->
     <script>
       $(function () {
-        $("#example1").DataTable({
-            dom: 'Bfrtip',
+        $('#table').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": true,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false,
+           dom: 'Bfrtip',
             buttons: [
                 
                 'colvis',
@@ -112,14 +121,7 @@
             }
              
             ]
-        });
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
+
         });
       });
     </script>

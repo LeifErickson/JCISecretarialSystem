@@ -10,7 +10,7 @@
 
         <!-- Meta -->
         <meta name="description" content="@yield('meta_description', 'Default Description')">
-        <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
+        <meta name="author" content="@yield('meta_author', 'CodeMatrix')">
         @yield('meta')
 
         <!-- Styles -->
@@ -24,6 +24,12 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
+        <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.1.2/css/buttons.dataTables.min.css">
+        <style>
+            body{padding-bottom: 0px !important;}
+        </style>
     </head>
     <body class="skin-{!! config('backend.theme') !!}">
     <div class="wrapper">

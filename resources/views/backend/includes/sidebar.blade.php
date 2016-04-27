@@ -42,12 +42,15 @@
                     <span>Event Management</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
-                <ul class="treeview-menu {{ Active::pattern('admin/log-viewer*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/log-viewer*', 'display: block;') }}">
-                    <li class="{{ Active::pattern('admin/log-viewer') }}">
-                        <a href="{!! url('admin/log-viewer') !!}">Projects</a>
+                <ul class="treeview-menu {{ Active::pattern('admin/events*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/events*', 'display: block;') }}">
+                    <li class="{{ Active::pattern('admin/events/projects') }}">
+                        <a href="{!! url('admin/events/projects') !!}">Projects</a>
+                    </li>
+                    <li class="{{ Active::pattern('admin/events/meetings') }}">
+                        <a href="{!! url('admin/events/meetings') !!}">Meetings</a>
                     </li>
                     <li class="{{ Active::pattern('admin/log-viewer/logs') }}">
-                        <a href="{!! url('admin/log-viewer/logs') !!}">Events</a>
+                        <a href="{!! url('admin/log-viewer/logs') !!}">Others</a>
                     </li>
                 </ul>
             </li>
