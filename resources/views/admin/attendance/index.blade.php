@@ -46,7 +46,6 @@
 				<h3 class="box-title">Information</h3>
 			</div>
 			<?php 	
-				$project_id =  0;
 				foreach($info as $row){ 
 					$project_id = $row->id;
 				?>
@@ -69,26 +68,11 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Update Training  <small></small></h4>
+				<h4 class="modal-title">Add Member  <small></small></h4>
 			</div>
 			<div class="modal-body">
-				<table class="table" id="dataTables-search">
-						<thead>
-							<th>Name</th>
-							<th>Action</th>
-						</thead>
-						<tbody>
-							
-							<?php
-								foreach($mems as $row){
-								echo "<tr>
-											<td>".$row->lastname.",".$row->firstname." ".$row->middlename."</td>
-											<td><a href='addattendance/$project_id/".$row->id."' class='btn btn-default' >Add</a></td>
-										</tr>";
-							}
-							?>
-						</tbody>
-				</table>
+				<input type="text" size="30" placeholder="Enter Name..." class="form-control" onkeyup="showResult(this.value,<?php echo $id;?>)">
+				<div id="livesearch"></div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -99,7 +83,7 @@
 @endsection
 
 @section('after-scripts-end')
-	script src="tables/jquery/dist/jquery.min.js"></script>
+	
 	<link href="{{ asset('tables/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css') }}" rel="stylesheet">
 	<link href="{{ asset('tables/datatables-responsive/css/dataTables.responsive.css') }}" rel="stylesheet">
 	<script src="{{ asset('tables/datatables/media/js/jquery.dataTables.min.js') }}"></script>
@@ -110,10 +94,31 @@
 						 responsive: true
 			  });
 		 });
-		$(document).ready(function() {
-			  $('#dataTables-search').DataTable({
-						 responsive: true
-			  });
-		 });
+		function showResult(str,p_id) {
+			
+			 if (str.length==0) { 
+				 document.getElementById("livesearch").innerHTML="";
+				 document.getElementById("livesearch").style.border="0px";
+				 return;
+			  } 
+			  if (window.XMLHttpRequest) {
+				 // code for IE7+, Firefox, Chrome, Opera, Safari
+				 xmlhttp=new XMLHttpRequest();
+			  } else {  // code for IE6, IE5
+				 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			  }
+			   //document.getElementById("livesearch").innerHTML="<a href='searchPage/"+str+"'>test</a>";
+			  
+			  xmlhttp.onreadystatechange=function() {
+				 if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+					document.getElementById("livesearch").innerHTML= xmlhttp.responseText;
+					//document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+				 }
+			  }
+			  
+			  xmlhttp.open("GET","searchPage/"+p_id+"/"+str,true);
+			  xmlhttp.send();
+			  
+			}
 	 </script>
 @endsection

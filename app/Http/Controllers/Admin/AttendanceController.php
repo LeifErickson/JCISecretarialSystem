@@ -46,23 +46,29 @@ class AttendanceController extends Controller
 		return back();
 		
 	}
-	public function updateForm($id)
+	public function search($project_id,$name)
 	{	
-		//$result = DB::select('SELECT * FROM `project`  WHERE  `id`=?',[$id]);
+		$hint="";
 		
-		//return view('admin.event.updateEvent')->with('data',$result);
+		$result = DB::select("SELECT `id`,`firstname`,`lastname`,`middlename`  
+		FROM `members`  WHERE  
+		`firstname` LIKE '%$name%' OR `lastname` LIKE '%$name%' OR `middlename` LIKE '%$name% '");
+		
+		foreach($result as $row){
+				$hint .= "<a href='addattendance/".$project_id."/".$row->id."'>".$row->firstname." ".$row->lastname."</a></br>";
+				//$hint++;
+		}
+		
+		if ($hint=="") {
+		  $response="no suggestion";
+		} else {
+		  $response= "<div style='border:1px solid;'>".$hint."</div>";
+		}
+		
+		echo $response;
 	}
 	public function updateEvent(Request $request)
-	{	/*
-		$id = $request->input('id');
-		$title = $request->input('title');
-		$date = $request->input('date');
-		$description = $request->input('description');
-		DB::insert('UPDATE `project` SET `member_id`=?,`finance_id`=?,`name`=?,`description`=?
-		WHERE `id`=?', [1,1, "$title","$description",$id]);
-		
-		 return redirect('admin/event');
-		 */
+	{	
 	}
 	
 }
