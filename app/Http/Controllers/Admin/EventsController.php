@@ -15,7 +15,7 @@ class EventsController extends Controller
 	{
 		$proj = new Project();
 		
-		$result = $proj->paginate(10);
+		$result = $proj->paginate(5);
 		 return view('admin.event.index')->with('data',$result);
 	}
 	public function addEventForm()
