@@ -15,9 +15,10 @@ class EventsController extends Controller
 {
 	public function index()
 	{
-		$proj = new Project();
+		//$proj = new Project();
 		
-		$result = $proj->orderBy('year', 'desc')->paginate(5);
+		//$result = $proj->orderBy('year', 'desc')->paginate(5);
+		$result = DB::table('project')->orderBy('year', 'desc')->get();
 		return view('admin.event.index')->with('data',$result);
 	}
 	public function addEventForm()

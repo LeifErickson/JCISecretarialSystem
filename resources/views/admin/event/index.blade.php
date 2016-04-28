@@ -7,10 +7,10 @@
     </h1>
 @endsection
 @section('content')
-	<div class="col-md-8">
+	<div class="col-md-12">
 		<div class="box">
         <div class="box-body">
-             <table class="table">
+             <table class="table" id="dataTables-events">
 					<thead>
 						<tr>
 							 <th>ID</th>
@@ -28,26 +28,30 @@
 											<td><a href='attendance/".$id."'>".$row->name."</a></td>
 											<td>".$row->year."</td>
 											<td>
-												<a  class='btn btn-xs btn-primary'  href='event/EditProject/".$id."'><i class='fa fa-pencil' title='' data-placement='top' data-toggle='tooltip' data-original-title='Delete'></i></a>
+												<a  class='btn btn-xs btn-primary'  href='event/EditProject/".$id."'><i class='fa fa-pencil' title='' data-placement='top' data-toggle='tooltip' data-original-title='Update'></i></a>
 												<a  class='btn btn-xs btn-danger'  href='event/deleteEvent/".$id."'><i class='fa fa-trash' title='' data-placement='top' data-toggle='tooltip' data-original-title='Delete'></i></a>
 											</td>
-										<tr>";
+										</tr>";
 							}
 						?>
 					</tbody>
 				</table>
         </div><!-- /.box-body -->
-		  <div class="box-footer clearfix">
-				<ul class="pagination pagination-sm no-margin pull-right">
-					<?php echo $data->render(); ?>
-				</ul>
-				<div class="row">
-					<div class="col-sm-5">
-						<div id="example2_info" class="dataTables_info" role="status" aria-live="polite">Total Event(s): <?php echo $data->count(); ?> row(s)</div>
-					</div>
-				</div>
-			</div>
 		</div><!--box box-success-->
 	</div>
 	
+@endsection
+@section('after-scripts-end')
+
+	<link href="{{ asset('tables/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css') }}" rel="stylesheet">
+	<link href="{{ asset('tables/datatables-responsive/css/dataTables.responsive.css') }}" rel="stylesheet">
+	<script src="{{ asset('tables/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('tables/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>
+	<script>
+		 $(document).ready(function() {
+			  $('#dataTables-events').DataTable({
+						 responsive: true
+			  });
+		 });
+	</script>
 @endsection
