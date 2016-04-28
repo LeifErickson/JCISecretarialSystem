@@ -11,22 +11,27 @@ use Illuminate\Http\Request;
 use DB;
 use DateTime;
 
-class EventsController extends Controller
+class AttendanceController extends Controller
 {
 	public function index()
 	{
+		/*
 		$proj = new Project();
 		
 		$result = $proj->orderBy('year', 'desc')->paginate(5);
 		return view('admin.event.index')->with('data',$result);
+		
+		*/
+		return view('admin.attendance.index');
 	}
 	public function addEventForm()
 	{
-		return view('admin.event.addEvent');
+		//return view('admin.event.addEvent');
 	}
 	
 	 public function store(Request $request)
     {
+	 /*
 		$now = new DateTime();
 		$title = $request->input('title');
 		$date = $request->input('date');
@@ -35,20 +40,23 @@ class EventsController extends Controller
 		VALUES (?,?,?,?,?)', [1,1, "$title","$description",$now]);
 		
 		  return redirect('admin/event');
+		  */
     }
 	public function delete($id)
 	{
+		/*
 		DB::insert('DELETE FROM `project` WHERE `id`=?', [$id]);
 		return back();
+		*/
 	}
 	public function updateForm($id)
 	{	
-		$result = DB::select('SELECT * FROM `project`  WHERE  `id`=?',[$id]);
+		//$result = DB::select('SELECT * FROM `project`  WHERE  `id`=?',[$id]);
 		
-		return view('admin.event.updateEvent')->with('data',$result);
+		//return view('admin.event.updateEvent')->with('data',$result);
 	}
 	public function updateEvent(Request $request)
-	{	
+	{	/*
 		$id = $request->input('id');
 		$title = $request->input('title');
 		$date = $request->input('date');
@@ -57,5 +65,6 @@ class EventsController extends Controller
 		WHERE `id`=?', [1,1, "$title","$description",$id]);
 		
 		 return redirect('admin/event');
+		 */
 	}
 }

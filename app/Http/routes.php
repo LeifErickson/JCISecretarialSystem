@@ -35,6 +35,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
     require (__DIR__ . '/Routes/Backend/Access.php');
     require (__DIR__ . '/Routes/Backend/LogViewer.php');
 	 require (__DIR__ . '/Routes/Backend/EventManagement.php');
+	 require (__DIR__ . '/Routes/Backend/AttendanceManagement.php');
 });
 
 Route::group(['middleware' => ['web']], function () {
