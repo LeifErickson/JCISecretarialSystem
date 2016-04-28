@@ -25,7 +25,7 @@
 								$id = $row->id;
 								echo "<tr>
 											<td>".$id."</td>
-											<td><a href='attendance'>".$row->name."</a></td>
+											<td><a href='attendance/".$id."'>".$row->name."</a></td>
 											<td>".$row->year."</td>
 											<td>
 												<a  class='btn btn-xs btn-primary'  href='event/EditProject/".$id."'><i class='fa fa-pencil' title='' data-placement='top' data-toggle='tooltip' data-original-title='Delete'></i></a>
@@ -49,4 +49,5 @@
 			</div>
 		</div><!--box box-success-->
 	</div>
+	
 @endsection

@@ -13,41 +13,38 @@ use DateTime;
 
 class AttendanceController extends Controller
 {
-	public function index()
-	{
-		/*
-		$proj = new Project();
+	public function index($id)
+	{			
+		$result = DB::select('SELECT `events_attended`.`member_id`,`firstname`, `lastname`, `middlename`,`status`,`events_attended`.`year`
+					FROM `events_attended`,`members`  WHERE 
+					`events_attended`.`project_id` = ? AND 
+					`members`.`id` = `events_attended`.`member_id`',[$id]);
 		
-		$result = $proj->orderBy('year', 'desc')->paginate(5);
-		return view('admin.event.index')->with('data',$result);
+		$info = DB::select('SELECT * FROM `project`  WHERE  `id`=?',[$id]);
 		
-		*/
-		return view('admin.attendance.index');
-	}
-	public function addEventForm()
-	{
-		//return view('admin.event.addEvent');
+		$members = DB::select('SELECT `members`.`id`,`firstname`,`lastname`,`middlename` 
+										FROM `members` 
+										WHERE 
+											NOT EXISTS (SELECT `events_attended`.`id` FROM `events_attended`
+																  WHERE `events_attended`.`project_id` = ? AND
+											 `members`.`id` = `events_attended`.`member_id` ); ',[$id]);
+		
+		return view('admin.attendance.index', ['data' => $result, 'info' => $info, 'data_id'=> $id,'mems'=> $members]);
 	}
 	
-	 public function store(Request $request)
+	 public function store($project_id,$member_id)
     {
-	 /*
 		$now = new DateTime();
-		$title = $request->input('title');
-		$date = $request->input('date');
-		$description = $request->input('description');
-		DB::insert('INSERT INTO `project`(`member_id`, `finance_id`, `name`, `description`,`year`) 
-		VALUES (?,?,?,?,?)', [1,1, "$title","$description",$now]);
-		
-		  return redirect('admin/event');
-		  */
+		DB::insert('INSERT INTO `events_attended`(`member_id`, `project_id`, `year`) 
+		VALUES (?,?,?)', [$member_id, $project_id,$now]);
+		return redirect('admin/attendance/'.$project_id);
     }
 	public function delete($id)
 	{
-		/*
-		DB::insert('DELETE FROM `project` WHERE `id`=?', [$id]);
+		DB::table('events_attended')->where('member_id','=', $id)->delete();
+		//DB::insert('DELETE FROM `project` WHERE `id`=?', [$id]);
 		return back();
-		*/
+		
 	}
 	public function updateForm($id)
 	{	
@@ -67,4 +64,5 @@ class AttendanceController extends Controller
 		 return redirect('admin/event');
 		 */
 	}
+	
 }
