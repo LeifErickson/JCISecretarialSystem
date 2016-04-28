@@ -14,48 +14,30 @@
             
         </div><!-- /.box-header -->
         <div class="box-body">
-             <table class="table table-bordered" id="dataTables-example" >
-								<thead>
-									<tr>
-										 <th>ID</th>
-										 <th>Title</th>
-										 <th>Date Created</th>
-										 <th>Participants</th>   
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										 <td>1</td>
-										 <td>a</td>
-										 <td>b</td>
-										 <td>c</td>
-									</tr>
-									<tr>
-										 <td>1</td>
-										 <td>a</td>
-										 <td>b</td>
-										 <td>c</td>
-									</tr>
-									<tr>
-										 <td>1</td>
-										 <td>a</td>
-										 <td>b</td>
-										 <td>c</td>
-									</tr>
-									<tr>
-										 <td>1</td>
-										 <td>a</td>
-										 <td>b</td>
-										 <td>c</td>
-									</tr>
-									<tr>
-										 <td>1</td>
-										 <td>a</td>
-										 <td>b</td>
-										 <td>c</td>
-									</tr>
-								</tbody>
-							</table>
+             <table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							 <th>ID</th>
+							 <th>Title</th>
+							 <th>Date Created</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+							foreach($data as $row){
+								$id = $row->id;
+								echo "<tr>
+											<td>".$id."</td>
+											<td>".$row->name."</td>
+											<td>".$row->year."</td>
+											<td><a href='event/EditProject/".$id."'>Edit</a></td>
+											<td><a href='event/deleteEvent/".$id."'>Delete</a></td>
+										<tr>";
+							}
+							echo $data->render();
+						?>
+					</tbody>
+				</table>
         </div><!-- /.box-body -->
 		</div><!--box box-success-->
 	</div>

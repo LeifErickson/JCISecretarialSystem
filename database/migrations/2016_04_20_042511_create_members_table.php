@@ -13,23 +13,23 @@ class CreateMembersTable extends Migration
     public function up()
     {
         
-            Schema::create('members', function(Blueprint $table) {
-                $table->increments('id');
-                $table->string('firstname');
-$table->string('lastname');
-$table->string('middlename');
-$table->date('birthdate');
-$table->string('contactno');
-$table->string('gender');
-$table->string('status');
-$table->string('religion');
-$table->string('placeofbirth');
-$table->string('jcisenatorialno');
-$table->date('dateofinduction');
+		Schema::create('members', function(Blueprint $table) {
+			$table->increments('id');
+			$table->string('firstname');
+			$table->string('lastname');
+			$table->string('middlename');
+			$table->date('birthdate');
+			$table->string('contactno');
+			$table->string('gender');
+			$table->string('status');
+			$table->string('religion');
+			$table->string('placeofbirth');
+			$table->string('jcisenatorialno');
+			$table->date('dateofinduction');
 
-                $table->timestamps();
-            });
-            
+			 $table->timestamps();
+		});
+		
     }
 
     /**

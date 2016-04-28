@@ -11,15 +11,19 @@
 			 <div class="row">
 				<div class="col-md-8">
 					<div class="box box-primary">
-						{{  Form::open(array('url' => 'admin/event/addEvent', 'method' => 'post')) }}
+						{{  Form::open(array('url' => 'admin/event/updateEvent', 'method' => 'post')) }}
+							<?php
+								foreach($data as $row){
+							?>
 							<div class="box-header with-border">
 								<div class="form-group">
-									{{ Form::text('title', null,  array('placeholder'=>'Title','class' => 'form-control')) }}
+									<input name="id" type="hidden" value = "<?php echo $row->id;?>">
+									<input name="title" placeholder="Title" class="form-control" value = "<?php echo $row->name;?>">
 								</div>
 								<div class="col-md-4">		
 									<div class="form-group">
 										<div class='input-group date' id='datetimepicker1'>
-											  {{ Form::text('date', null,  array('placeholder'=>'Date Of Event','class' => 'form-control')) }}
+											  <input name="date" placeholder="Date Of Event" class="form-control" value = "<?php echo $row->year;?>">
 											  <span class="input-group-addon">
 													<span class="glyphicon glyphicon-calendar"></span>
 											  </span>
@@ -29,11 +33,7 @@
 							</div>
 							<div class="box-body">
 								<div class="form-group">
-									{{ Form::textarea('description', null, array(
-											 'id'      => 'editor1',
-											 'rows'    => 10,
-										))
-									}}
+									<textarea id="editor1" name="description"><?php echo $row->description; ?></textarea>
 								</div>
 							</div>
 							<div class="box-footer">
@@ -42,6 +42,7 @@
 									{{ Form::submit('Publish', null,  array('class' => 'form-control',)) }}
 								</div>
 							</div>
+							<?php } ?>
 						{{ Form::close() }}
 					</div>
 				</div>
