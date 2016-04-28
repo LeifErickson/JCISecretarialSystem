@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
         *   MEMBER FAKER 
         *
         */
-/*
+
         foreach (range(100,1000) as $index) {
             DB::table('members')->insert([
 
@@ -121,7 +121,7 @@ class DatabaseSeeder extends Seeder
                 'membersince'=> $faker->dateTimeBetween($startDate = "-5 years", $endDate = "now")->format('Y-m-d')
                 ]);
             }
-*/
+
 
         /*
         *
@@ -129,7 +129,7 @@ class DatabaseSeeder extends Seeder
         *
         */
 
-/*
+
         foreach (range(100,1000) as $index) {
             DB::table('projects')->insert([
                 'name'=> $faker->firstName,
@@ -153,7 +153,6 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         
-*/
     }
 
 
