@@ -98,6 +98,8 @@ class Member extends Model
         'jcisenatorialno',
         
         'dateofinduction',
+
+        'membersince'
     ];
 
 }

@@ -37,7 +37,7 @@
             @foreach($projects as $item)
                 {{-- */$x++;/* --}}
                 <tr>
-                    <td>{{ $x }}</td>
+                    <td>{{ $item->id }}</td>
                     <td><a href="{{ url('admin/events/projects', $item->id) }}">{{ $item->name }}</a></td><td>{{ $item->description }}</td><td>{{ $item->datebegun }}</td><td>{{ $item->datecompleted }}</td>
                     <td>
                         <a href="{{ url('admin/events/projects/' . $item->id . '/edit') }}">
@@ -89,7 +89,7 @@
                 'colvis',
                 {
                 extend: 'collection',
-                text: 'Table control',
+                text: 'Export',
                 autoClose: true,
                 buttons: 
                 [

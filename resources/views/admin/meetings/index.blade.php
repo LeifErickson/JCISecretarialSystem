@@ -23,7 +23,7 @@
         <table id="table" class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th>Description</th><th>Agenda</th><th>Type</th><th>Actions</th>
+                    <th>ID</th><th>Description</th><th>Agenda</th><th>Type</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,7 +31,7 @@
             @foreach($meetings as $item)
                 {{-- */$x++;/* --}}
                 <tr>
-                    <td>{{ $x }}</td>
+                    <td>{{ $item->id }}</td>
                     <td><a href="{{ url('admin/events/meetings', $item->id) }}">{{ $item->description }}</a></td><td>{{ $item->agenda }}</td><td>{{ $item->type }}</td>
                     <td>
                         <a href="{{ url('admin/events/meetings/' . $item->id . '/edit') }}">
@@ -71,7 +71,7 @@
     <script>
       $(function () {
         $('#table').DataTable({
-          "paging": true,
+          "paging": false,
           "lengthChange": false,
           "searching": true,
           "ordering": true,
@@ -83,7 +83,7 @@
                 'colvis',
                 {
                 extend: 'collection',
-                text: 'Table control',
+                text: 'Export',
                 autoClose: true,
                 buttons: 
                 [

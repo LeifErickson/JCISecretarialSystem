@@ -94,6 +94,8 @@ class CreateMembersTable extends Migration
         
         $table->String('dateofinduction');
 
+        $table->date('membersince');
+
         $table->timestamps();
             });
             

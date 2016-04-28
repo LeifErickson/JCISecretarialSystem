@@ -31,7 +31,7 @@ class ProjectController extends AppBaseController
      */
     public function index()
     {
-        $projects = Project::paginate(15);
+        $projects = Project::paginate(999999);
 
         return view('projects.index')
             ->with('projects', $projects);

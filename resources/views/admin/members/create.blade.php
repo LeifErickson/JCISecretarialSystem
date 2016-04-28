@@ -112,6 +112,13 @@
             </div>
         </div>
         <div id="second">
+            <div class="form-group {{ $errors->has('membersince') ? 'has-error' : ''}}">
+                {!! Form::label('membersince', 'Member since: ', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::text('membersince', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! $errors->first('membersince', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
             <div class="form-group {{ $errors->has('profession') ? 'has-error' : ''}}">
                 {!! Form::label('profession', 'Profession: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
@@ -196,8 +203,6 @@
                     {!! $errors->first('memberstatus', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-        </div>
-        <div id="fourth">
             <div class="form-group {{ $errors->has('lomhighestposition') ? 'has-error' : ''}}">
                 {!! Form::label('lomhighestposition', 'lomhighestposition: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
@@ -205,6 +210,8 @@
                     {!! $errors->first('lomhighestposition', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+            </div>
+            <div id="fourth">
             <div class="form-group {{ $errors->has('lomhighestpositionyear') ? 'has-error' : ''}}">
                 {!! Form::label('lomhighestpositionyear', 'lomhighestpositionyear: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">

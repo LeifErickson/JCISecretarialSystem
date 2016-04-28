@@ -22,7 +22,7 @@
         <table id="example1" class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th>Firstname</th><th>Lastname</th><th>Middlename</th><th>Actions</th>
+                    <th>ID</th><th>Firstname</th><th>Lastname</th><th>Middlename</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,7 +30,7 @@
             @foreach($members as $item)
                 {{-- */$x++;/* --}}
                 <tr>
-                    <td>{{ $x }}</td>
+                    <td>{{ $item->id }}</td>
                     <td><a href="{{ url('admin/members', $item->id) }}">{{ $item->firstname }}</a></td><td>{{ $item->lastname }}</td><td>{{ $item->middlename }}</td>
                     <td>
                         <a href="{{ url('admin/members/' . $item->id . '/edit') }}">
@@ -68,13 +68,19 @@
     <script>
       $(function () {
         $("#example1").DataTable({
-            dom: 'Bfrtip',
+          "paging": true,
+          "lengthChange": false,
+          "searching": true,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false,
+           dom: 'Bfrtip',
             buttons: [
                 
                 'colvis',
                 {
                 extend: 'collection',
-                text: 'Table control',
+                text: 'Export',
                 autoClose: true,
                 buttons: 
                 [
