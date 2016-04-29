@@ -3,7 +3,7 @@
 
 
 Route::group([
-    'prefix'     => 'event',
+    'prefix'     => 'events',
 ], function() {
     
 	 Route::get('/', [

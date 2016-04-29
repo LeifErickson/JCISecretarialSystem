@@ -35,7 +35,7 @@
                 <a href="{!! route('admin.dashboard') !!}"><span>{{ trans('menus.backend.sidebar.dashboard') }}</span></a>
             </li>
             <li class="{{ Active::pattern('admin/members') }}">
-                <a href="/admin/members"><span>Member Management</span></a>
+                <a href="{!! url('admin/members') !!}"><span>Member Management</span></a>
             </li>
 				<!--START OF TEST SIDE BAR -->
 				<li class="{{ Active::pattern('admin/event*') }} treeview">
