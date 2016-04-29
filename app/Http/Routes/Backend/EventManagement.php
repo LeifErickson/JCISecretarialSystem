@@ -30,6 +30,10 @@ Route::group([
         'as'   => 'event::dashboard',
         'uses' => '\App\Http\Controllers\Admin\EventsController@updateEvent',
     ]);
+	  Route::get('searchPage/{name}', [
+        'as'   => 'attendance::dashboard',
+        'uses' => '\App\Http\Controllers\Admin\EventsController@search',
+    ]); 
 	 
 	
 });

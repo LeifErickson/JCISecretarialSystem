@@ -15,10 +15,10 @@ class CreateTableEventsAttended extends Migration
       Schema::create('events_attended', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('member_id')->unsigned();
-			$table->integer('project_id')->unsigned();
+			$table->integer('event_id')->unsigned();
 			$table->date('year');
 			$table->foreign('member_id')->references('id')->on('members');
-			$table->foreign('project_id')->references('id')->on('project');
+			$table->foreign('event_id')->references('id')->on('events');
 		});
     }
 

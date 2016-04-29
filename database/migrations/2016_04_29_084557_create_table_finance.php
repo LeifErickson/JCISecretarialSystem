@@ -14,11 +14,11 @@ class CreateTableFinance extends Migration
     {
          Schema::create('finances', function(Blueprint $table) {
 				$table->increments('id');
-				$table->integer('user_id')->unsigned();
-				$table->integer('project_id')->unsigned();
+				$table->integer('member_id')->unsigned();
+				$table->integer('event_id')->unsigned();
 				$table->string('amount');
-				$table->foreign('user_id')->references('id')->on('users');
-				$table->foreign('project_id')->references('id')->on('project');
+				$table->foreign('member_id')->references('id')->on('members');
+				$table->foreign('event_id')->references('id')->on('events');
 			});
     }
 

@@ -15,7 +15,6 @@
 						<tr>
 							 <th>ID</th>
 							 <th>Title</th>
-							 <th>Date Created</th>
 							 <th>Action</th>
 						</tr>
 					</thead>
@@ -26,7 +25,6 @@
 								echo "<tr>
 											<td>".$id."</td>
 											<td><a href='attendance/".$id."'>".$row->name."</a></td>
-											<td>".$row->year."</td>
 											<td>
 												<a  class='btn btn-xs btn-primary'  href='event/EditProject/".$id."'><i class='fa fa-pencil' title='' data-placement='top' data-toggle='tooltip' data-original-title='Update'></i></a>
 												<a  class='btn btn-xs btn-danger'  href='event/deleteEvent/".$id."'><i class='fa fa-trash' title='' data-placement='top' data-toggle='tooltip' data-original-title='Delete'></i></a>
