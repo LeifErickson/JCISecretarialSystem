@@ -33,7 +33,7 @@
 									
 								</div>
 							</div>
-						{{ Form::close() }}
+						
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -58,38 +58,36 @@
 						<div class="box-header with-border">
 							<h3 class="box-title">Sponsor(s)</h3>
 						</div>
-						<div id="Sponsorbody" class="box-body">
-							<div class="form-group">
-								<input id="sponsor_id" name="sponsor_id" class="form-control" type="hidden" />
-								<input id="name"  autocomplete="off" onkeyup="showResult(this.value)" class="form-control" type="text" placeholder="Name" required />
-								<div id="livesearch"></div>
-								
-							</div>
-							<div class="form-group">
-								<input class="form-control" type="number" placeholder="Amount" required/>
-							</div>
+						<div class="box-body">
+							<textArea id="list_of_sponsors" name="sponsors"></textArea>
+							<table  class="table table-bordered">
+								<thead>	
+									<th>Name</th>
+									<th>Amount</th>
+								</thead>
+								<tbody id="SponsorsTable">
+								</tbody>
+							</table>
 						</div>
-						<div  class="box-footer">
-							<button  class="btn btn-info pull-right" type="submit">Add Sponsor</button>
-						</div>
-					</div>					
+					</div>	
+					{{ Form::close() }}
 					<div class="box box-info">
 						<div class="box-header with-border">
 							<h3 class="box-title">Add Sponsor</h3>
 						</div>
-						<div id="Sponsorbody" class="box-body">
+						<div class="box-body">
 							<div class="form-group">
-								<input id="sponsor_id" name="sponsor_id" class="form-control" type="hidden" />
+								<input id="sponsor_id" value="0" name="sponsor_id" class="form-control" type="hidden" />
 								<input id="name"  autocomplete="off" onkeyup="showResult(this.value)" class="form-control" type="text" placeholder="Name" required />
 								<div id="livesearch"></div>
 								
 							</div>
 							<div class="form-group">
-								<input class="form-control" type="number" placeholder="Amount" required/>
+								<input id="amount" class="form-control" type="number" placeholder="Amount" required/>
 							</div>
 						</div>
 						<div  class="box-footer">
-							<button  class="btn btn-info pull-right" type="submit">Add Sponsor</button>
+							<button  onclick="addSponsor()" id="addSponsor" class="btn btn-info pull-right" type="submit">Add Sponsor</button>
 						</div>
 					</div>	
 				</div>
@@ -106,40 +104,51 @@
 		 
 		 
 		<script>
-		// Replace the <textarea id="editor1"> with a CKEditor
-		// instance, using default configuration.
-		CKEDITOR.replace( 'editor1' );
-		
-		// add sponsor Textfield
-		var spo_id = 0;
-		function addSponsor(){
-			var element = document.getElementById("Sponsorbody");
-			var div = document.createElement("DIV");
-			var input = document.createElement("INPUT");
-			div.className = "form-group";
-			input.className = "form-control";
-			input.placeholder  = "Amount";
-			input.setAttribute("id", "test");
-			input.onkeyup = function(){showResult(this.value)};
-			div.appendChild(input);
+			// Replace the <textarea id="editor1"> with a CKEditor
+			// instance, using default configuration.
+			CKEDITOR.replace( 'editor1' );
 			
-			element.appendChild(div);
-			spo_id++;
-		}
+			// datePicker
+			$(function() {
+				 $("#datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
+			  });
+			// sponsors
+			function addSponsor(){
+				var s_id = document.getElementById("sponsor_id").value;
+				var name = document.getElementById("name").value;
+				var amount = document.getElementById("amount").value;
+				var list = document.getElementById("list_of_sponsors").value;
+				
+				if(list != ""){
+					document.getElementById("list_of_sponsors").value = list+","+s_id+","+amount;
+				} else {
+					document.getElementById("list_of_sponsors").value = s_id+","+amount;
+				}
+					
+				var tr  = document.createElement("TR");
+				var td1 = document.createElement("TD");
+				var t = document.createTextNode(name);
+				td1.appendChild(t);
+				tr.appendChild(td1);
+			
+				var td2 = document.createElement("TD");
+				var t2 = document.createTextNode(amount);
+				td2.appendChild(t2);
+				tr.appendChild(td2);
+				
+				document.getElementById("SponsorsTable").appendChild(tr);
+				document.getElementById("sponsor_id").value = "";
+				document.getElementById("name").value = "";
+				document.getElementById("amount").value = "";
+			}
+			//search
+			function setVal(a,b){
+				document.getElementById("sponsor_id").value = a;
+				document.getElementById("name").value = b;
+				document.getElementById("livesearch").innerHTML = "";
+			}
 		
-		function setVal(a,b){
-			//alert('test');
-			document.getElementById("sponsor_id").value = a;
-			document.getElementById("name").value = b;
-			document.getElementById("livesearch").innerHTML = "";
-		}
-		
-		
-		  $(function() {
-			 
-			 $("#datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
-		  });
-		  
+		  //search Result
 		  function showResult(str) {
 			 if (str.length==0) { 
 				 document.getElementById("livesearch").value="";

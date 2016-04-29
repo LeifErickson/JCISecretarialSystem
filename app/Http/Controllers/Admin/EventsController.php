@@ -28,17 +28,34 @@ class EventsController extends Controller
 	
 	 public function store(Request $request)
     {
-		$now = date('Y-m-d');
 		$title = $request->input('title');
 		$description = $request->input('description');
+		$date = $request->input('date');
+		$Sponsors = $request->input('sponsors');
 		DB::insert('INSERT INTO `events`(`user_id`,`name`, `description`,`year`) 
-		VALUES (?,?,?,?)', [1,"$title","$description"],$now);
+		VALUES (?,?,?,?)', [1,"$title","$description","$date"]);
 		
-		  return redirect('admin/events');
+		
+		$result = DB::select('SELECT max(`id`) as id FROM `events`');
+		$id = 0;
+		foreach($result as $lastInsert){
+			$id = $lastInsert->id;
+		}
+		 //"hello";
+		$split = explode(",", $Sponsors);
+		$num = 0;
+		for($i=0;$i < count($split)-1;$i++){
+			//echo $split[$i]." ".$split[$i+1];
+			
+			DB::insert('INSERT INTO `finances` (`member_id`, `event_id`, `amount` )
+			VALUES (?,?,?)', [$split[$i],$id,$split[$i+1]]);
+		}
+		
+		return redirect('admin/events');
     }
 	public function delete($id)
 	{
-		DB::insert('DELETE FROM `projects` WHERE `id`=?', [$id]);
+		DB::insert('DELETE FROM `events` WHERE `id`=?', [$id]);
 		return back();
 	}
 	public function updateForm($id)
