@@ -32,8 +32,8 @@ class EventsController extends Controller
 		$title = $request->input('title');
 		$date = $request->input('date');
 		$description = $request->input('description');
-		DB::insert('INSERT INTO `project`(`member_id`, `finance_id`, `name`, `description`,`year`) 
-		VALUES (?,?,?,?,?)', [1,1, "$title","$description",$now]);
+		DB::insert('INSERT INTO `project`(`member_id`, `name`, `description`,`year`) 
+		VALUES (?,?,?,?)', [1, "$title","$description",$now]);
 		
 		  return redirect('admin/event');
     }
@@ -54,8 +54,8 @@ class EventsController extends Controller
 		$title = $request->input('title');
 		$date = $request->input('date');
 		$description = $request->input('description');
-		DB::insert('UPDATE `project` SET `member_id`=?,`finance_id`=?,`name`=?,`description`=?
-		WHERE `id`=?', [1,1, "$title","$description",$id]);
+		DB::insert('UPDATE `project` SET `name`=?,`description`=?
+		WHERE `id`=?', ["$title","$description",$id]);
 		
 		 return redirect('admin/event');
 	}
