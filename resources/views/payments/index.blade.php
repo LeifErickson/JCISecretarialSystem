@@ -10,6 +10,37 @@
 @endsection
 
 @section('content')
+    <script>
+      function ConfirmDelete()
+      {
+       event.preventDefault();
+       swal({   
+        title: "Are you sure?",   
+        text: "You will not be able to recover this data!",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Yes, delete it!",   
+        cancelButtonText: "No, cancel it!",   
+        closeOnConfirm: false,  
+        closeOnCancel: false
+         }, 
+         function(isConfirm)
+         {   
+            if (isConfirm)
+             {     
+                swal("Deleted!", "The data will be deleted in a moment.", "success"); 
+                document.forms['delete'].submit();  
+            }
+             else 
+            {     
+                swal("Cancelled", "The data is safe :)", "error");   
+                return false;
+            } 
+        });
+
+      }
+    </script>
     <div class="box box-success">
         <div class="box-header with-border">
             <h3 class="box-title">Payments</h3>
@@ -38,15 +69,17 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $item->invoiceno }}</td>
-                    <td><a href="{{ url('admin/payments', $item->id) }}">{{ $item->invoicedate }}</a></td><td>{{ $item->billto }}</td><td>{{ $item->total }}</td>
+                    <td><a href="{{ url('admin/members/payments', $item->id) }}">{{ $item->invoicedate }}</a></td><td>{{ $item->billto }}</td><td>{{ $item->total }}</td>
                     <td>
-                        <a href="{{ url('admin/payments/' . $item->id . '/edit') }}">
+                        <a href="{{ url('admin/members/payments/' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
                         </a> /
                         {!! Form::open([
+                            'id' => 'delete',
                             'method'=>'DELETE',
-                            'url' => ['admin/events/payments', $item->id],
-                            'style' => 'display:inline'
+                            'url' => ['admin/payments', $item->id],
+                            'style' => 'display:inline',
+                            'onsubmit' => 'return ConfirmDelete()'
                         ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
                         {!! Form::close() !!}

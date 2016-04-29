@@ -34,9 +34,17 @@
             <li class="{{ Active::pattern('admin/dashboard') }}">
                 <a href="{!! route('admin.dashboard') !!}"><span>{{ trans('menus.backend.sidebar.dashboard') }}</span></a>
             </li>
-            <li class="{{ Active::pattern('admin/members') }}">
-                <a href="{!! url('admin/members') !!}"><span>Member Management</span></a>
+            <li class="{{ Active::pattern('admin/members') }} treeview">
+                <a href="{!! url('admin/members') !!}">
+                <span>Member Management</span>
+                <i class="fa fa-angle-left pull-right"></i>
+                </a>
             </li>
+            <ul class="treeview-menu {{ Active::pattern('admin/members*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/members*', 'display: block;') }}">
+                <li class="{{ Active::pattern('admin/payments') }}">
+                    <a href="{!! url('admin/payments') !!}"><span>Manage Payments</span></a>
+                </li>
+            </ul>
 				<!--START OF TEST SIDE BAR -->
 				<li class="{{ Active::pattern('admin/event*') }} treeview">
                 <a href="#">

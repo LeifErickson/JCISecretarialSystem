@@ -33,7 +33,7 @@ class PaymentController extends AppBaseController
     {
         // $this->paymentRepository->pushCriteria(new RequestCriteria($request));
         // $payments = $this->paymentRepository->all();
-        $payments = Payment::paginate(15);
+        $payments = Payment::paginate(999999);
 
         return view('payments.index')
             ->with('payments', $payments);
