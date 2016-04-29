@@ -71,6 +71,7 @@
     <script src="{{ asset('/plugins/datatables/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('/plugins/datatables/buttons.print.min.js') }}"></script>
     <script src="{{ asset('/plugins/datatables/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/dataTables.select.min.js') }}"></script>
     
     <!-- page script -->
     <script>
@@ -84,6 +85,7 @@
           "info": true,
           "autoWidth": false,
            dom: 'Bfrtip',
+            stateSave: true,
             buttons: [
                 
                 'colvis',
@@ -123,7 +125,17 @@
                             columns: ':visible'
                         }
                     },
-                ]
+                    {
+                        extend: 'print',
+                        text: 'Print selected',
+                        exportOptions: {
+                            modifier: {
+                                selected: true
+                            },
+                        }
+                    }
+                ],
+                select: true
             }
              
             ]

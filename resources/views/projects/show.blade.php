@@ -15,7 +15,7 @@
             <h3 class="box-title">Projects</h3>
 
             <div class="box-tools pull-right">
-                <a href="{{ url('admin/events/members/') }}" class="btn btn-primary pull-right btn-sm">Go Back/a>
+                <a href="{{ url('admin/events/projects/') }}" class="btn btn-primary pull-right btn-sm">Go Back</a>
             </div>
         </div><!-- /.box-header -->
     @include('projects.show_fields')

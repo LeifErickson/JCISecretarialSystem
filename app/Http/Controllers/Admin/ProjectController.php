@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests;
 use App\Http\Requests\CreateProjectRequest;
@@ -8,9 +8,10 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Repositories\ProjectRepository;
 use Illuminate\Http\Request;
 use Flash;
+use App\Http\Controllers\AppBaseController;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-use App\Project;
+use App\Models\Project;
 use Session;
 
 class ProjectController extends AppBaseController

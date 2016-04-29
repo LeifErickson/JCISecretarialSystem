@@ -41,8 +41,9 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
 Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
 	Route::resource('members', 'Admin\\MembersController');
     Route::resource('category', 'Admin\\CategoryController');
-    Route::resource('events/projects', 'ProjectController');
+    Route::resource('events/projects', 'Admin\\ProjectController');
     Route::resource('events/meetings', 'Admin\\MeetingsController');
+    Route::resource('payments', 'Admin\\PaymentController');
 });
 
 
@@ -67,6 +68,3 @@ Route::group(['prefix' => 'api', 'namespace' => 'API'], function () {
 Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder');
 Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate');
 Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate');
-
-
-Route::resource('payments', 'PaymentController');

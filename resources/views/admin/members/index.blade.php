@@ -75,6 +75,7 @@
           "info": true,
           "autoWidth": false,
            dom: 'Bfrtip',
+            stateSave: true,
             buttons: [
                 
                 'colvis',

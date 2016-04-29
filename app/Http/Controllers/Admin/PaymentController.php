@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests;
 use App\Http\Requests\CreatePaymentRequest;
@@ -8,6 +8,8 @@ use App\Http\Requests\UpdatePaymentRequest;
 use App\Repositories\PaymentRepository;
 use Illuminate\Http\Request;
 use Flash;
+use App\Models\Payment;
+use App\Http\Controllers\AppBaseController;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
@@ -29,8 +31,9 @@ class PaymentController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $this->paymentRepository->pushCriteria(new RequestCriteria($request));
-        $payments = $this->paymentRepository->all();
+        // $this->paymentRepository->pushCriteria(new RequestCriteria($request));
+        // $payments = $this->paymentRepository->all();
+        $payments = Payment::paginate(15);
 
         return view('payments.index')
             ->with('payments', $payments);
@@ -61,7 +64,7 @@ class PaymentController extends AppBaseController
 
         Flash::success('Payment saved successfully.');
 
-        return redirect(route('payments.index'));
+        return redirect(route('admin.payments.index'));
     }
 
     /**
@@ -78,7 +81,7 @@ class PaymentController extends AppBaseController
         if (empty($payment)) {
             Flash::error('Payment not found');
 
-            return redirect(route('payments.index'));
+            return redirect(route('admin.payments.index'));
         }
 
         return view('payments.show')->with('payment', $payment);
@@ -98,7 +101,7 @@ class PaymentController extends AppBaseController
         if (empty($payment)) {
             Flash::error('Payment not found');
 
-            return redirect(route('payments.index'));
+            return redirect(route('admin.payments.index'));
         }
 
         return view('payments.edit')->with('payment', $payment);
@@ -119,14 +122,14 @@ class PaymentController extends AppBaseController
         if (empty($payment)) {
             Flash::error('Payment not found');
 
-            return redirect(route('payments.index'));
+            return redirect(route('admin.payments.index'));
         }
 
         $payment = $this->paymentRepository->update($request->all(), $id);
 
         Flash::success('Payment updated successfully.');
 
-        return redirect(route('payments.index'));
+        return redirect(route('admin.payments.index'));
     }
 
     /**
@@ -143,13 +146,13 @@ class PaymentController extends AppBaseController
         if (empty($payment)) {
             Flash::error('Payment not found');
 
-            return redirect(route('payments.index'));
+            return redirect(route('admin.payments.index'));
         }
 
         $this->paymentRepository->delete($id);
 
         Flash::success('Payment deleted successfully.');
 
-        return redirect(route('payments.index'));
+        return redirect(route('admin.payments.index'));
     }
 }
