@@ -36,6 +36,8 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
     require (__DIR__ . '/Routes/Backend/Dashboard.php');
     require (__DIR__ . '/Routes/Backend/Access.php');
     require (__DIR__ . '/Routes/Backend/LogViewer.php');
+	 require (__DIR__ . '/Routes/Backend/EventManagement.php');
+	 require (__DIR__ . '/Routes/Backend/AttendanceManagement.php');
 });
 
 Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
@@ -45,7 +47,6 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     Route::resource('events/meetings', 'Admin\\MeetingsController');
     Route::resource('payments', 'Admin\\PaymentController');
 });
-
 
 /*
 |--------------------------------------------------------------------------

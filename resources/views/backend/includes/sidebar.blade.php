@@ -35,9 +35,10 @@
                 <a href="{!! route('admin.dashboard') !!}"><span>{{ trans('menus.backend.sidebar.dashboard') }}</span></a>
             </li>
             <li class="{{ Active::pattern('admin/members') }}">
-                <a href="/admin/members"><span>Member Management</span></a>
+                <a href="{!! url('admin/members') !!}"><span>Member Management</span></a>
             </li>
-            <li class="{{ Active::pattern('admin/log-viewer*') }} treeview">
+				<!--START OF TEST SIDE BAR -->
+				<li class="{{ Active::pattern('admin/event*') }} treeview">
                 <a href="#">
                     <span>Event Management</span>
                     <i class="fa fa-angle-left pull-right"></i>
@@ -49,13 +50,19 @@
                     <li class="{{ Active::pattern('admin/events/meetings') }}">
                         <a href="{!! url('admin/events/meetings') !!}">Meetings</a>
                     </li>
-                    <li class="{{ Active::pattern('admin/log-viewer/logs') }}">
-                        <a href="{!! url('admin/log-viewer/logs') !!}">Others</a>
+					<li class="{{ Active::pattern('admin/events') }}">
+                        <a href="{!! url('admin/events') !!}">Others</a>
+                     </li>
+					 <li class="{{ Active::pattern('admin/events/add') }}">
+                        <a href="{!! url('admin/events/add') !!}">Add Other Events</a>
                     </li>
+                   
                 </ul>
             </li>
-
-
+				<!--END OF TEST SIDE BAR -->
+				
+				
+				
             @permission('view-access-management')
                 <li class="{{ Active::pattern('admin/access/*') }}">
                     <a href="{!!url('admin/access/users')!!}"><span>{{ trans('menus.backend.access.title') }}</span></a>
