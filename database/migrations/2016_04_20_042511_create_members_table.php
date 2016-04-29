@@ -13,8 +13,8 @@ class CreateMembersTable extends Migration
     public function up()
     {
         
-            Schema::create('members', function(Blueprint $table) {
-                $table->increments('id');
+        Schema::create('members', function(Blueprint $table) {
+        $table->increments('id');
         
         $table->String('membershiptype');
         
@@ -98,7 +98,6 @@ class CreateMembersTable extends Migration
 
         $table->timestamps();
             });
-            
     }
 
     /**

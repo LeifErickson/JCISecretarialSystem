@@ -28,3 +28,4 @@ member management that can,
 - [ ] Attendance Module
 - [ ] Generate Report
 - [x] Search Module (initial version @ project_event_management branch)
+# Kim
