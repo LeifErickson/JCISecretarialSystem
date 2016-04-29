@@ -11,7 +11,7 @@
 			 <div class="row">
 				<div class="col-md-8">
 					<div class="box box-primary">
-						{{  Form::open(array('url' => 'admin/event/addEvent', 'method' => 'post')) }}
+						{{  Form::open(array('url' => 'admin/events/addEvent', 'method' => 'post')) }}
 							<div class="box-header with-border">
 								<div class="form-group">
 									{{ Form::text('title', null,  array('placeholder'=>'Title','class' => 'form-control')) }}
