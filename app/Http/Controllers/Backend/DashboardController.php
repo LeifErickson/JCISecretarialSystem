@@ -120,15 +120,15 @@ class DashboardController extends Controller
 
     $event_array = array();
 
-    $result->setFetchMode(PDO::FETCH_ASSOC);
-    while ($record = $result->fetch()) {
-        $event_array[] = array(
-            'id' => $record['event_id'],
-            'title' => $record['event_name'],
-            'start' => $record['start_event'],
-            'end' => $record['end_event'],
-        );
-    }
+    // $result->setFetchMode(PDO::FETCH_ASSOC);
+    // while ($record = $result->fetch()) {
+    //     $event_array[] = array(
+    //         'id' => $record['event_id'],
+    //         'title' => $record['event_name'],
+    //         'start' => $record['start_event'],
+    //         'end' => $record['end_event'],
+    //     );
+    // }
 
     //dashboard view
 	return view('backend.dashboard');

@@ -110,7 +110,7 @@
             @foreach($events as $item)
                 {{-- */$z++;/* --}}
                 <tr>
-                    <td><a href="{{ url('admin/events', $item->id) }}">{{ $item->title }}</a></td><td>{{ $item->eventtype }}</td><td>{{ $item->created_at }}</td>
+                    <td><a href="{{ url('admin/events', $item->id) }}">{{ $item->name }}</a></td><td>{{ $item->eventtype }}</td><td>{{ $item->created_at }}</td>
                     <td>
                         <a href="{{ url('admin/events' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
