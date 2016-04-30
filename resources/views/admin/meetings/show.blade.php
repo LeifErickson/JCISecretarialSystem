@@ -22,12 +22,12 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>ID.</th> <th>Description</th><th>Agenda</th><th>Type</th>
+                    <th>ID.</th> <th>Title</th><th>Description</th><th>Agenda</th><th>Type</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $meeting->id }}</td> <td> {{ $meeting->description }} </td><td> {{ $meeting->agenda }} </td><td> {{ $meeting->type }} </td>
+                    <td>{{ $meeting->id }}</td> <td> {{ $meeting->title }} </td> <td> {{ $meeting->description }} </td><td> {{ $meeting->agenda }} </td><td> {{ $meeting->type }} </td>
                 </tr>
             </tbody>    
         </table>

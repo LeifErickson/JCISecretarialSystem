@@ -16,6 +16,7 @@ class CreateMeetingsTable extends Migration
             Schema::create('meetings', function(Blueprint $table) {
                 $table->increments('id');
                 $table->string('eventtype')->default('meetings');
+                $table->string('title');
                 $table->string('description');
                 $table->string('agenda');
                 $table->string('type');
