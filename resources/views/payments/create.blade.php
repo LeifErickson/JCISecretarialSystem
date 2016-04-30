@@ -13,7 +13,7 @@
 <div style="margin-left: 20px">
     <h1>Create New Payment</h1>
     <div class="box-tools pull-left" style="margin-left: 20px">
-        <a href="{{{ URL::previous() }}}" class="btn btn-primary pull-right btn-sm">Go Back</a>
+        <a href="{{ url('admin/payments') }}" class="btn btn-primary pull-right btn-sm">Go Back</a>
     </div>
     <hr/>
 

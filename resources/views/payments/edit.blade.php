@@ -15,7 +15,7 @@
             <h3 class="box-title">Payments</h3>
 
             <div class="box-tools pull-right">
-                <a href="{{ url('admin/events/projects/') }}" class="btn btn-primary pull-right btn-sm">Go Back</a>
+                <a href="{{ url('admin/payments/') }}" class="btn btn-primary pull-right btn-sm">Go Back</a>
             </div>
         </div><!-- /.box-header -->
         <div class="row">
