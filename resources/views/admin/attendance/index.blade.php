@@ -47,15 +47,22 @@
 			</div>
 			<?php 	
 				foreach($info as $row){ 
-					$project_id = $row->id;
+					$event_id = $row->id;
 				?>
 				
 			<div class="box-body">
 				<label>Name : </label><?php echo " ".$row->name; ?></br>
 				<label >Date Created : </label><?php echo  " ".$row->year; ?></br>
 				<label >Description: </label><?php echo  " ".$row->description; ?></br>
+				<label >Sponsored by: </label>
+			<?php } 
+				$name = "";
+				foreach($sponsors as $row){ 
+					$name = $row->firstname." ".$row->lastname;
+					echo $name."</br>";
+				}
+				?>
 			</div>
-			<?php } ?>
 			<div class="box-footer">
 				<button title='Update Training' data-toggle='modal' data-target='#add' class="btn btn-block btn-info">Add </button>
 			</div>

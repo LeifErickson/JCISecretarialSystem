@@ -30,10 +30,8 @@
 							<div class="box-footer">
 								<div class="form-group">
 									<button class="btn btn-info pull-right" type="submit" >Publish</button>
-									
 								</div>
 							</div>
-						
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -59,7 +57,7 @@
 							<h3 class="box-title">Sponsor(s)</h3>
 						</div>
 						<div class="box-body">
-							<textArea id="list_of_sponsors" name="sponsors"></textArea>
+							<textArea id="list_of_sponsors" name="sponsors" style="display:none;"></textArea>
 							<table  class="table table-bordered">
 								<thead>	
 									<th>Name</th>
@@ -120,12 +118,13 @@
 				var list = document.getElementById("list_of_sponsors").value;
 				
 				if(list != ""){
-					document.getElementById("list_of_sponsors").value = list+","+s_id+","+amount;
+					document.getElementById("list_of_sponsors").value = list+""+s_id+","+amount+"\n";
 				} else {
-					document.getElementById("list_of_sponsors").value = s_id+","+amount;
+					document.getElementById("list_of_sponsors").value = s_id+","+amount+"\n";
 				}
 					
 				var tr  = document.createElement("TR");
+				tr.setAttribute("id", s_id);
 				var td1 = document.createElement("TD");
 				var t = document.createTextNode(name);
 				td1.appendChild(t);
@@ -135,6 +134,18 @@
 				var t2 = document.createTextNode(amount);
 				td2.appendChild(t2);
 				tr.appendChild(td2);
+				
+				var icon = document.createElement("i");
+				icon.setAttribute("class", "fa fa-trash");
+				
+				var a = document.createElement("a");
+				a.setAttribute("class", "btn btn-xs btn-danger");
+				a.setAttribute("onclick", "delRow("+s_id+")");
+				a.appendChild(icon);
+				
+				var td3 = document.createElement("TD");
+				td3.appendChild(a);
+				tr.appendChild(td3);
 				
 				document.getElementById("SponsorsTable").appendChild(tr);
 				document.getElementById("sponsor_id").value = "";
@@ -171,6 +182,30 @@
 			  xmlhttp.open("GET","searchPage/"+str,true);
 			  xmlhttp.send();
 			  
+			}
+			function delRow(id){
+				var con = confirm("Are you want to delete?");
+				if(con){
+					var val = document.getElementById("list_of_sponsors").value;
+					var j = 0;
+					var str = val.split("\n");
+					var newStr = "";
+					for(j;j < str.length;j++){
+						var values = str[j].split(",");
+						
+						if(id != values[0]){
+							 if(newStr != "")
+								newStr = newStr +"\n"+str[j];
+							else
+								newStr = str[j];
+						} 
+					}
+					document.getElementById("list_of_sponsors").value = newStr; 
+					
+					var parent = document.getElementById("SponsorsTable");
+					var child = document.getElementById(id);
+					parent.removeChild(child);
+				}
 			}
 		</script>
 @stop

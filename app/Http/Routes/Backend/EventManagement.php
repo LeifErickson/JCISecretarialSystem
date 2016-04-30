@@ -34,7 +34,6 @@ Route::group([
         'as'   => 'events::dashboard',
         'uses' => '\App\Http\Controllers\Admin\EventsController@search',
     ]); 
-	 
 	
 });
 

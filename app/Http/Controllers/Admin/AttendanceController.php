@@ -17,32 +17,31 @@ class AttendanceController extends Controller
 	{			
 		$result = DB::select('SELECT `events_attended`.`member_id`,`firstname`, `lastname`, `middlename`,`status`,`events_attended`.`year`
 					FROM `events_attended`,`members`  WHERE 
-					`events_attended`.`project_id` = ? AND 
+					`events_attended`.`event_id` = ? AND 
 					`members`.`id` = `events_attended`.`member_id`',[$id]);
 		
-		$info = DB::select('SELECT * FROM `project`  WHERE  `id`=?',[$id]);
-		
+		$info = DB::select('SELECT * FROM `events`  WHERE  `id`=?',[$id]);
+		$sponsors = DB::select('SELECT `firstname`, `lastname` FROM `finances`,`members`  WHERE  `members`.`id` = `member_id` AND `event_id`=?',[$id]);
 		$members = DB::select('SELECT `members`.`id`,`firstname`,`lastname`,`middlename` 
 										FROM `members` 
 										WHERE 
 											NOT EXISTS (SELECT `events_attended`.`id` FROM `events_attended`
-																  WHERE `events_attended`.`project_id` = ? AND
+																  WHERE `events_attended`.`event_id` = ? AND
 											 `members`.`id` = `events_attended`.`member_id` ); ',[$id]);
 		
-		return view('admin.attendance.index', ['data' => $result, 'info' => $info, 'data_id'=> $id,'mems'=> $members]);
+		return view('admin.attendance.index', ['sponsors' => $sponsors,'data' => $result, 'info' => $info, 'data_id'=> $id,'mems'=> $members]);
 	}
 	
 	 public function store($project_id,$member_id)
     {
 		$now = new DateTime();
-		DB::insert('INSERT INTO `events_attended`(`member_id`, `project_id`, `year`) 
+		DB::insert('INSERT INTO `events_attended`(`member_id`, `event_id`, `year`) 
 		VALUES (?,?,?)', [$member_id, $project_id,$now]);
 		return redirect('admin/attendance/'.$project_id);
     }
 	public function delete($id)
 	{
 		DB::table('events_attended')->where('member_id','=', $id)->delete();
-		//DB::insert('DELETE FROM `project` WHERE `id`=?', [$id]);
 		return back();
 		
 	}
