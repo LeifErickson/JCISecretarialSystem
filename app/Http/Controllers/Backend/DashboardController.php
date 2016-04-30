@@ -117,7 +117,7 @@ class DashboardController extends Controller
     ->select('datebegun')
     ->orderBy('datebegun', 'desc')
     ->lists("datebegun"); // "=" is optional
-
+/*
     $event_array = array();
 
     $result->setFetchMode(PDO::FETCH_ASSOC);
@@ -129,7 +129,7 @@ class DashboardController extends Controller
             'end' => $record['end_event'],
         );
     }
-
+*/
     //dashboard view
 	return view('backend.dashboard');
 

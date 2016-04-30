@@ -22,7 +22,7 @@ class AttendanceMonitoringController extends Controller
 			foreach($events as $row){
 				$event_id = $row->id;
 			}
-			
+			$events = DB::select('SELECT `id`,`name` FROM `events`');
 			
 			$eventTitle = DB::select('SELECT `id`,`name` FROM `events` WHERE `id`=?',[$event_id]);
 			
