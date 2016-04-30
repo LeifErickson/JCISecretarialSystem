@@ -18,8 +18,11 @@ class AttendanceMonitoringController extends Controller
 		if($id == 0){
 			$events = DB::select('SELECT `id`,`name` FROM `events`');
 			
-			$default = DB::table('events')->first();
-			$event_id = $default->id;
+			$event_id = 0;
+			foreach($events as $row){
+				$event_id = $row->id;
+			}
+			
 			
 			$eventTitle = DB::select('SELECT `id`,`name` FROM `events` WHERE `id`=?',[$event_id]);
 			
