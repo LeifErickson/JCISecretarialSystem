@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFinancesTable extends Migration
+class CreateTableEventsAttended extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,13 @@ class CreateFinancesTable extends Migration
      */
     public function up()
     {
-         Schema::create('finances', function(Blueprint $table) {
+      Schema::create('events_attended', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('member_id')->unsigned();
-			$table->string('amount');
+			$table->integer('event_id')->unsigned();
+			$table->date('year');
 			$table->foreign('member_id')->references('id')->on('members');
+			$table->foreign('event_id')->references('id')->on('events');
 		});
     }
 
@@ -27,6 +29,6 @@ class CreateFinancesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('finances');
+        Schema::drop('events_attended');
     }
 }

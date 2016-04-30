@@ -47,15 +47,22 @@
 			</div>
 			<?php 	
 				foreach($info as $row){ 
-					$project_id = $row->id;
+					$event_id = $row->id;
 				?>
 				
 			<div class="box-body">
 				<label>Name : </label><?php echo " ".$row->name; ?></br>
 				<label >Date Created : </label><?php echo  " ".$row->year; ?></br>
 				<label >Description: </label><?php echo  " ".$row->description; ?></br>
+				<label >Sponsored by: </label>
+			<?php } 
+				$name = "";
+				foreach($sponsors as $row){ 
+					$name = $row->firstname." ".$row->lastname;
+					echo $name."</br>";
+				}
+				?>
 			</div>
-			<?php } ?>
 			<div class="box-footer">
 				<button title='Update Training' data-toggle='modal' data-target='#add' class="btn btn-block btn-info">Add </button>
 			</div>
@@ -107,12 +114,10 @@
 			  } else {  // code for IE6, IE5
 				 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 			  }
-			   //document.getElementById("livesearch").innerHTML="<a href='searchPage/"+str+"'>test</a>";
 			  
 			  xmlhttp.onreadystatechange=function() {
 				 if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 					document.getElementById("livesearch").innerHTML= xmlhttp.responseText;
-					//document.getElementById("livesearch").style.border="1px solid #A5ACB2";
 				 }
 			  }
 			  

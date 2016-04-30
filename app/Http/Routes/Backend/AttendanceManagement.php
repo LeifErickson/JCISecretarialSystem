@@ -25,15 +25,7 @@ Route::group([
         'as'   => 'attendance::dashboard',
         'uses' => '\App\Http\Controllers\Admin\AttendanceController@search',
     ]); 
-	  /* Route::get('EditProject/{id}', [
-        'as'   => 'attendance::dashboard',
-        'uses' => '\App\Http\Controllers\Admin\AttendanceController@updateForm',
-    ]);
-	  Route::post('updateattendance', [
-        'as'   => 'attendance::dashboard',
-        'uses' => '\App\Http\Controllers\Admin\AttendanceController@updateattendance',
-    ]);
-	 */
+	 
 	
 });
 

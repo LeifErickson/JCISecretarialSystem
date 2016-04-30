@@ -15,10 +15,7 @@ class EventsController extends Controller
 {
 	public function index()
 	{
-		//$proj = new Project();
-		
-		//$result = $proj->orderBy('year', 'desc')->paginate(5);
-		$result = DB::table('project')->orderBy('year', 'desc')->get();
+		$result = DB::table('events')->orderBy('year', 'desc')->get();
 		return view('admin.event.index')->with('data',$result);
 	}
 	public function addEventForm()
@@ -28,35 +25,86 @@ class EventsController extends Controller
 	
 	 public function store(Request $request)
     {
-		$now = new DateTime();
 		$title = $request->input('title');
-		$date = $request->input('date');
 		$description = $request->input('description');
-		DB::insert('INSERT INTO `project`(`member_id`, `finance_id`, `name`, `description`,`year`) 
-		VALUES (?,?,?,?,?)', [1,1, "$title","$description",$now]);
+		$date = $request->input('date');
+		$Sponsors = $request->input('sponsors');
+		DB::insert('INSERT INTO `events`(`user_id`,`name`, `description`,`year`) 
+		VALUES (?,?,?,?)', [1,"$title","$description","$date"]);
 		
-		  return redirect('admin/event');
+		
+		$result = DB::select('SELECT max(`id`) as id FROM `events`');
+		$id = 0;
+		foreach($result as $lastInsert){
+			$id = $lastInsert->id;
+		}
+		 //"hello";
+		$split = explode("\n", $Sponsors);
+		$num = 0;
+		for($i=0;$i < count($split)-1;$i++){
+			$str = explode(",", $split[$i]);
+			DB::insert('INSERT INTO `finances` (`member_id`, `event_id`, `amount` )
+			VALUES (?,?,?)', [$str[0],$id,$str[1]]);
+		}
+		
+		return redirect('admin/events');
     }
 	public function delete($id)
 	{
-		DB::insert('DELETE FROM `project` WHERE `id`=?', [$id]);
+		DB::insert('DELETE FROM `events` WHERE `id`=?', [$id]);
 		return back();
 	}
 	public function updateForm($id)
 	{	
-		$result = DB::select('SELECT * FROM `project`  WHERE  `id`=?',[$id]);
+		$result = DB::select('SELECT * FROM `events`  WHERE  `id`=?',[$id]);
+		$finance = DB::select('SELECT `members`.`id`,`firstname`,`lastname`,`amount` FROM `finances`,`members` WHERE `member_id` = `members`.`id`
+					AND `event_id` = ?',[$id]);
 		
-		return view('admin.event.updateEvent')->with('data',$result);
+		
+		return view('admin.event.updateEvent', ['data' => $result,'finance'=> $finance]);
 	}
 	public function updateEvent(Request $request)
 	{	
 		$id = $request->input('id');
 		$title = $request->input('title');
-		$date = $request->input('date');
 		$description = $request->input('description');
-		DB::insert('UPDATE `project` SET `member_id`=?,`finance_id`=?,`name`=?,`description`=?
-		WHERE `id`=?', [1,1, "$title","$description",$id]);
+		$date = $request->input('date');
+		$Sponsors = $request->input('sponsors');
 		
-		 return redirect('admin/event');
+		DB::insert('UPDATE `events` SET `name`=?,`description`=?, `year`=?
+		WHERE `id`=?', ["$title","$description","$date ",$id]);
+		
+		DB::insert('DELETE FROM `finances` WHERE `event_id`=?', [$id]);
+		$split = explode("\n", $Sponsors);
+		$num = 0;
+		for($i=0;$i < count($split)-1;$i++){
+			$str = explode(",", $split[$i]);
+			DB::insert('INSERT INTO `finances` (`member_id`, `event_id`, `amount` )
+			VALUES (?,?,?)', [$str[0],$id,$str[1]]);
+		}
+		 return redirect('admin/events');
+	}
+	
+	public function search($name)
+	{	
+		$hint="";
+		
+		$result = DB::select("SELECT `id`,`firstname`,`lastname`,`middlename`  
+		FROM `members`  WHERE  
+		`firstname` LIKE '%$name%' OR `lastname` LIKE '%$name%' OR `middlename` LIKE '%$name% '");
+		
+		foreach($result as $row){
+				$name = $row->firstname." ".$row->lastname;
+				$hint .= "<button  class='btn btn-default btn-block' onclick='setVal(".$row->id.",\"".$name."\")'  >".$name."</button>";
+				//$hint++;
+		}
+		
+		if ($hint=="") {
+		  $response="no suggestion";
+		} else {
+		 $response= "<div style='border:1px solid;'>".$hint."</div>";
+		}
+		
+		echo $response;
 	}
 }
