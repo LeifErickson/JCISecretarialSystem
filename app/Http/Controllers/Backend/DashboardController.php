@@ -97,11 +97,20 @@ class DashboardController extends Controller
         'position' => 'in'
     	]
 	]);
-
-
-
-
-
+	
+	$NumberoOfEventsAttended = DB::select('
+				SELECT t1.`id`,IFNULL(t2.participate,0) as participate
+				FROM 
+				(SELECT `members`.`id` FROM `members` ) t1
+				LEFT JOIN
+				(SELECT `members`.`id`,count(`member_id`) as participate
+				FROM `events_attended`, `members`
+				WHERE
+					`events_attended`.`member_id` = `members`.`id`
+				GROUP BY 
+				`members`.`id`) t2
+				ON t1.`id` = t2.`id`
+	');
 
     //dashboard view
 	return view('backend.dashboard');

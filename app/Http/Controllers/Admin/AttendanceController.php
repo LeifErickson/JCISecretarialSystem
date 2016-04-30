@@ -66,8 +66,5 @@ class AttendanceController extends Controller
 		
 		echo $response;
 	}
-	public function updateEvent(Request $request)
-	{	
-	}
-	
+
 }

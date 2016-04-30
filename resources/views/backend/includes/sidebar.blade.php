@@ -56,7 +56,9 @@
 					 <li class="{{ Active::pattern('admin/events/add') }}">
                         <a href="{!! url('admin/events/add') !!}">Add Other Events</a>
                     </li>
-                   
+                  <li class="{{ Active::pattern('admin/attendanceMonitoring/0') }}">
+                        <a href="{!! url('admin/attendanceMonitoring/0') !!}">Attendance Monitoring</a>
+                     </li> 
                 </ul>
             </li>
 				<!--END OF TEST SIDE BAR -->
