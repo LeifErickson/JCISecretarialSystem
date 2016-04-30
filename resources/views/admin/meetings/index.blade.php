@@ -62,7 +62,7 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td><a href="{{ url('admin/events/meetings', $item->id) }}">{{ $item->Title }}</a></td><td>{{ $item->Description }}</td><td>{{ $item->agenda }}</td><td>{{ $item->type }}</td>
+                    <td><a href="{{ url('admin/events/meetings', $item->id) }}">{{ $item->title }}</a></td><td>{{ $item->description }}</td><td>{{ $item->agenda }}</td><td>{{ $item->type }}</td>
                     <td>
                         <a href="{{ url('admin/events/meetings/' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
