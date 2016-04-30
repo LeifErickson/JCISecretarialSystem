@@ -28,7 +28,8 @@
         <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.1.2/css/buttons.dataTables.min.css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/sweetalert/dist/sweetalert.css') }}"> 
+        <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/sweetalert/dist/sweetalert.css') }}">
+        <link rel='stylesheet' href="{{ asset('bower_components/fullcalendar/dist/fullcalendar.css') }}" />
         <style>
             body{padding-bottom: 0px !important;}
         </style>
@@ -62,7 +63,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
 	 <script src="{{ asset('js/jquery.min.js') }}"></script>
      <script src="{{ asset('bower_components/sweetalert/dist/sweetalert.min.js') }}"></script>
-    <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
+     <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
+     <script src="{{ asset('bower_components/moment/min/moment.min.js') }}"></script>
+     <script src="{{ asset('bower_components/fullcalendar/dist/fullcalendar.js') }}"></script>
+     <script>
+        $(document).ready(function() {
+
+        // page is now ready, initialize the calendar...
+
+        $('#calendar').fullCalendar({
+            // put your options and callbacks here
+        })
+
+        });
+     </script>
+    <script>
+        window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')
+    </script>
+    
     {!! Html::script('js/vendor/bootstrap/bootstrap.min.js') !!}
 
     @yield('before-scripts-end')

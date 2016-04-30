@@ -50,7 +50,11 @@
             </div>
         </div><!-- /.box-header -->
     <div class="table">
-        <table id="example1" class="table table-bordered table-striped table-hover">
+    <label for='radio1'><input id='radio1' type='radio' name='RadioGroup1' value='Ziemann' />radio1</label>
+    <label for='radio2'><input id='radio2' type='radio' name='RadioGroup1' value='Wyman' />radio2</label>
+    <!-- default filter is 'show everything' so make it checked -->
+    <label for='radio3'><input id='radio3' type='radio' name='RadioGroup1' value='all' checked />radio3</label>
+            <table id="example1" class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
                     <th>ID</th><th>Firstname</th><th>Lastname</th><th>Middlename</th><th>Actions</th>
@@ -100,7 +104,7 @@
     <!-- page script -->
     <script>
       $(function () {
-        $("#example1").DataTable({
+        $("#example3").DataTable({
           "paging": true,
           "lengthChange": false,
           "searching": true,
@@ -162,5 +166,81 @@
           "autoWidth": false
         });
       });
+    </script>
+    <script>
+// Just wrapping in a function to prevent global $radio, $dTable, etc...
+(function encapsulate() {
+    var $radio = 'all'; // set to initial filter value, show all (RadioGroup1.radio3.value)
+    // This function filters the dataTable rows
+    $.fn.dataTableExt.afnFiltering.push(function(oSettings, aData, iDataIndex) {
+        // show everything
+        if ($radio == "all")
+            return true;
+        else // Filter column 1 where matches RadioGroup1.value
+            return aData[3] == $radio;
+    });
+    var $dTable = $("#example1").dataTable({
+        "sPaginationType": "full_numbers",
+        "bPaginate": true,
+        "bScrollCollapse": true,
+        "iDisplayLength": 15,
+        //"bFilter": false,
+        // "bJQueryUI": true,
+        //"aoColumnDefs": [{ "bVisible": false, "aTargets": [0] }], // first field is hidden
+        dom: 'Bfrtip',
+            stateSave: true,
+            buttons: [
+                
+                'colvis',
+                {
+                extend: 'collection',
+                text: 'Export',
+                autoClose: true,
+                buttons: 
+                [
+                    {
+                        extend: 'copy',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'csv',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                ]
+            }
+             
+            ]
+
+    });
+
+    // On click, get the value of the selected radio
+    $("input[name='RadioGroup1']").on('change', function () {
+        // $radio = $("input[name='RadioGroup1']:checked").val();
+        $radio = $(this).val();
+        $dTable.fnDraw(); // refresh the dataTable
+    });
+    })();
     </script>
 @endsection

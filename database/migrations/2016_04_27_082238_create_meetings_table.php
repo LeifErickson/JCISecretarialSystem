@@ -15,18 +15,19 @@ class CreateMeetingsTable extends Migration
         
             Schema::create('meetings', function(Blueprint $table) {
                 $table->increments('id');
+                $table->string('eventtype')->default('meetings');
                 $table->string('description');
-$table->string('agenda');
-$table->string('type');
-$table->date('datecreated');
-$table->date('dateset');
-$table->string('location');
-$table->string('leadby');
-$table->string('minutetaker');
-$table->string('started');
-$table->string('ended');
-
-                $table->timestamps();
+                $table->string('agenda');
+                $table->string('type');
+                $table->date('datecreated');
+                $table->date('dateset');
+                $table->string('location');
+                $table->string('leadby');
+                $table->string('minutetaker');
+                $table->string('started');
+                $table->string('ended');
+                $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+                $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
             });
             
     }

@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
         *
         */
 
-        foreach (range(100,1000) as $index) {
+        foreach (range(100,500) as $index) {
             DB::table('members')->insert([
 
                 'membershiptype'=> $faker->randomElement($array = array ('baby','regular','associate')),
@@ -130,7 +130,7 @@ class DatabaseSeeder extends Seeder
         */
 
 
-        foreach (range(100,1000) as $index) {
+        foreach (range(100,500) as $index) {
             DB::table('projects')->insert([
                 'name'=> $faker->firstName,
                 'description' => $faker->word,

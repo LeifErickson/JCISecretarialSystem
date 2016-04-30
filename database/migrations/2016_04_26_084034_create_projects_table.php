@@ -15,6 +15,7 @@ class CreateprojectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('eventtype')->default('projects');
             $table->string('name');
             $table->string('description');
             $table->string('chapter');
@@ -33,7 +34,8 @@ class CreateprojectsTable extends Migration
             $table->string('totalincomeannual');
             $table->string('expendituresactual');
             $table->string('approvedbychapterpresident');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
             $table->softDeletes();
         });
     }

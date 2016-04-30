@@ -49,7 +49,6 @@
                 <a href="{{ url('admin/events/meetings/create') }}" class="btn btn-primary pull-right btn-sm">Add New Meeting</a>
             </div>
         </div><!-- /.box-header -->
-
     <div class="table">
         <table id="table" class="table table-bordered table-striped table-hover">
             <thead>

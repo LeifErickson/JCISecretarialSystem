@@ -88,7 +88,6 @@
             @endforeach
             </tbody>
         </table>
-        <div class="pagination"> {!! $projects->render() !!} </div>
     </div>
 @endsection
 

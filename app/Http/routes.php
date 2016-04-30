@@ -46,6 +46,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
     Route::resource('category', 'Admin\\CategoryController');
     Route::resource('events/projects', 'Admin\\ProjectController');
     Route::resource('events/meetings', 'Admin\\MeetingsController');
+    Route::resource('events/meetings', 'Admin\\MeetingsController');
+    Route::resource('events/all', 'Admin\\AllEventsController');
     Route::resource('payments', 'Admin\\PaymentController');
 });
 
