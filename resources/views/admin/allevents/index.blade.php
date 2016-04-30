@@ -43,7 +43,7 @@
     </script>
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">Projects</h3>
+            <h3 class="box-title">All Events</h3>
 
             <div class="box-tools pull-right">
                 <a href="{{ url('admin/events/projects/create') }}" class="btn btn-primary pull-right btn-sm">Add New Project</a>
@@ -57,10 +57,10 @@
         <div class="clearfix"></div>
 
     <div class="table">
-        <table id="example2" class="table table-bordered table-striped table-hover">
+        <table id="example1" class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>ID</th><th>Project Name</th><th>Description</th><th>Date begun</th><th>Date finished</th><th>Actions</th>
+                    <th>Event name</th><th>Type</th><th>Date Created</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -68,8 +68,7 @@
             @foreach($projects as $item)
                 {{-- */$x++;/* --}}
                 <tr>
-                    <td>{{ $item->id }}</td>
-                    <td><a href="{{ url('admin/events/projects', $item->id) }}">{{ $item->name }}</a></td><td>{{ $item->description }}</td><td>{{ $item->datebegun }}</td><td>{{ $item->datecompleted }}</td>
+                    <td><a href="{{ url('admin/events/projects', $item->id) }}">{{ $item->name }}</a></td><td>{{ $item->eventtype }}</td><td>{{ $item->created_at }}</td>
                     <td>
                         <a href="{{ url('admin/events/projects/' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
@@ -78,6 +77,48 @@
                             'id' => 'delete',
                             'method'=>'DELETE',
                             'url' => ['admin/events/projects', $item->id],
+                            'style' => 'display:inline',
+                            'onsubmit' => 'return ConfirmDelete()'
+                        ]) !!}
+                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                        {!! Form::close() !!}
+                    </td>
+                </tr>
+            @endforeach
+            {{-- */$y=0;/* --}}
+            @foreach($meetings as $item)
+                {{-- */$y++;/* --}}
+                <tr>
+                    <td><a href="{{ url('admin/events/meetings', $item->id) }}">{{ $item->name }}</a></td><td>{{ $item->eventtype }}</td><td>{{ $item->created-at }}</td>
+                    <td>
+                        <a href="{{ url('admin/events/meetings/' . $item->id . '/edit') }}">
+                            <button type="submit" class="btn btn-primary btn-xs">Update</button>
+                        </a> /
+                        {!! Form::open([
+                            'id' => 'delete',
+                            'method'=>'DELETE',
+                            'url' => ['admin/events/meetings', $item->id],
+                            'style' => 'display:inline',
+                            'onsubmit' => 'return ConfirmDelete()'
+                        ]) !!}
+                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                        {!! Form::close() !!}
+                    </td>
+                </tr>
+            @endforeach
+            {{-- */$z=0;/* --}}
+            @foreach($events as $item)
+                {{-- */$z++;/* --}}
+                <tr>
+                    <td><a href="{{ url('admin/events', $item->id) }}">{{ $item->title }}</a></td><td>{{ $item->eventtype }}</td><td>{{ $item->created_at }}</td>
+                    <td>
+                        <a href="{{ url('admin/events' . $item->id . '/edit') }}">
+                            <button type="submit" class="btn btn-primary btn-xs">Update</button>
+                        </a> /
+                        {!! Form::open([
+                            'id' => 'delete',
+                            'method'=>'DELETE',
+                            'url' => ['admin/events', $item->id],
                             'style' => 'display:inline',
                             'onsubmit' => 'return ConfirmDelete()'
                         ]) !!}
