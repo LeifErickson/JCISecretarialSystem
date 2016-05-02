@@ -5,7 +5,7 @@
         Log Viewer
         <small>By <a href="https://github.com/ARCANEDEV/LogViewer" target="_blank">ARCANEDEV</a></small>
     </h1>
-@endsection
+@stop
 
 @section('after-styles-end')
     <style>
@@ -92,7 +92,7 @@
             background-color: {{ log_styler()->color('debug') }};
         }
     </style>
-@endsection
+@stop
 
 @section('content')
     <div class="box box-success">
@@ -188,7 +188,7 @@
             </form>
         </div>
     </div>
-@endsection
+@stop
 
 @section('after-scripts-end')
     <script>

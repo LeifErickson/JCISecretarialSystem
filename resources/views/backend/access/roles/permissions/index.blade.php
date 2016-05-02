@@ -6,7 +6,7 @@
 
 @section('page-header')
     <h1>{{ trans('labels.backend.access.permissions.management') }}</h1>
-@endsection
+@stop
 
 @section('after-styles-end')
     {!! Html::style('css/backend/plugin/nestable/jquery.nestable.css') !!}

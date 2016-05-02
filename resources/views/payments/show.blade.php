@@ -7,7 +7,7 @@
         {{ trans('labels.backend.access.payment.management') }}
         <small>{{ trans('labels.backend.access.payment.active') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
     <div class="box box-success">
@@ -23,4 +23,4 @@
     <div class="form-group">
            <a href="{!! route('admin.payments.index') !!}" class="btn btn-default">Back</a>
     </div>
-@endsection
+@stop

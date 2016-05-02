@@ -7,7 +7,7 @@
         {{ trans('labels.backend.access.member.management') }}
         <small>{{ trans('labels.backend.access.member.active') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
 <div style="margin-left: 20px">
@@ -26,4 +26,4 @@
 
         {!! Form::close() !!}
     </div>
-@endsection
+@stop

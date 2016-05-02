@@ -7,7 +7,7 @@
         {{ trans('labels.backend.access.project.management') }}
         <small>{{ trans('labels.backend.access.project.active') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
     <script>
@@ -90,7 +90,7 @@
         </table>
         <div class="pagination"> {!! $payments->render() !!} </div>
     </div>
-@endsection
+@stop
 
 @section('after-scripts-end')
     <!-- DataTables -->
@@ -176,4 +176,4 @@
         });
       });
     </script>
-@endsection
+@stop

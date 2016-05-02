@@ -4,7 +4,7 @@
 
 @section('page-header')
     <h1>{{ trans('labels.backend.access.roles.management') }}</h1>
-@endsection
+@stop
 
 @section('content')
     <div class="box box-success">

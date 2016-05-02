@@ -7,7 +7,7 @@
         {{ trans('labels.backend.access.payment.management') }}
         <small>{{ trans('labels.backend.access.payment.active') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
     <div class="box box-success">
@@ -33,4 +33,4 @@
 
             {!! Form::close() !!}
         </div>
-@endsection
+@stop

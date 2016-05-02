@@ -7,7 +7,7 @@
         {{ trans('labels.backend.access.users.management') }}
         <small>{{ trans('labels.backend.access.users.deactivated') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
     <div class="box box-success">

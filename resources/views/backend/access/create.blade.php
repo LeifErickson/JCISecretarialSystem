@@ -7,7 +7,7 @@
         {{ trans('labels.backend.access.users.management') }}
         <small>{{ trans('labels.backend.access.users.create') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
    {!! Form::open(['route' => 'admin.access.users.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) !!}

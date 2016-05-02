@@ -5,7 +5,7 @@
         {!! app_name() !!}
         <small>{{ trans('strings.backend.dashboard.title') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
     
@@ -48,4 +48,4 @@
         </div><!-- /.box-body -->
     </div><!--box box-success-->
     
-@endsection
+@stop

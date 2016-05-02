@@ -7,7 +7,7 @@
         {{ trans('labels.backend.access.member.management') }}
         <small>{{ trans('labels.backend.access.member.active') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
     <script>
@@ -87,7 +87,7 @@
         </table>
         <div class="pagination"> {!! $members->render() !!} </div>
     </div>
-@endsection
+@stop
 
 @section('after-scripts-end')
     <!-- DataTables -->
@@ -243,4 +243,4 @@
     });
     })();
     </script>
-@endsection
+@stop
