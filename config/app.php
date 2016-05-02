@@ -204,6 +204,7 @@ return [
         App\Providers\MacroServiceProvider::class,
         Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        'MaddHatter\LaravelFullcalendar\ServiceProvider',
     ],
 
     /*
@@ -260,5 +261,6 @@ return [
         'Html'        => Collective\Html\HtmlFacade::class,
         'Flash'       => Laracasts\Flash\Flash::class,
         'Socialite'   => Laravel\Socialite\Facades\Socialite::class,
+        'Calendar'    => 'MaddHatter\LaravelFullcalendar\Facades\Calendar',
     ],
 ];

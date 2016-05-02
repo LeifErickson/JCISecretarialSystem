@@ -22,7 +22,8 @@
         "infyomlabs/swagger-generator": "dev-master",
         "jlapp/swaggervel": "dev-master",
         "doctrine/dbal": "~2.3",
-        "khill/lavacharts" : "3.0.*"
+        "khill/lavacharts" : "3.0.*",
+        "maddhatter/laravel-fullcalendar": "^1.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

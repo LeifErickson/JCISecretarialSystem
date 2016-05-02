@@ -112,26 +112,76 @@ class DashboardController extends Controller
 				ON t1.`id` = t2.`id`
 	');
 
-    // $calendar = DB::table("projects")
-    // ->take(120)
-    // ->select('id','eventtype','name','datebegun','datecompleted')
-    // ->orderBy('datebegun', 'desc')
-    // ->lists(); // "=" is optional
+    $test = array('id','eventtype','name','datebegun','datecompleted');
 
-    // $event_array = array();
+    $dates = DB::table("projects")
+    ->take(120)
+    ->orderBy('datebegun', 'desc')
+    ->lists('datebegun');
 
-    // for($i=0;$i < 120;$i++){
-    //     $event_array[] = array(
-    //         'id' => $calendar[$i,0,0,0,0],
-    //         'eventtype' => $calendar[0,$i,0,0,0],
-    //         'name' => $calendar[0,0,$i,0,0],
-    //         'start' => $calendar[0,0,0,$i,0],
-    //         'end' => $calendar[0,0,0,0,$i],
-    //     );
-    // }
+    $details = DB::table("projects")
+    ->take(120)
+    ->orderBy('datebegun', 'desc')
+    ->lists('name');
+
+    $type = DB::table("projects")
+    ->take(120)
+    ->orderBy('datebegun', 'desc')
+    ->lists('eventtype');
+
+    $id = DB::table("projects")
+    ->take(120)
+    ->orderBy('datebegun', 'desc')
+    ->lists('id'); // "=" is optional
+
+
+
+    $dates1 = DB::table("meetings")
+    ->take(120)
+    ->orderBy('dateset', 'desc')
+    ->lists('dateset');
+    
+    $details1 = DB::table("meetings")
+    ->take(120)
+    ->orderBy('dateset', 'desc')
+    ->lists('title');
+
+    $type1 = DB::table("meetings")
+    ->take(120)
+    ->orderBy('dateset', 'desc')
+    ->lists('eventtype');
+
+    $id1 = DB::table("meetings")
+    ->take(120)
+    ->orderBy('dateset', 'desc')
+    ->lists('id'); // "=" is optional
+
+    for($i=0;$i < count($dates);$i++){
+        $event_array[] = array(
+            'id' => $id[$i],
+            'type' => $type[$i],
+            'title' => $details[$i],
+            'start' => $dates[$i],
+        );
+    }
+    
+   $variable2 = json_encode($event_array);
+
+   $event_array = array();
+   for($i=0;$i < count($dates1);$i++){
+        $event_array[] = array(
+            'id' => $id1[$i],
+            'type' => $type1[$i],
+            'title' => $details1[$i],
+            'start' => $dates1[$i],
+        );
+    }
+    $variable3 = json_encode($event_array);
 
     //dashboard view
-	return view('backend.dashboard');
+	return view('backend.dashboard')
+        ->with('variable2', $variable2)
+        ->with('variable3', $variable3);
 
 	}
 }
