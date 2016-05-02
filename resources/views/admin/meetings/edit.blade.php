@@ -10,13 +10,16 @@
 @endsection
 
 @section('content')
-    <hr/>
-
-    {!! Form::model($meeting, [
-        'method' => 'PATCH',
-        'url' => ['admin/events/meetings', $meeting->id],
-        'class' => 'form-horizontal'
-    ]) !!}
+<div class="box box-success">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Edit Meeting</h3>
+                </div>
+                <div class="box-body">
+				 {!! Form::model($meeting, [
+					  'method' => 'PATCH',
+					  'url' => ['admin/events/meetings', $meeting->id],
+					  'class' => 'form-horizontal'
+				 ]) !!}
 
                 <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
                 {!! Form::label('description', 'Description: ', ['class' => 'col-sm-3 control-label']) !!}
@@ -88,8 +91,8 @@
                     {!! $errors->first('ended', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-
-
+			</div>
+	<div class="box-footer">
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
             {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
@@ -104,5 +107,6 @@
             @endforeach
         </ul>
     @endif
-
+	</div>
+</div>
 @endsection
