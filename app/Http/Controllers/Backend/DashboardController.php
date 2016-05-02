@@ -112,21 +112,21 @@ class DashboardController extends Controller
 				ON t1.`id` = t2.`id`
 	');
 
-    $calendar = DB::table("projects")
-    ->take(120)
-    ->select('datebegun')
-    ->orderBy('datebegun', 'desc')
-    ->lists("datebegun"); // "=" is optional
+    // $calendar = DB::table("projects")
+    // ->take(120)
+    // ->select('id','eventtype','name','datebegun','datecompleted')
+    // ->orderBy('datebegun', 'desc')
+    // ->lists(); // "=" is optional
 
-    $event_array = array();
+    // $event_array = array();
 
-    // $result->setFetchMode(PDO::FETCH_ASSOC);
-    // while ($record = $result->fetch()) {
+    // for($i=0;$i < 120;$i++){
     //     $event_array[] = array(
-    //         'id' => $record['event_id'],
-    //         'title' => $record['event_name'],
-    //         'start' => $record['start_event'],
-    //         'end' => $record['end_event'],
+    //         'id' => $calendar[$i,0,0,0,0],
+    //         'eventtype' => $calendar[0,$i,0,0,0],
+    //         'name' => $calendar[0,0,$i,0,0],
+    //         'start' => $calendar[0,0,0,$i,0],
+    //         'end' => $calendar[0,0,0,0,$i],
     //     );
     // }
 
