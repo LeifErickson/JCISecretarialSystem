@@ -51,14 +51,15 @@
         </div><!-- /.box-header -->
 		  <div class="box-body">
     <div class="table">
-    <label for='radio1'><input id='radio1' type='radio' name='RadioGroup1' value='Ziemann' />radio1</label>
-    <label for='radio2'><input id='radio2' type='radio' name='RadioGroup1' value='Wyman' />radio2</label>
+    <label for='radio4'><input id='radio3' type='radio' name='RadioGroup1' value='all' checked />All</label>
     <!-- default filter is 'show everything' so make it checked -->
-    <label for='radio3'><input id='radio3' type='radio' name='RadioGroup1' value='all' checked />radio3</label>
+    <label for='radio1'><input id='radio1' type='radio' name='RadioGroup1' value='Baby JC' />Baby</label>
+    <label for='radio2'><input id='radio2' type='radio' name='RadioGroup1' value='Regular' />Regular</label>
+    <label for='radio3'><input id='radio2' type='radio' name='RadioGroup1' value='Associate' />Associate</label>
             <table id="example1" class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>ID</th><th>Firstname</th><th>Lastname</th><th>Middlename</th><th>Actions</th>
+                    <th>ID</th><th>Type</th><th>Firstname</th><th>Lastname</th><th>Middlename</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -67,7 +68,7 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td><a href="{{ url('admin/members', $item->id) }}">{{ $item->firstname }}</a></td><td>{{ $item->lastname }}</td><td>{{ $item->middlename }}</td>
+                    <td>{{ $item->membershiptype }}</td><td><a href="{{ url('admin/members', $item->id) }}">{{ $item->firstname }}</a></td><td>{{ $item->lastname }}</td><td>{{ $item->middlename }}</td>
                     <td>
                         <a href="{{ url('admin/members/' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
@@ -170,6 +171,7 @@
         });
       });
     </script>
+
     <script>
 // Just wrapping in a function to prevent global $radio, $dTable, etc...
 (function encapsulate() {
@@ -180,7 +182,7 @@
         if ($radio == "all")
             return true;
         else // Filter column 1 where matches RadioGroup1.value
-            return aData[3] == $radio;
+            return aData[1] == $radio;
     });
     var $dTable = $("#example1").dataTable({
         "sPaginationType": "full_numbers",

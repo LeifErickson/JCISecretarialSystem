@@ -56,5 +56,53 @@
 		  </div><!-- /.box-body -->
 		</div><!--box box-success-->
 	 </div>
- </div>  
+ </div> 
+@stop
+
+@section('after-scripts-end')
+<script>
+$(document).ready(function() 
+{
+    
+
+// page is now ready, initialize the calendar...
+
+$('#calendar').fullCalendar({
+    eventRender: function (event, element) 
+    {
+        element.popover(
+        {
+            title: 'Event Name: ' + event.title,
+            placement:'auto',
+            html:true,
+            trigger : 'click',
+            animation : 'true', 
+            container: 'body',
+            content: 'ID: ' + event.id +" <br> " + 'Type: ' + event.type
+        });
+
+        $('body').on('click', function (e) 
+        {
+            if (!element.is(e.target) && element.has(e.target).length === 0 && $('.popover').has(e.target).length === 0)
+                element.popover('hide');
+        });
+      },
+
+    <?php  
+    echo "eventSources:[".$variable2.",".$variable3."]";
+
+    ?>
+
+//     eventRender: function (event, element) {
+//     element.popover({
+//         title: event.name,
+//         placement: 'right',
+//         content: + '<br />Start: ' + event.starts_at + '<br />End: ' + event.ends_at + '<br />Description: ' + event.description,
+//     });
+// }
+    // put your options and callbacks here
+})
+
+});
+</script>
 @stop
