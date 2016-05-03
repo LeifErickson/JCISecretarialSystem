@@ -41,56 +41,70 @@
 
       }
     </script>
-    <div class="box box-success">
-        <div class="box-header with-border">
-            <h3 class="box-title">Members</h3>
-
-            <div class="box-tools pull-right">
-                <a href="{{ url('admin/members/create') }}" class="btn btn-primary pull-right btn-sm">Add New Member</a>
-            </div>
-        </div><!-- /.box-header -->
-		  <div class="box-body">
-    <div class="table">
-    <label for='radio4'><input id='radio3' type='radio' name='RadioGroup1' value='all' checked />All</label>
-    <!-- default filter is 'show everything' so make it checked -->
-    <label for='radio1'><input id='radio1' type='radio' name='RadioGroup1' value='Baby JC' />Baby</label>
-    <label for='radio2'><input id='radio2' type='radio' name='RadioGroup1' value='Regular' />Regular</label>
-    <label for='radio3'><input id='radio2' type='radio' name='RadioGroup1' value='Associate' />Associate</label>
-            <table id="example1" class="table table-bordered table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>ID</th><th>Type</th><th>Firstname</th><th>Lastname</th><th>Middlename</th><th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            {{-- */$x=0;/* --}}
-            @foreach($members as $item)
-                {{-- */$x++;/* --}}
-                <tr>
-                    <td>{{ $item->id }}</td>
-                    <td>{{ $item->membershiptype }}</td><td><a href="{{ url('admin/members', $item->id) }}">{{ $item->firstname }}</a></td><td>{{ $item->lastname }}</td><td>{{ $item->middlename }}</td>
-                    <td>
-                        <a href="{{ url('admin/members/' . $item->id . '/edit') }}">
-                            <button type="submit" class="btn btn-primary btn-xs">Update</button>
-                        </a> /
-                        {!! Form::open([
-                            'id' => 'delete',
-                            'method'=>'DELETE',
-                            'url' => ['admin/members', $item->id],
-                            'style' => 'display:inline',
-                            'onsubmit' => 'return ConfirmDelete()'
-                        ]) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
-                        {!! Form::close() !!}
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-        <div class="pagination"> {!! $members->render() !!} </div>
-    </div>
- </div>
-</div>
+   <div class="box box-success">
+      <div class="box-header with-border">
+         <h3 class="box-title">Members</h3>
+			<div class="box-tools pull-right">
+				 <a href="{{ url('admin/members/create') }}" class="btn btn-primary pull-right btn-sm">Add New Member</a>
+			</div>
+      </div><!-- /.box-header -->
+		<div class="box-body">
+			<div class="table">
+				 <label for='radio4'>Member Type: </label>
+				 <select id="filter">
+					<option selected>All</option>
+					<option value='Baby JC'>Baby</option>
+					<option  value='Regular' >Regular</option>
+					<option  value='Associate' >Associate</option>
+				 </select>
+				 | <label for='radio4'>Status : </label>
+				 <select id="filter">
+					<option selected>All</option>
+					<option>Active</option>
+					<option>Inactive</option>
+				 </select>
+				 <!--
+				 <label for='radio4'><input id='radio3' type='radio' name='RadioGroup1' value='all' checked />All</label>
+				 <!-- default filter is 'show everything' so make it checked -->
+				 <!--<label for='radio1'><input id='radio1' type='radio' name='RadioGroup1' value='Baby JC' />Baby</label>
+				 <label for='radio2'><input id='radio2' type='radio' name='RadioGroup1' value='Regular' />Regular</label>
+				 <label for='radio3'><input id='radio2' type='radio' name='RadioGroup1' value='Associate' />Associate</label>
+				 -->
+				<table id="example1" class="table table-bordered table-striped table-hover">
+						<thead>
+							 <tr>
+								  <th>ID</th><th>Type</th><th>Firstname</th><th>Lastname</th><th>Middlename</th><th>Actions</th>
+							 </tr>
+						</thead>
+						<tbody>
+						{{-- */$x=0;/* --}}
+						@foreach($members as $item)
+							 {{-- */$x++;/* --}}
+							 <tr>
+								  <td>{{ $item->id }}</td>
+								  <td>{{ $item->membershiptype }}</td><td><a href="{{ url('admin/members', $item->id) }}">{{ $item->firstname }}</a></td><td>{{ $item->lastname }}</td><td>{{ $item->middlename }}</td>
+								  <td>
+										<a href="{{ url('admin/members/' . $item->id . '/edit') }}">
+											 <button type="submit" class="btn btn-primary btn-xs">Update</button>
+										</a> /
+										{!! Form::open([
+											 'id' => 'delete',
+											 'method'=>'DELETE',
+											 'url' => ['admin/members', $item->id],
+											 'style' => 'display:inline',
+											 'onsubmit' => 'return ConfirmDelete()'
+										]) !!}
+											 {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+										{!! Form::close() !!}
+								  </td>
+							 </tr>
+						@endforeach
+						</tbody>
+			  </table>
+				  <div class="pagination"> {!! $members->render() !!} </div>
+			 </div>
+		</div>
+	</div>
 @stop
 
 @section('after-scripts-end')
@@ -241,7 +255,7 @@
     });
 
     // On click, get the value of the selected radio
-    $("input[name='RadioGroup1']").on('change', function () {
+    $("#filter").on('change', function () {
         // $radio = $("input[name='RadioGroup1']:checked").val();
         $radio = $(this).val();
         $dTable.fnDraw(); // refresh the dataTable

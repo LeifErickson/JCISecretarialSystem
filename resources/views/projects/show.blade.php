@@ -18,9 +18,8 @@
                 <a href="{{ url('admin/events/projects/') }}" class="btn btn-primary pull-right btn-sm">Go Back</a>
             </div>
         </div><!-- /.box-header -->
-    @include('projects.show_fields')
-
-    <div class="form-group">
-           <a href="{!! route('admin.events.projects.index') !!}" class="btn btn-default">Back</a>
-    </div>
+			<div class="box-body">
+				@include('projects.show_fields')
+			</div>
+	</div>
 @stop

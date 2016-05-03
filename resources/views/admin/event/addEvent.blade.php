@@ -1,14 +1,20 @@
 @extends('backend.layouts.master')
 
 @section('page-header')
-    <h2>
-        Add Event
-    </h2>
+    <h1>
+        Event
+    </h1>
 	 
-@endsection
+@stop
 @section('content')
-    <div id="page-wrapper">
-		<div class="container-fluid">
+	<div class="box box-success">
+		<div class="box-header">
+			<h3 class="box-title">Create Event</h3>
+			<div class="box-tools pull-left" style="margin-left: 20px">
+			  <a href="{{ url('admin/events') }}" class="btn btn-primary pull-right btn-sm">Go Back</a>
+			</div>
+		</div>
+		<div class="box-body">
 			 <div class="row">
 				<div class="col-md-8">
 					<div class="box box-primary">
@@ -25,7 +31,7 @@
 							</div>
 							<div class="box-footer">
 								<div class="form-group">
-									<button class="btn btn-info pull-right" type="submit" >Publish</button>
+									<button class="btn btn-info pull-right" type="submit" >Create</button>
 								</div>
 							</div>
 					</div>
@@ -87,8 +93,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
-@endsection
+@stop
 
 @section('after-scripts-end')
 		 <script src="{{ URL::asset('datepicker/test.js') }}"></script>
