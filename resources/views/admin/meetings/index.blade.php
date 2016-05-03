@@ -50,6 +50,7 @@
             </div>
         </div><!-- /.box-header -->
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <div class="table">
         <table id="table" class="table table-bordered table-striped table-hover">
             <thead>
@@ -86,6 +87,8 @@
     </div>
 
 =======
+=======
+>>>>>>> Stashed changes
 		  <div class="box-body">
 			 <div class="table">
 				  <table id="table" class="table table-bordered table-striped table-hover">
@@ -122,6 +125,9 @@
 				  <div class="pagination"> {!! $meetings->render() !!} </div>
 			 </div>
 		</div>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 @endsection
 
