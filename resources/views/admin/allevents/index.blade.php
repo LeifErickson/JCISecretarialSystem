@@ -49,13 +49,13 @@
                 <a href="{{ url('admin/events/projects/create') }}" class="btn btn-primary pull-right btn-sm">Add New Project</a>
             </div>
         </div><!-- /.box-header -->
-
+	
         <div class="clearfix"></div>
 
         @include('flash::message')
 
         <div class="clearfix"></div>
-
+	<div class="box-body">	
     <div class="table">
         <table id="example1" class="table table-bordered table-striped table-hover">
             <thead>
@@ -130,6 +130,7 @@
             </tbody>
         </table>
     </div>
+	</div>
 @endsection
 
 @section('after-scripts-end')

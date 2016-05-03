@@ -55,7 +55,7 @@
         @include('flash::message')
 
         <div class="clearfix"></div>
-
+	<div class="box-body">
     <div class="table">
         <table id="example2" class="table table-bordered table-striped table-hover">
             <thead>
@@ -89,6 +89,7 @@
             </tbody>
         </table>
     </div>
+	</div>
 @stop
 
 @section('after-scripts-end')

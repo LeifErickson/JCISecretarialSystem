@@ -18,19 +18,15 @@
                 <a href="{{ url('admin/events/projects/') }}" class="btn btn-primary pull-right btn-sm">Go Back</a>
             </div>
         </div><!-- /.box-header -->
-        <div class="row">
-            <div class="col-sm-12">
-                <h1 class="pull-left">Edit Project</h1>
-            </div>
-        </div>
+        <div class="box-body">
+			  @include('core-templates::common.errors')
 
-        @include('core-templates::common.errors')
+			  <div class="row">
+					{!! Form::model($project, ['route' => ['admin.events.projects.update', $project->id], 'method' => 'put']) !!}
 
-        <div class="row">
-            {!! Form::model($project, ['route' => ['admin.events.projects.update', $project->id], 'method' => 'put']) !!}
+					@include('projects.fields')
 
-            @include('projects.fields')
-
-            {!! Form::close() !!}
-        </div>
+					{!! Form::close() !!}
+			  </div>
+		  </div>
 @stop
