@@ -5,7 +5,7 @@
        Attendance	
         <small></small>
     </h1>
-@endsection
+@stop
 @section('content')
 <div class="row">
 	<div class="col-md-8">
@@ -92,7 +92,7 @@
 		</div>
 	</div>
 </div>
-@endsection
+@stop
 
 @section('after-scripts-end')
 	
@@ -131,4 +131,4 @@
 			  
 			}
 	 </script>
-@endsection
+@stop

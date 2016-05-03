@@ -51,6 +51,7 @@
         </div><!-- /.box-header -->
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <div class="table">
         <table id="table" class="table table-bordered table-striped table-hover">
             <thead>
@@ -87,6 +88,8 @@
     </div>
 
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 		  <div class="box-body">
@@ -126,6 +129,9 @@
 			 </div>
 		</div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
