@@ -7,24 +7,21 @@
         {{ trans('labels.backend.access.meeting.management') }}
         <small>{{ trans('labels.backend.access.meeting.edit') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
-    <hr/>
-
-    {!! Form::model($meeting, [
-        'method' => 'PATCH',
-        'url' => ['admin/events/meetings', $meeting->id],
-        'class' => 'form-horizontal'
-    ]) !!}
-            <div class="form-group {{ $errors->has('title') ? 'has-error' : ''}}">
-                {!! Form::label('title', 'Title: ', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('title', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                    {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
+<div class="box box-success">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Edit Meeting</h3>
                 </div>
-            </div>
-            <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
+                <div class="box-body">
+				 {!! Form::model($meeting, [
+					  'method' => 'PATCH',
+					  'url' => ['admin/events/meetings', $meeting->id],
+					  'class' => 'form-horizontal'
+				 ]) !!}
+
+                <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
                 {!! Form::label('description', 'Description: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::text('description', null, ['class' => 'form-control', 'required' => 'required']) !!}
@@ -94,8 +91,8 @@
                     {!! $errors->first('ended', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-
-
+			</div>
+	<div class="box-footer">
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
             {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
@@ -110,5 +107,6 @@
             @endforeach
         </ul>
     @endif
-
-@endsection
+	</div>
+</div>
+@stop

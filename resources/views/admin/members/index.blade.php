@@ -49,6 +49,7 @@
                 <a href="{{ url('admin/members/create') }}" class="btn btn-primary pull-right btn-sm">Add New Member</a>
             </div>
         </div><!-- /.box-header -->
+		  <div class="box-body">
     <div class="table">
     <label for='radio1'><input id='radio1' type='radio' name='RadioGroup1' value='Ziemann' />radio1</label>
     <label for='radio2'><input id='radio2' type='radio' name='RadioGroup1' value='Wyman' />radio2</label>
@@ -87,6 +88,8 @@
         </table>
         <div class="pagination"> {!! $members->render() !!} </div>
     </div>
+ </div>
+</div>
 @stop
 
 @section('after-scripts-end')

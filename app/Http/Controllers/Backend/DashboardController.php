@@ -176,6 +176,7 @@ class DashboardController extends Controller
             'start' => $dates1[$i],
         );
     }
+
     $variable3 = json_encode($event_array);
 
     //dashboard view

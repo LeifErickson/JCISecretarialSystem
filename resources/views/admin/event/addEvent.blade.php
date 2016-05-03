@@ -15,16 +15,12 @@
 						{{  Form::open(array('url' => 'admin/events/addEvent', 'method' => 'post')) }}
 							<div class="box-header with-border">
 								<div class="form-group">
-									{{ Form::text('title', null,  array('placeholder'=>'Title','class' => 'form-control')) }}
+									<input name="title" required class="form-control" placeholder="Title" />
 								</div>
 							</div>
 							<div class="box-body">
 								<div class="form-group">
-									{{ Form::textarea('description', null, array(
-											 'id'      => 'editor1',
-											 'rows'    => 10,
-										))
-									}}
+									<textarea name="description" id="editor1" rows="10" ></textarea>
 								</div>
 							</div>
 							<div class="box-footer">
@@ -42,7 +38,7 @@
 							<div class="box-body">
 								<div class="form-group">
 									<div class="input-group">
-										<input name="date" id="datepicker" class="form-control" type="text" placeholder="Event Set">
+										<input name="date" id="datepicker" class="form-control" type="text" placeholder="Event Set" required >
 										<div class="input-group-btn">
 											<button class="btn btn-primary btn-flat">
 												<i class="fa fa-calendar"></i>

@@ -10,7 +10,11 @@
 @endsection
 
 @section('content')
-
+	<div class="box box-success">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Create New Meeting</h3>
+                </div>
+                <div class="box-body">
     <h1>Create New Meeting</h1>
     <hr/>
 
@@ -44,7 +48,7 @@
                 </div>
             </div>
             <div class="form-group {{ $errors->has('datecreated') ? 'has-error' : ''}}">
-                {!! Form::label('datecreated', 'Datecreated: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('datecreated', 'Date Created: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::date('datecreated', null, ['class' => 'form-control', 'required' => 'required']) !!}
                     {!! $errors->first('datecreated', '<p class="help-block">:message</p>') !!}
@@ -92,11 +96,12 @@
                     {!! $errors->first('ended', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-
-
+			</div>
+		<div class="box-body">
+		
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Create', ['class' => 'btn btn-primary form-control ']) !!}
         </div>
     </div>
     {!! Form::close() !!}
@@ -108,5 +113,6 @@
             @endforeach
         </ul>
     @endif
-
+	</div>
+</div>
 @endsection
