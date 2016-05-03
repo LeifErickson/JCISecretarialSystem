@@ -7,7 +7,7 @@
         {{ trans('labels.backend.access.meeting.management') }}
         <small>{{ trans('labels.backend.access.meeting.active') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
     <script>
@@ -49,9 +49,6 @@
                 <a href="{{ url('admin/events/meetings/create') }}" class="btn btn-primary pull-right btn-sm">Add New Meeting</a>
             </div>
         </div><!-- /.box-header -->
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     <div class="table">
         <table id="table" class="table table-bordered table-striped table-hover">
             <thead>
@@ -86,12 +83,6 @@
         </table>
         <div class="pagination"> {!! $meetings->render() !!} </div>
     </div>
-
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 		  <div class="box-body">
 			 <div class="table">
 				  <table id="table" class="table table-bordered table-striped table-hover">
@@ -128,14 +119,7 @@
 				  <div class="pagination"> {!! $meetings->render() !!} </div>
 			 </div>
 		</div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-@endsection
+@stop
 
 @section('after-scripts-end')
     <!-- DataTables -->
@@ -208,4 +192,4 @@
         });
       });
     </script>
-@endsection
+@stop
