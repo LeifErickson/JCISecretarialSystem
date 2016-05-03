@@ -2,20 +2,47 @@
 
 @section('content')
     <div class="row">
+			<div class="col-lg-12">
+				<img alt="" src="http://www.jci.org.ph/mod01/wp-content/uploads/2015/07/logo-jciPhil-correctTrans-1024x499.png">
+		  </div>
+			<div class="col-lg-12">
+						<div class="col-md-8 ">
+							
+							<div class="col-md-12">
+										<?php foreach($data as $events){?>
+											<div class="col-md-12">
+												<div class="page-header">
+													<h2><a href="#"><?php echo $events->name?></a></h2>
+													<h5><span class="glyphicon glyphicon-time"></span> Posted on: <?php echo $events->created_at?></h5>
+												</div>
+												<div class="page-body">
+													<?php echo $events->description?>
+												</div>
+												<div>
+												sadsa
+												</div>
+											</div>
+										<?php }?>
+							</div>
+						</div><!-- panel -->
+						<div class="col-md-4">
+							<div class="panel panel-default">
+								 <div class="panel-heading">
+									<div class="page-header">  <h3><i class="glyphicon glyphicon-calendar">
+										</i> Upcoming Events</h3>
+									</div>
 
-        <div class="col-md-10 col-md-offset-1">
-
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-home"></i> {{ trans('navs.frontend.home') }}
-                </div>
-
-                <div class="panel-body">
-                    {{ trans('strings.frontend.welcome_to', ['place' => app_name()]) }}
-                </div>
-            </div><!-- panel -->
-
+								
+									  <ul>
+											<li>test</li>
+											<li>test</li>
+											<li>test</li>
+									  </ul>
+								 </div>
+							</div><!-- panel -->
+						</div>
         </div><!-- col-md-10 -->
+       
 
         @role('Administrator')
         {{-- You can also send through the Role ID --}}
@@ -145,49 +172,6 @@
 
             </div><!-- col-md-10 -->
         @endif
-
-        <div class="col-md-10 col-md-offset-1">
-
-            <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.js_injected_from_controller') }}</div>
-
-                <div class="panel-body">
-                    {{ trans('strings.frontend.test') . ' 8: ' . trans('strings.frontend.tests.view_console_it_works') }}
-                </div>
-            </div><!-- panel -->
-
-        </div><!-- col-md-10 -->
-
-        <div class="col-md-10 col-md-offset-1">
-
-            <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-home"></i> Bootstrap Glyphicon {{ trans('strings.frontend.test') }}</div>
-
-                <div class="panel-body">
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon glyphicon-euro" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon glyphicon-cloud" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                </div>
-            </div><!-- panel -->
-
-        </div><!-- col-md-10 -->
-
-        <div class="col-md-10 col-md-offset-1">
-
-            <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-home"></i> Font Awesome {{ trans('strings.frontend.test') }}</div>
-
-                <div class="panel-body">
-                    <i class="fa fa-home"></i>
-                    <i class="fa fa-facebook"></i>
-                    <i class="fa fa-twitter"></i>
-                    <i class="fa fa-pinterest"></i>
-                </div>
-            </div><!-- panel -->
-
-        </div><!-- col-md-10 -->
-
     </div><!--row-->
 @stop
 
