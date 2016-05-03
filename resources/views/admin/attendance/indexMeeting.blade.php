@@ -32,7 +32,7 @@
 											<td>".$row->year."</td>
 											<td>".$row->status."</td>
 											<td>
-												<a href='deleteattendance/".$row->member_id."' > <button onclick='return confirm(\"Are you want to delete?\")' data-placement='top' data-toggle='tooltip' data-original-title='Delete'  class='btn btn-danger btn-xs'>Delete</button></a>
+												<a  class='btn btn-xs btn-danger'  href='deleteattendance/".$row->member_id."'><i class='fa fa-trash' title='' data-placement='top' data-toggle='tooltip' data-original-title='Delete'></i></a>
 											</td>
 										</tr>";
 							}

@@ -15,28 +15,27 @@ Route::group([
         'uses' => '\App\Http\Controllers\Admin\AttendanceController@eventsAttendance',
     ]);
 	 
-	//ADD events 
+	//EVENTS ATTENDANCE ROUTE
 	 Route::get('addattendance/{project_id}/{member_id}', [
         'as'   => 'attendance::dashboard',
-        'uses' => '\App\Http\Controllers\Admin\AttendanceController@store',
+        'uses' => '\App\Http\Controllers\Admin\AttendanceController@storeEvents',
     ]);
 	
 	
-	
-	 
-	//DELETE events
-	
 	 Route::get('deleteattendance/{id}', [
         'as'   => 'attendance::dashboard',
-        'uses' => '\App\Http\Controllers\Admin\AttendanceController@delete',
+        'uses' => '\App\Http\Controllers\Admin\AttendanceController@deleteEvents',
     ]);  
 	 
-	 //SEARCH
-	  Route::get('searchPage/{project_id}/{name}/{type}', [
+	  Route::get('searchPage/{project_id}/{name}', [
         'as'   => 'attendance::dashboard',
-        'uses' => '\App\Http\Controllers\Admin\AttendanceController@search',
+        'uses' => '\App\Http\Controllers\Admin\AttendanceController@searchEvents',
     ]); 
+	 //MEETING ATTENDANCE ROUTE
 	 
+	 
+	 
+	 //PROJECTS ATTENDANCE ROUTE
 	
 });
 

@@ -84,7 +84,6 @@
         <div class="pagination"> {!! $meetings->render() !!} </div>
     </div>
 @stop
-
 @section('after-scripts-end')
     <!-- DataTables -->
     <script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}"></script>

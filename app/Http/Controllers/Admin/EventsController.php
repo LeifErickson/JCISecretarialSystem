@@ -10,6 +10,7 @@ use App\Project as Project;
 use Illuminate\Http\Request;
 use DB;
 use DateTime;
+use Session;
 
 class EventsController extends Controller
 {
@@ -51,8 +52,20 @@ class EventsController extends Controller
     }
 	public function delete($id)
 	{
-		DB::insert('DELETE FROM `events` WHERE `id`=?', [$id]);
-		return back();
+		try 
+		{
+			//DB::enableQueryLog();
+			DB::insert('DELETE FROM `events` WHERE `id`=?', [$id]);
+		   
+		}
+		catch(\Exception $e){
+			 Session::flash('flash_message', 'nya ga foreign key ka?!');
+			 //return redirect('admin/events');
+			return redirect('admin/events');
+			
+		}
+		
+		
 	}
 	public function updateForm($id)
 	{	

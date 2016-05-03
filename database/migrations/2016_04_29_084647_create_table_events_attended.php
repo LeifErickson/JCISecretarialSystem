@@ -17,7 +17,6 @@ class CreateTableEventsAttended extends Migration
 			$table->integer('member_id')->unsigned();
 			$table->integer('event_id')->unsigned();
 			$table->date('year');
-			$table->string('type');
 			$table->foreign('member_id')->references('id')->on('members');
 			$table->foreign('event_id')->references('id')->on('events');
 		});

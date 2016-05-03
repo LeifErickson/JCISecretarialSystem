@@ -9,7 +9,10 @@
 @section('content')
 	<div class="col-md-12">
 		<div class="box">
-        <div class="box-body">
+			<div class="box-header">
+				Events
+			</div>
+			<div class="box-body">
              <table class="table" id="dataTables-events">
 					<thead>
 						<tr>
@@ -24,10 +27,11 @@
 								$id = $row->id;
 								echo "<tr>
 											<td>".$id."</td>
-											<td><a href='attendance/eventsAttendance/".$id."'>".$row->name."</a></td>
+											<td>".$row->name."</td>
 											<td>
-												<a  class='btn btn-xs btn-primary' onclick='' href='events/EditProject/".$id."'><i class='fa fa-pencil' title='' data-placement='top' data-toggle='tooltip' data-original-title='Update'></i></a>
-												<a  class='btn btn-xs btn-danger' onclick='return confirm(\"Are you want to delete?\")' href='events/deleteEvent/".$id."'><i class='fa fa-trash' title='' data-placement='top' data-toggle='tooltip' data-original-title='Delete'></i></a>
+												<a href='events/EditProject/".$id."' > <button data-placement='top' data-toggle='tooltip' data-original-title='Update'  class='btn btn-primary btn-xs'>Update</button></a> /
+												<a href='events/deleteEvent/".$id."' > <button onclick='return confirm(\"Are you want to delete?\")' data-placement='top' data-toggle='tooltip' data-original-title='Delete'  class='btn btn-danger btn-xs'>Delete</button></a> /
+												<a href='attendance/eventsAttendance/".$id."' > <button data-placement='top' data-toggle='tooltip' data-original-title='Attendance'  class='btn btn-success btn-xs'>Attendance</button></a> 
 											</td>
 										</tr>";
 							}

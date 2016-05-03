@@ -7,7 +7,7 @@ Route::group([
 ], function() {
     
 	 Route::get('/', [
-        'as'   => 'events::dashboard',
+        'as'   => 'eventsdashboard',
         'uses' => '\App\Http\Controllers\Admin\EventsController@index',
     ]);
 	 Route::get('add', [
