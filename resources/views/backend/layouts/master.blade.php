@@ -10,12 +10,13 @@
 
         <!-- Meta -->
         <meta name="description" content="@yield('meta_description', 'Default Description')">
-        <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
+        <meta name="author" content="@yield('meta_author', 'CodeMatrix')">
         @yield('meta')
 
         <!-- Styles -->
         @yield('before-styles-end')
         {!! Html::style(elixir('css/backend.css')) !!}
+		  {!! Html::style('datepicker/test3.css') !!}
         @yield('after-styles-end')
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -24,6 +25,14 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
+        <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.1.2/css/buttons.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/sweetalert/dist/sweetalert.css') }}">
+        <link rel='stylesheet' href="{{ asset('bower_components/fullcalendar/dist/fullcalendar.css') }}" />
+        <style>
+            body{padding-bottom: 0px !important;}
+        </style>
     </head>
     <body class="skin-{!! config('backend.theme') !!}">
     <div class="wrapper">
@@ -50,9 +59,18 @@
         @include('backend.includes.footer')
     </div><!-- ./wrapper -->
 
-    <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
+    <!-- JavaScripts
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+	 <script src="{{ asset('js/jquery.min.js') }}"></script>
+     <script src="{{ asset('bower_components/sweetalert/dist/sweetalert.min.js') }}"></script>
+     <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
+     <script src="{{ asset('bower_components/moment/min/moment.min.js') }}"></script>
+     <script src="{{ asset('bower_components/fullcalendar/dist/fullcalendar.js') }}"></script>
+     
+    <script>
+        window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')
+    </script>
+    
     {!! Html::script('js/vendor/bootstrap/bootstrap.min.js') !!}
 
     @yield('before-scripts-end')

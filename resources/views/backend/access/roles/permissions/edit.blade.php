@@ -7,7 +7,7 @@
         {{ trans('labels.backend.access.permissions.management') }}
         <small>{{ trans('labels.backend.access.permissions.edit') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
     {!! Form::model($permission, ['route' => ['admin.access.roles.permissions.update', $permission->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) !!}

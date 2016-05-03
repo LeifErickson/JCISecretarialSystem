@@ -13,23 +13,93 @@ class CreateMembersTable extends Migration
     public function up()
     {
         
-            Schema::create('members', function(Blueprint $table) {
-                $table->increments('id');
-                $table->string('firstname');
-$table->string('lastname');
-$table->string('middlename');
-$table->date('birthdate');
-$table->string('contactno');
-$table->string('gender');
-$table->string('status');
-$table->string('religion');
-$table->string('placeofbirth');
-$table->string('jcisenatorialno');
-$table->date('dateofinduction');
+        Schema::create('members', function(Blueprint $table) {
+        $table->increments('id');
+        
+        $table->String('membershiptype');
+        
+        $table->String('firstname');
+        
+        $table->String('lastname');
+        
+        $table->String('middlename');
+        
+        $table->String('emailaddress');
+        
+        $table->String('cellphonenumber');
+        
+        $table->String('residenceaddress');
+        
+        $table->String('residencetelephoneno');
+        
+        $table->String('residencefaxno');
+        
+        $table->String('officeaddress');
+        
+        $table->String('officetelephoneno');
+        
+        $table->String('officefaxno');
+        
+        $table->String('nameandaddressofcompany');
+        
+        $table->String('profession');
+        
+        $table->String('companyposition');
+        
+        $table->String('gender');
+        
+        $table->String('status');
+        
+        $table->String('religion');
+        
+        $table->date('birthdate');
+        
+        $table->String('placeofbirth');
+        
+        $table->String('elementaryschool');
+        
+        $table->String('elementaryyeargrad');
+        
+        $table->String('collegeschool');
+        
+        $table->String('coursetaken');
+        
+        $table->String('collegeyeargraduated');
+        
+        $table->String('memberstatus');
+        
+        $table->String('lomhighestposition');
+        
+        $table->String('lomhighestpositionyear');
+        
+        $table->String('lomawardsrecieved');
+        
+        $table->String('areahighestposition');
+        
+        $table->String('areahighestpositionyear');
+        
+        $table->String('regionalhighestposition');
+        
+        $table->String('regionalhighestpositionyear');
+        
+        $table->String('regionalawardsrecieved');
+        
+        $table->String('highestjcinternationalposition');
+        
+        $table->String('highestjcinternationalpositionyear');
+        
+        $table->String('internationalawardsrecieved');
+        
+        $table->String('jcisenatorialno');
+        
+        $table->String('dateofinduction');
 
-                $table->timestamps();
+        $table->date('membersince');
+
+        $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+        
+        $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
             });
-            
     }
 
     /**

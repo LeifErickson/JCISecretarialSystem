@@ -7,7 +7,7 @@
         {{ trans('labels.backend.access.permissions.management') }}
         <small>{{ trans('labels.backend.access.permissions.create') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
     {!! Form::open(['route' => 'admin.access.roles.permissions.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) !!}

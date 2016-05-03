@@ -40,4 +40,4 @@
         </div><!-- col-md-8 -->
 
     </div><!-- row -->
-@endsection
+@stop

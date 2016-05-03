@@ -43,6 +43,7 @@
 	</nav>
 
 	<div class="container">
+	<script src="https://code.jquery.com/jquery-1.11.2.js"></script>
 		@yield('content')
 	</div>
 

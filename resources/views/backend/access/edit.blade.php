@@ -7,7 +7,7 @@
         {{ trans('labels.backend.access.users.management') }}
         <small>{{ trans('labels.backend.access.users.edit') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
     {!! Form::model($user, ['route' => ['admin.access.users.update', $user->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) !!}

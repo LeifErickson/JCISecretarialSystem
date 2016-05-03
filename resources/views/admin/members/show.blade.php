@@ -7,7 +7,7 @@
         {{ trans('labels.backend.access.member.management') }}
         <small>{{ trans('labels.backend.access.member.show') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
     <div class="box box-success">
@@ -32,12 +32,12 @@
             </tbody> 
             <thead>
                 <tr>
-                    <th>Birthdate</th> <th>Contact No.</th> <th>Gender</th> <th>Status</th>
+                    <th>Birthdate</th> <th>Cellphone Number</th> <th>Gender</th> <th>Status</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $member->birthdate }}</td> <td>{{ $member->contactno }}</td> <td>{{ $member->gender }}</td> <td>{{ $member->status }}</td>
+                    <td>{{ $member->birthdate }}</td> <td>{{ $member->cellphonenumber }}</td> <td>{{ $member->gender }}</td> <td>{{ $member->status }}</td>
                 </tr>
             </tbody>     
         </table>
@@ -72,4 +72,4 @@
         </div>
     </div>
 
-@endsection
+@stop

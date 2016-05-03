@@ -9,6 +9,7 @@ use App\Member;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
+use DB;
 
 class MembersController extends Controller
 {
@@ -20,7 +21,41 @@ class MembersController extends Controller
      */
     public function index()
     {
-        $members = Member::paginate(15);
+        // $members = Member::paginate(15);
+        $members = Member::paginate(9999999);
+			
+			DB::insert('UPDATE  `members`
+						INNER JOIN  
+						(SELECT t1.`id`,IFNULL(t2.participate,0) as participate,(SELECT count(`id`) FROM `events` ) as total 
+						FROM 
+						(SELECT `members`.`id` FROM `members` ) t1
+						LEFT JOIN
+						(SELECT `members`.`id`,count(`member_id`) as participate
+						FROM `events_attended`, `members`
+						WHERE
+							`events_attended`.`member_id` = `members`.`id`
+						GROUP BY 
+						`members`.`id`) t2
+						ON t1.`id` = t2.`id`) tableChange
+						ON `members`.`id` = tableChange.`id`
+						SET `members`.`memberstatus`=?
+						WHERE tableChange.participate/tableChange.total < 0.80',['inactive']);
+			DB::insert('UPDATE  `members`
+						INNER JOIN  
+						(SELECT t1.`id`,IFNULL(t2.participate,0) as participate,(SELECT count(`id`) FROM `events` ) as total 
+						FROM 
+						(SELECT `members`.`id` FROM `members` ) t1
+						LEFT JOIN
+						(SELECT `members`.`id`,count(`member_id`) as participate
+						FROM `events_attended`, `members`
+						WHERE
+							`events_attended`.`member_id` = `members`.`id`
+						GROUP BY 
+						`members`.`id`) t2
+						ON t1.`id` = t2.`id`) tableChange
+						ON `members`.`id` = tableChange.`id`
+						SET `members`.`memberstatus`=?
+						WHERE tableChange.participate/tableChange.total > 0.80',['active']);
 
         return view('admin.members.index', compact('members'));
     }

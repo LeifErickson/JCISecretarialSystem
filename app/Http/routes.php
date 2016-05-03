@@ -16,6 +16,8 @@ Route::group(['middleware' => 'web'], function() {
         require (__DIR__ . '/Routes/Frontend/Frontend.php');
         require (__DIR__ . '/Routes/Frontend/Access.php');
     });
+
+    
 });
 
 /**
@@ -34,9 +36,39 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
     require (__DIR__ . '/Routes/Backend/Dashboard.php');
     require (__DIR__ . '/Routes/Backend/Access.php');
     require (__DIR__ . '/Routes/Backend/LogViewer.php');
+	require (__DIR__ . '/Routes/Backend/EventManagement.php');
+	require (__DIR__ . '/Routes/Backend/AttendanceManagement.php');
+	require (__DIR__ . '/Routes/Backend/AttendanceMonitoring.php');
 });
 
-Route::group(['middleware' => ['web']], function () {
-	Route::resource('admin/members', 'Admin\\MembersController');
+Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function () {
+	Route::resource('members', 'Admin\\MembersController');
+    Route::resource('category', 'Admin\\CategoryController');
+    Route::resource('events/projects', 'Admin\\ProjectController');
+    Route::resource('events/meetings', 'Admin\\MeetingsController');
+    Route::resource('events/meetings', 'Admin\\MeetingsController');
+    Route::resource('events/all', 'Admin\\AllEventsController');
+    Route::resource('payments', 'Admin\\PaymentController');
 });
 
+/*
+|--------------------------------------------------------------------------
+| API routes
+|--------------------------------------------------------------------------
+*/
+
+Route::group(['prefix' => 'api', 'namespace' => 'API'], function () {
+    Route::group(['prefix' => 'v1'], function () {
+        require config('infyom.laravel_generator.path.api_routes');
+    });
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Generator routes
+|--------------------------------------------------------------------------
+*/
+Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder');
+Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate');
+Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate');

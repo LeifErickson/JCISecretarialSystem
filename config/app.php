@@ -37,7 +37,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -190,6 +190,13 @@ return [
         HieuLe\Active\ActiveServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        \InfyOm\Generator\InfyOmGeneratorServiceProvider::class,
+        \InfyOm\CoreTemplates\CoreTemplatesServiceProvider::class,
+        \InfyOm\GeneratorBuilder\GeneratorBuilderServiceProvider::class,
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
 
         /*
          * Has to override the Collective\Html\HtmlServiceProvider form singleton
@@ -197,6 +204,7 @@ return [
         App\Providers\MacroServiceProvider::class,
         Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        'MaddHatter\LaravelFullcalendar\ServiceProvider',
     ],
 
     /*
@@ -251,7 +259,8 @@ return [
         'Form'        => Collective\Html\FormFacade::class,
         'Gravatar'    => Creativeorange\Gravatar\Facades\Gravatar::class,
         'Html'        => Collective\Html\HtmlFacade::class,
-        'Form'        => Collective\Html\FormFacade::class,
+        'Flash'       => Laracasts\Flash\Flash::class,
         'Socialite'   => Laravel\Socialite\Facades\Socialite::class,
+        'Calendar'    => 'MaddHatter\LaravelFullcalendar\Facades\Calendar',
     ],
 ];

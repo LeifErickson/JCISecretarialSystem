@@ -58,4 +58,4 @@
 
     </div><!-- row -->
 
-@endsection
+@stop

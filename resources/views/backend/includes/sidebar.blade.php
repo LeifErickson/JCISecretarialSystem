@@ -34,25 +34,46 @@
             <li class="{{ Active::pattern('admin/dashboard') }}">
                 <a href="{!! route('admin.dashboard') !!}"><span>{{ trans('menus.backend.sidebar.dashboard') }}</span></a>
             </li>
-            <li class="{{ Active::pattern('admin/members') }}">
-                <a href="/admin/members"><span>Member Management</span></a>
+            <li class="{{ Active::pattern('admin/member*') }} treeview">
+                <a href="{!! url('admin/members') !!}">
+                <span>Member Management</span>
+                <i class="fa fa-angle-left pull-right"></i>
+                </a>
             </li>
-            <li class="{{ Active::pattern('admin/log-viewer*') }} treeview">
-                <a href="#">
+            <ul class="treeview-menu {{ Active::pattern('admin/members*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/members*', 'display: block;') }}">
+                <li class="{{ Active::pattern('admin/payments') }}">
+                    <a href="{!! url('admin/payments') !!}"><span>Manage Payments</span></a>
+                </li>
+            </ul>
+				<!--START OF TEST SIDE BAR -->
+				<li class="{{ Active::pattern('admin/event*') }} treeview">
+                    <a href="{!! url('admin/events/all') !!}">
                     <span>Event Management</span>
                     <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu {{ Active::pattern('admin/log-viewer*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/log-viewer*', 'display: block;') }}">
-                    <li class="{{ Active::pattern('admin/log-viewer') }}">
-                        <a href="{!! url('admin/log-viewer') !!}">Projects</a>
+                    </a>
+                 </li>   
+                <ul class="treeview-menu {{ Active::pattern('admin/events*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/events*', 'display: block;') }}">
+                    <li class="{{ Active::pattern('admin/events/projects') }}">
+                        <a href="{!! url('admin/events/projects') !!}">Projects</a>
                     </li>
-                    <li class="{{ Active::pattern('admin/log-viewer/logs') }}">
-                        <a href="{!! url('admin/log-viewer/logs') !!}">Events</a>
+                    <li class="{{ Active::pattern('admin/events/meetings') }}">
+                        <a href="{!! url('admin/events/meetings') !!}">Meetings</a>
                     </li>
+					<li class="{{ Active::pattern('admin/events') }}">
+                        <a href="{!! url('admin/events') !!}">Others</a>
+                     </li>
+					 <li class="{{ Active::pattern('admin/events/add') }}">
+                        <a href="{!! url('admin/events/add') !!}">Add Other Events</a>
+                    </li>
+                  <li class="{{ Active::pattern('admin/attendanceMonitoring/0') }}">
+                        <a href="{!! url('admin/attendanceMonitoring/0') !!}">Attendance Monitoring</a>
+                     </li> 
                 </ul>
-            </li>
-
-
+            
+				<!--END OF TEST SIDE BAR -->
+				
+				
+				
             @permission('view-access-management')
                 <li class="{{ Active::pattern('admin/access/*') }}">
                     <a href="{!!url('admin/access/users')!!}"><span>{{ trans('menus.backend.access.title') }}</span></a>

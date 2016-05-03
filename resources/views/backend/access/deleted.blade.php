@@ -7,7 +7,7 @@
         {{ trans('labels.backend.access.users.management') }}
         <small>{{ trans('labels.backend.access.users.deleted') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
     <div class="box box-success">

@@ -7,7 +7,7 @@
         {{ trans('labels.backend.access.roles.management') }}
         <small>{{ trans('labels.backend.access.roles.edit') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('after-styles-end')
     {!! Html::style('css/backend/plugin/jstree/themes/default/style.min.css') !!}
