@@ -49,6 +49,7 @@
                 <a href="{{ url('admin/events/meetings/create') }}" class="btn btn-primary pull-right btn-sm">Add New Meeting</a>
             </div>
         </div><!-- /.box-header -->
+<<<<<<< Updated upstream
     <div class="table">
         <table id="table" class="table table-bordered table-striped table-hover">
             <thead>
@@ -84,6 +85,44 @@
         <div class="pagination"> {!! $meetings->render() !!} </div>
     </div>
 
+=======
+		  <div class="box-body">
+			 <div class="table">
+				  <table id="table" class="table table-bordered table-striped table-hover">
+						<thead>
+							 <tr>
+								  <th>ID</th><th>Description</th><th>Agenda</th><th>Type</th><th>Actions</th>
+							 </tr>
+						</thead>
+						<tbody>
+						{{-- */$x=0;/* --}}
+						@foreach($meetings as $item)
+							 {{-- */$x++;/* --}}
+							 <tr>
+								  <td>{{ $item->id }}</td>
+								  <td><a href="{{ url('admin/attendance/meetingAttendance', $item->id) }}">{{ $item->description }}</a></td><td>{{ $item->agenda }}</td><td>{{ $item->type }}</td>
+								  <td>
+										<a href="{{ url('admin/events/meetings/' . $item->id . '/edit') }}">
+											 <button type="submit" class="btn btn-primary btn-xs">Update</button>
+										</a> /
+										{!! Form::open([
+											 'id' => 'delete',
+											 'method'=>'DELETE',
+											 'url' => ['admin/events/meetings', $item->id],
+											 'style' => 'display:inline',
+											 'onsubmit' => 'return ConfirmDelete()'
+										]) !!}
+											 {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+										{!! Form::close() !!}
+								  </td>
+							 </tr>
+						@endforeach
+						</tbody>
+				  </table>
+				  <div class="pagination"> {!! $meetings->render() !!} </div>
+			 </div>
+		</div>
+>>>>>>> Stashed changes
 @endsection
 
 @section('after-scripts-end')

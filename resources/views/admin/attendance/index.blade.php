@@ -23,8 +23,11 @@
 					<tbody>
 						<?php
 							$id = $data_id;
+							$eventType = $type[0];
+							
+							
+							
 							foreach($data as $row){
-								
 								echo "<tr>
 											<td>".$row->lastname.",".$row->firstname." ".$row->middlename."</td>
 											<td>".$row->year."</td>
@@ -48,6 +51,7 @@
 			<?php 	
 				foreach($info as $row){ 
 					$event_id = $row->id;
+					
 				?>
 				
 			<div class="box-body">
@@ -64,7 +68,7 @@
 				?>
 			</div>
 			<div class="box-footer">
-				<button title='Update Training' data-toggle='modal' data-target='#add' class="btn btn-block btn-info">Add </button>
+				<button title='Add Attendance' data-toggle='modal' data-target='#add' class="btn btn-block btn-info">Add </button>
 			</div>
 		</div>
 	</div>
@@ -78,8 +82,9 @@
 				<h4 class="modal-title">Add Member  <small></small></h4>
 			</div>
 			<div class="modal-body">
-				<input type="text" size="30" placeholder="Enter Name..." class="form-control" onkeyup="showResult(this.value,<?php echo $id;?>)">
-				<div id="livesearch"></div>
+				<input autocomplete="off"  data-toggle="dropdown" type="text" size="30" placeholder="Enter Name..." class="form-control" onkeyup="showResult(this.value,<?php echo $id;?>,'<?php echo $eventType; ?>')">
+				<div id="livesearch" >
+				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -101,7 +106,7 @@
 						 responsive: true
 			  });
 		 });
-		function showResult(str,p_id) {
+		function showResult(str,p_id,type) {
 			
 			 if (str.length==0) { 
 				 document.getElementById("livesearch").innerHTML="";
@@ -121,7 +126,7 @@
 				 }
 			  }
 			  
-			  xmlhttp.open("GET","searchPage/"+p_id+"/"+str,true);
+			  xmlhttp.open("GET","../searchPage/"+p_id+"/"+str+"/"+type+"",true);
 			  xmlhttp.send();
 			  
 			}

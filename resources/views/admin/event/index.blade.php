@@ -24,7 +24,7 @@
 								$id = $row->id;
 								echo "<tr>
 											<td>".$id."</td>
-											<td><a href='attendance/".$id."'>".$row->name."</a></td>
+											<td><a href='attendance/eventsAttendance/".$id."'>".$row->name."</a></td>
 											<td>
 												<a  class='btn btn-xs btn-primary' onclick='' href='events/EditProject/".$id."'><i class='fa fa-pencil' title='' data-placement='top' data-toggle='tooltip' data-original-title='Update'></i></a>
 												<a  class='btn btn-xs btn-danger' onclick='return confirm(\"Are you want to delete?\")' href='events/deleteEvent/".$id."'><i class='fa fa-trash' title='' data-placement='top' data-toggle='tooltip' data-original-title='Delete'></i></a>

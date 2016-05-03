@@ -3,27 +3,38 @@
 
 
 Route::group([
-    'prefix'     => 'attendanceEve',
+    'prefix'     => 'attendance',
 ], function() {
     
-	 Route::get('/{id}', [
+	  Route::get('meetingAttendance/{id}', [
         'as'   => 'attendance::dashboard',
-        'uses' => '\App\Http\Controllers\Admin\EventsAttendanceController@index',
+        'uses' => '\App\Http\Controllers\Admin\AttendanceController@meetingAttendance',
     ]);
-	
+	  Route::get('eventsAttendance/{id}', [
+        'as'   => 'attendance::dashboard',
+        'uses' => '\App\Http\Controllers\Admin\AttendanceController@eventsAttendance',
+    ]);
 	 
+	//ADD events 
 	 Route::get('addattendance/{project_id}/{member_id}', [
         'as'   => 'attendance::dashboard',
-        'uses' => '\App\Http\Controllers\Admin\EventsAttendanceController@store',
+        'uses' => '\App\Http\Controllers\Admin\AttendanceController@store',
     ]);
+	
+	
+	
+	 
+	//DELETE events
 	
 	 Route::get('deleteattendance/{id}', [
         'as'   => 'attendance::dashboard',
-        'uses' => '\App\Http\Controllers\Admin\EventsAttendanceController@delete',
+        'uses' => '\App\Http\Controllers\Admin\AttendanceController@delete',
     ]);  
-	  Route::get('searchPage/{project_id}/{name}', [
+	 
+	 //SEARCH
+	  Route::get('searchPage/{project_id}/{name}/{type}', [
         'as'   => 'attendance::dashboard',
-        'uses' => '\App\Http\Controllers\Admin\EventsAttendanceController@search',
+        'uses' => '\App\Http\Controllers\Admin\AttendanceController@search',
     ]); 
 	 
 	
