@@ -42,8 +42,6 @@
 			</table>
 	  </div><!-- /.box-body -->
 	</div><!--box box-success-->
-
-	
 @stop
 @section('after-scripts-end')
 

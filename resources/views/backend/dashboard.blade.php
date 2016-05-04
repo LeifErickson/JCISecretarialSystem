@@ -63,9 +63,12 @@
 <script>
 $(document).ready(function() 
 {
-    
-
-// page is now ready, initialize the calendar...
+    var days_remaining = <?php echo $days_remaining; ?>;
+    var hours_remaining = <?php echo $hours_remaining; ?>;
+    if (days_remaining <= 9)
+    {
+        swal("Reminder!", "There will be an event " + days_remaining + " days and " + hours_remaining + " hours from now. \nPlease Check the Event Calendar");
+    }
 
 $('#calendar').fullCalendar({
     eventRender: function (event, element) 

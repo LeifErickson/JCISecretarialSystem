@@ -1,8 +1,9 @@
 ## A Secretarial System using Laravel 5.2
 
 ### Packages Used:
--Laravel 5.* Boilerplate by Rappasoft <br />
--More to come
+-Laravel 5.2.* Boilerplate by Rappasoft <br />
+-Generators By InfyOmLabs <br />
+-lavacharts By khill
 
 ### Introduction
 
@@ -22,10 +23,11 @@ member management that can,
 => System is still incomplete  
 
 ### Implementation of Features:
-- [x] CRUD Membership (initial version @ develop branch)
-- [x] CRUD Events (initial version @ project_event_management branch)
-- [ ] CRUD Payments
-- [ ] Attendance Module
-- [ ] Generate Report
-- [x] Search Module (initial version @ project_event_management branch)
-# Kim
+- [x] CRUD Membership 
+- [x] CRUD Events 
+- [x] CRUD Payments
+- [x] Attendance Module (80% done)
+- [x] Generate Report (60% done)
+- [x] Search Module 
+- [x] Calendar of Events
+- [ ] Notifications (Currently Working)

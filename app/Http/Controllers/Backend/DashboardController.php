@@ -179,10 +179,29 @@ class DashboardController extends Controller
 
     $variable3 = json_encode($event_array);
 
+    // $date = strtotime($dates1[0]);
+    // $date = $date - time();
+
+    
+
+    for($i=0;$i < count($dates1);$i++){
+        $date = strtotime($dates1[$i]) - time();
+            if ($date > 0)
+                {
+                    $date_array[$i] = $date;
+                };
+    }
+        sort($date_array);
+
+        $days_remaining = floor($date_array[0] / 86400);
+        $hours_remaining = floor(($date_array[0] % 86400) / 3600);
+
     //dashboard view
 	return view('backend.dashboard')
         ->with('variable2', $variable2)
-        ->with('variable3', $variable3);
+        ->with('variable3', $variable3)
+        ->with('days_remaining',$days_remaining)
+        ->with('hours_remaining',$hours_remaining);
 
 	}
 }

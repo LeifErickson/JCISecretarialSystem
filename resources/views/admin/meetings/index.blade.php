@@ -10,10 +10,71 @@
 @stop
 
 @section('content')
-    <script>
-      function ConfirmDelete()
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title">Meetings</h3>
+
+            <div class="box-tools pull-right">
+                <a href="{{ url('admin/events/meetings/create') }}" class="btn btn-primary pull-right btn-sm">Add New Meeting</a>
+            </div>
+        </div><!-- /.box-header -->
+    <div class="box-body">
+    <div class="table">
+        <table id="table" class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th><th>Title</th><th>Description</th><th>Agenda</th><th>Type</th><th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{-- */$x=0;/* --}}
+            @foreach($meetings as $item)
+                {{-- */$x++;/* --}}
+                <tr>
+                    <td>{{ $item->id }}</td>
+                    <td><a href="{{ url('admin/events/meetings', $item->id) }}">{{ $item->title }}</a></td><td>{{ $item->description }}</td><td>{{ $item->agenda }}</td><td>{{ $item->type }}</td>
+                    <td>
+                        <a href="{{ url('admin/events/meetings/' . $item->id . '/edit') }}">
+                            <button type="submit" class="btn btn-primary btn-xs">Update</button>
+                        </a> /
+                        {!! Form::open([
+                            'method'=>'DELETE',
+                            'route' => ['admin.events.meetings.destroy', $item->id],
+                            'style' => 'display:inline',
+                            'class' => 'delete_form'
+                        ]) !!}
+                            <button class="btn btn-danger btn-xs">Delete</button>
+                        {!! Form::close() !!}
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+        <div class="pagination"> {!! $meetings->render() !!} </div>
+        </div>
+    </div>
+
+@endsection
+
+@section('after-scripts-end')
+    <!-- DataTables -->
+    <script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/buttons.colVis.min.js') }}"></script>
+    
+    <!--delete script-->
+    <script type="text/javascript">
+      $('button.btn-danger').on('click', function(e){
       {
        event.preventDefault();
+       var self = $(this)
        swal({   
         title: "Are you sure?",   
         text: "You will not be able to recover this data!",   
@@ -30,7 +91,7 @@
             if (isConfirm)
              {     
                 swal("Deleted!", "The data will be deleted in a moment.", "success"); 
-                document.forms['delete'].submit();  
+                self.parents(".delete_form").submit();
             }
              else 
             {     
@@ -40,66 +101,9 @@
         });
 
       }
+    });
     </script>
-<div class="box box-success">
-        <div class="box-header with-border">
-            <h3 class="box-title">Meetings</h3>
 
-            <div class="box-tools pull-right">
-                <a href="{{ url('admin/events/meetings/create') }}" class="btn btn-primary pull-right btn-sm">Add New Meeting</a>
-            </div>
-        </div><!-- /.box-header -->
-		<div class="box-body with-border">
-		 <div class="table">
-			  <table id="table" class="table table-bordered table-striped table-hover">
-					<thead>
-						 <tr>
-							  <th>ID</th><th>Title</th><th>Description</th><th>Agenda</th><th>Type</th><th>Actions</th>
-						 </tr>
-					</thead>
-					<tbody>
-					{{-- */$x=0;/* --}}
-					@foreach($meetings as $item)
-						 {{-- */$x++;/* --}}
-						 <tr>
-							  <td>{{ $item->id }}</td>
-							  <td><a href="{{ url('admin/events/meetings', $item->id) }}">{{ $item->title }}</a></td><td>{{ $item->description }}</td><td>{{ $item->agenda }}</td><td>{{ $item->type }}</td>
-							  <td>
-									<a href="{{ url('admin/events/meetings/' . $item->id . '/edit') }}">
-										 <button type="submit" class="btn btn-primary btn-xs">Update</button>
-									</a> /
-									{!! Form::open([
-										 'id' => 'delete',
-										 'method'=>'DELETE',
-										 'url' => ['admin/events/meetings', $item->id],
-										 'style' => 'display:inline',
-										 'onsubmit' => 'return ConfirmDelete()'
-									]) !!}
-										 {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
-									{!! Form::close() !!}
-							  </td>
-						 </tr>
-					@endforeach
-					</tbody>
-			  </table>
-			  <div class="pagination"> {!! $meetings->render() !!} </div>
-		 </div>
-	 </div>
-</div>
-@stop
-@section('after-scripts-end')
-    <!-- DataTables -->
-    <script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables/buttons.flash.min.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables/buttons.flash.min.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables/buttons.colVis.min.js') }}"></script>
-    
     <!-- page script -->
     <script>
       $(function () {
