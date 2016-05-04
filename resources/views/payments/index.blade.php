@@ -10,37 +10,6 @@
 @stop
 
 @section('content')
-    <script>
-      function ConfirmDelete()
-      {
-       event.preventDefault();
-       swal({   
-        title: "Are you sure?",   
-        text: "You will not be able to recover this data!",   
-        type: "warning",   
-        showCancelButton: true,   
-        confirmButtonColor: "#DD6B55",   
-        confirmButtonText: "Yes, delete it!",   
-        cancelButtonText: "No, cancel it!",   
-        closeOnConfirm: false,  
-        closeOnCancel: false
-         }, 
-         function(isConfirm)
-         {   
-            if (isConfirm)
-             {     
-                swal("Deleted!", "The data will be deleted in a moment.", "success"); 
-                document.forms['delete'].submit();  
-            }
-             else 
-            {     
-                swal("Cancelled", "The data is safe :)", "error");   
-                return false;
-            } 
-        });
-
-      }
-    </script>
     <div class="box box-success">
         <div class="box-header with-border">
             <h3 class="box-title">Payments</h3>
@@ -55,7 +24,7 @@
         @include('flash::message')
 
         <div class="clearfix"></div>
-
+        <div class="box-body">
        <div class="table">
         <table id="example2" class="table table-bordered table-striped table-hover">
             <thead>
@@ -75,13 +44,12 @@
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
                         </a> /
                         {!! Form::open([
-                            'id' => 'delete',
                             'method'=>'DELETE',
-                            'url' => ['admin/payments', $item->id],
+                            'route' => ['admin.payments.destroy', $item->id],
                             'style' => 'display:inline',
-                            'onsubmit' => 'return ConfirmDelete()'
+                            'class' => 'delete_form'
                         ]) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                            <button class="btn btn-danger btn-xs">Delete</button>
                         {!! Form::close() !!}
                     </td>
                 </tr>
@@ -89,6 +57,7 @@
             </tbody>
         </table>
         <div class="pagination"> {!! $payments->render() !!} </div>
+        </div>
     </div>
 @stop
 
@@ -105,6 +74,41 @@
     <script src="{{ asset('/plugins/datatables/buttons.print.min.js') }}"></script>
     <script src="{{ asset('/plugins/datatables/buttons.colVis.min.js') }}"></script>
     <script src="{{ asset('/plugins/datatables/dataTables.select.min.js') }}"></script>
+
+    <!--delete script-->
+    <script type="text/javascript">
+      $('button.btn-danger').on('click', function(e){
+      {
+       event.preventDefault();
+       var self = $(this)
+       swal({   
+        title: "Are you sure?",   
+        text: "You will not be able to recover this data!",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Yes, delete it!",   
+        cancelButtonText: "No, cancel it!",   
+        closeOnConfirm: false,  
+        closeOnCancel: false
+         }, 
+         function(isConfirm)
+         {   
+            if (isConfirm)
+             {     
+                swal("Deleted!", "The data will be deleted in a moment.", "success"); 
+                self.parents(".delete_form").submit();
+            }
+             else 
+            {     
+                swal("Cancelled", "The data is safe :)", "error");   
+                return false;
+            } 
+        });
+
+      }
+    });
+    </script>
     
     <!-- page script -->
     <script>

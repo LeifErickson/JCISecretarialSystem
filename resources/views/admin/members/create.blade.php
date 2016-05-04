@@ -13,7 +13,7 @@
 <div style="margin-left: 20px">
 	<div class="box box-success">
 		<div class="box-header">
-			<h1>Create New Member</h1>
+			<h3 class="box-title">New Member</h3>
 			<div class="box-tools pull-left" style="margin-left: 20px">
 			  <a href="{{ url('admin/members') }}" class="btn btn-primary pull-right btn-sm">Go Back</a>
 			</div>

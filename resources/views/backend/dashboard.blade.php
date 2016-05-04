@@ -27,7 +27,7 @@
         </div><!-- /.box-body -->
     </div><!--box box-success-->
 	</div>
-	<div id="menu1" class="tab-pane fade">
+	<div id="menu1" class="tab-pane fade active">
     <div class="box box-success">
         <div class="box-header with-border">
             <!-- <h3 class="box-title">{{ trans('strings.backend.dashboard.welcome') }} {!! access()->user()->name !!}!</h3> -->
@@ -42,7 +42,7 @@
         </div><!-- /.box-body -->
     </div><!--box box-success-->
 	</div>
-	<div id="menu2" class="tab-pane fade">
+	<div id="menu2" class="tab-pane fade active">
 		<div class="box box-success">
 		  <div class="box-header with-border">
 		  <h3 class="box-title">Last 120 Projects </h3>
@@ -63,9 +63,12 @@
 <script>
 $(document).ready(function() 
 {
-    
-
-// page is now ready, initialize the calendar...
+    var days_remaining = <?php echo $days_remaining; ?>;
+    var hours_remaining = <?php echo $hours_remaining; ?>;
+    if (days_remaining <= 9)
+    {
+        swal("Reminder!", "There will be an event " + days_remaining + " days and " + hours_remaining + " hours from now. \nPlease Check the Event Calendar");
+    }
 
 $('#calendar').fullCalendar({
     eventRender: function (event, element) 

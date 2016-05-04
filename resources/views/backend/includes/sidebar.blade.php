@@ -46,29 +46,26 @@
                 </li>
             </ul>
 				<!--START OF TEST SIDE BAR -->
-				<li class="{{ Active::pattern('admin/event*') }} treeview">
-                    <a href="{!! url('admin/events/all') !!}">
-                    <span>Event Management</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                 </li>   
-                <ul class="treeview-menu {{ Active::pattern('admin/events*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/events*', 'display: block;') }}">
-                    <li class="{{ Active::pattern('admin/events/projects') }}">
-                        <a href="{!! url('admin/events/projects') !!}">Projects</a>
-                    </li>
-                    <li class="{{ Active::pattern('admin/events/meetings') }}">
-                        <a href="{!! url('admin/events/meetings') !!}">Meetings</a>
-                    </li>
-					<li class="{{ Active::pattern('admin/events') }}">
-                        <a href="{!! url('admin/events') !!}">Others</a>
-                     </li>
-					 <li class="{{ Active::pattern('admin/events/add') }}">
-                        <a href="{!! url('admin/events/add') !!}">Add Other Events</a>
-                    </li>
-                  <li class="{{ Active::pattern('admin/attendanceMonitoring/0') }}">
-                        <a href="{!! url('admin/attendanceMonitoring/0') !!}">Attendance Monitoring</a>
-                     </li> 
-                </ul>
+			<li class="{{ Active::pattern('admin/event*') }} treeview">
+                <a href="{!! url('admin/events/all') !!}">
+                <span>Event Management</span>
+                <i class="fa fa-angle-left pull-right"></i>
+                </a>
+             </li>   
+            <ul class="treeview-menu {{ Active::pattern('admin/events*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/events*', 'display: block;') }}">
+                <li class="{{ Active::pattern('admin/events/projects') }}">
+                    <a href="{!! url('admin/events/projects') !!}">Projects</a>
+                </li>
+                <li class="{{ Active::pattern('admin/events/meetings') }}">
+                    <a href="{!! url('admin/events/meetings') !!}">Meetings</a>
+                </li>
+				<li class="{{ Active::pattern('admin/events') }}">
+                    <a href="{!! url('admin/events') !!}">Others</a>
+                 </li>
+            </ul>
+            <li class="{{ Active::pattern('admin/attendanceMonitoring/0') }}">
+                <a href="{!! url('admin/attendanceMonitoring/0') !!}">Attendance Monitoring</a>
+            </li> 
             
 				<!--END OF TEST SIDE BAR -->
 				
