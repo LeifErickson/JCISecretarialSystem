@@ -36,4 +36,4 @@
         <div class="pagination"> {!! $category->render() !!} </div>
     </div>
 
-@endsection
+@stop

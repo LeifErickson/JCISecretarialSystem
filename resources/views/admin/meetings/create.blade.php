@@ -7,7 +7,7 @@
         {{ trans('labels.backend.access.meeting.management') }}
         <small>{{ trans('labels.backend.access.meeting.active') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
 	<div class="box box-success">
@@ -115,4 +115,4 @@
     @endif
 	</div>
 </div>
-@endsection
+@stop

@@ -7,7 +7,7 @@
         {{ trans('labels.backend.access.allevents.management') }}
         <small>{{ trans('labels.backend.access.allevents.active') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
     <script>
@@ -123,7 +123,7 @@
         </table>
     </div>
     </div>
-@endsection
+@stop
 
 @section('after-scripts-end')
     <!-- DataTables -->
@@ -209,4 +209,4 @@
         });
       });
     </script>
-@endsection
+@stop

@@ -5,7 +5,7 @@
         Update Event
     </h2>
 	 
-@endsection
+@stop
 @section('content')
     <div id="page-wrapper">
 		<div class="container-fluid">
@@ -110,7 +110,7 @@
 			</div>
 		</div>
 	</div>
-@endsection
+@stop
 
 @section('after-scripts-end')
 		 <script src="{{ URL::asset('datepicker/test.js') }}"></script>

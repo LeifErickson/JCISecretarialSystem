@@ -54,7 +54,7 @@
         </div>
     </div>
 
-@endsection
+@stop
 
 @section('after-scripts-end')
     <!-- DataTables -->

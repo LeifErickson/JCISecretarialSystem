@@ -4,7 +4,7 @@
     <h1>
        Attendance Monitoring
     </h1>
-@endsection
+@stop
 @section('content')
 	 <script>
       function ConfirmDelete()
@@ -97,7 +97,7 @@
 	</div><!--box box-success-->
 	</div>
 	
-@endsection
+@stop
 @section('after-scripts-end')
     <!-- DataTables -->
     <script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}"></script>
