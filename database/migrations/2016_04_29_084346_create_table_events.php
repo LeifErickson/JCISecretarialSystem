@@ -17,7 +17,7 @@ class CreateTableEvents extends Migration
             $table->string('eventtype')->default('otherevents');
 			$table->integer('user_id')->unsigned();
 			$table->string('name');
-			$table->string('description');
+			$table->longText('description');
 			$table->date('year');
 			$table->foreign('user_id')->references('id')->on('users');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
