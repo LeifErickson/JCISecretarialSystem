@@ -5,7 +5,6 @@
 @section('page-header')
     <h1>
         {{ trans('labels.backend.access.project.management') }}
-        <small>{{ trans('labels.backend.access.project.active') }}</small>
     </h1>
 @stop
 
@@ -26,6 +25,12 @@
 				  {!! Form::open(['route' => 'admin.events.projects.store']) !!}
 
 						@include('projects.fields')
+												
+						<!-- Submit Field -->
+						<div class="form-group col-sm-12">
+							 {!! Form::submit('Create', ['class' => 'btn btn-primary']) !!}
+							 <a href="{!! route('admin.events.projects.index') !!}" class="btn btn-default">Cancel</a>
+						</div>
 
 				  {!! Form::close() !!}
 			 </div>
