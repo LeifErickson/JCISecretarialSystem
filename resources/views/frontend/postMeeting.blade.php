@@ -5,7 +5,7 @@
 					<?php foreach($data as $row){?>
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h2><?php echo $row->title; ?></h2>
+								<h2><?php echo $row->agenda; ?></h2>
 								<h5><span class="glyphicon glyphicon-time"></span> Posted on: <?php echo date("M j, Y", strtotime($row->created_at)); ?></h5>
 							</div>
 

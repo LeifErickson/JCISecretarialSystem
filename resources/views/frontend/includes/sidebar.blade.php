@@ -10,6 +10,23 @@
 					<?php foreach($upcoming_Events as $events){?>
 							<li><a  href="post/event/<?php echo $events->id; ?>" ><?php echo $events->name; ?></a></li>				
 					<?php }?>
+					<?php foreach($upcoming_Meeting as $meeting){?>
+							<li><a  href="post/meeting/<?php echo $meeting->id; ?>" ><?php echo $meeting->agenda; ?></a></li>				
+					<?php }?>
+				  </ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="col-md-12" style="margin-bottom: 15px;border-radius: 5px;">
+			<div class="page-header">  
+				<h3><i class="glyphicon glyphicon-star"></i> Projects</h3>
+			</div>
+			<div class="page-body">
+					 <ul>	
+					<?php foreach($projects as $projects){?>
+							<li><a  href="post/event/<?php echo $projects->id; ?>" ><?php echo $projects->name; ?></a></li>				
+					<?php }?>
 				  </ul>
 			</div>
 		</div>
