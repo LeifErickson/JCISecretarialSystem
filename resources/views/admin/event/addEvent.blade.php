@@ -56,6 +56,16 @@
 					</div>
 					<div class="box box-info">
 						<div class="box-header with-border">
+							<h3 class="box-title">Event Organizer</h3>
+						</div>
+							<div class="box-body">
+								<div class="form-group">
+									<input name="event_organizer" class="form-control" type="text" placeholder="Organizer" required >
+								</div>
+							</div>
+					</div>
+					<div class="box box-info">
+						<div class="box-header with-border">
 							<h3 class="box-title">Sponsor(s)</h3>
 						</div>
 						<div class="box-body">
@@ -63,7 +73,7 @@
 							<table  class="table table-bordered">
 								<thead>	
 									<th>Name</th>
-									<th>Amount</th>
+									<th>Donation</th>
 								</thead>
 								<tbody id="SponsorsTable">
 								</tbody>
@@ -83,7 +93,7 @@
 								
 							</div>
 							<div class="form-group">
-								<input id="amount" class="form-control" type="number" placeholder="Amount" required/>
+								<textarea id="donation" class="form-control" type="number" placeholder="Donation. . ." required /></textarea>
 							</div>
 						</div>
 						<div  class="box-footer">
@@ -115,13 +125,13 @@
 			function addSponsor(){
 				var s_id = document.getElementById("sponsor_id").value;
 				var name = document.getElementById("name").value;
-				var amount = document.getElementById("amount").value;
+				var donation = document.getElementById("donation").value;
 				var list = document.getElementById("list_of_sponsors").value;
 				
 				if(list != ""){
-					document.getElementById("list_of_sponsors").value = list+""+s_id+","+amount+"\n";
+					document.getElementById("list_of_sponsors").value = list+""+name+"|"+donation+"][";
 				} else {
-					document.getElementById("list_of_sponsors").value = s_id+","+amount+"\n";
+					document.getElementById("list_of_sponsors").value = name+"|"+donation+"][";
 				}
 					
 				var tr  = document.createElement("TR");
@@ -132,7 +142,7 @@
 				tr.appendChild(td1);
 			
 				var td2 = document.createElement("TD");
-				var t2 = document.createTextNode(amount);
+				var t2 = document.createTextNode(donation);
 				td2.appendChild(t2);
 				tr.appendChild(td2);
 				
@@ -151,7 +161,7 @@
 				document.getElementById("SponsorsTable").appendChild(tr);
 				document.getElementById("sponsor_id").value = "";
 				document.getElementById("name").value = "";
-				document.getElementById("amount").value = "";
+				document.getElementById("donation").value = "";
 			}
 			//search
 			function setVal(a,b){

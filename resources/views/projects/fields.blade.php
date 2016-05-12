@@ -25,7 +25,7 @@
 <!-- Description Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('description', 'Description:') !!}
-    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('description', null, ['id'=> 'editor1','class' => 'form-control']) !!}
 </div>
 
 <!-- Objectives Field -->

@@ -7,71 +7,72 @@
     </h1>
 @stop
 @section('content')
-<div class="row">
-	<div class="col-md-8">
-		<div class="box">
-        <div class="box-body">
-             <table class="table" id="dataTables-members" >
-					<thead>
-						<tr>
-							 <th>Name</th>
-							 <th>Date Attended</th>
-							 <th>Status</th>
-							 <th>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
-							$id = $data_id;
-							
-							
-							
-							foreach($data as $row){
-								echo "<tr>
-											<td>".$row->lastname.",".$row->firstname." ".$row->middlename."</td>
-											<td>".$row->year."</td>
-											<td>".$row->status."</td>
-											<td>
-												<a  class='btn btn-xs btn-danger'  href='deleteattendance/".$row->member_id."'><i class='fa fa-trash' title='' data-placement='top' data-toggle='tooltip' data-original-title='Delete'></i></a>
-											</td>
-										</tr>";
-							}
-						?>
-					</tbody>
-				</table>
-        </div><!-- /.box-body -->
-		</div><!--box box-success-->
-	</div>
-	<div class="col-md-4">
-		<div class="box">
-			<div class="box-header with-border">	
-				<h3 class="box-title">Information</h3>
+	<div class="box box-success">
+		<div class="box-header">
+			<h3 class="box-title">Project Attendance</h3>
+			<div class="box-tools pull-right">
+				 <a href="{{ URL::previous() }}" class="btn btn-primary pull-right btn-sm">Back</a>
 			</div>
-			<?php 	
-				foreach($info as $row){ 
-					$event_id = $row->id;
-					
-				?>
-				
-			<div class="box-body">
-				<label>Name : </label><?php echo " ".$row->name; ?></br>
-				<label >Date Created : </label><?php echo  " ".$row->year; ?></br>
-				<label >Description: </label><?php echo  " ".$row->description; ?></br>
-				<label >Sponsored by: </label>
-			<?php } 
-				$name = "";
-				foreach($sponsors as $row){ 
-					$name = $row->firstname." ".$row->lastname;
-					echo $name."</br>";
-				}
-				?>
-			</div>
-			<div class="box-footer">
-				<button title='Add Attendance' data-toggle='modal' data-target='#add' class="btn btn-block btn-info">Add </button>
+		</div>
+		<div class="box-body">
+			<div class="col-md-8">	
+				<div class="box">
+					<div class="box-body">
+						 <table class="table" id="dataTables-members" >
+							<thead>
+								<tr>
+									 <th>Name</th>
+									 <th>Date Attended</th>
+									 <th>Status</th>
+									 <th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+									$id = $data_id;
+									
+									
+									
+									foreach($data as $row){
+										echo "<tr>
+													<td>".$row->lastname.",".$row->firstname." ".$row->middlename."</td>
+													<td>".$row->year."</td>
+													<td>".$row->status."</td>
+													<td>
+														<a  class='btn btn-xs btn-danger'  href='../deleteattendanceProject/".$row->member_id."'><i class='fa fa-trash' title='' data-placement='top' data-toggle='tooltip' data-original-title='Delete'></i></a>
+													</td>
+												</tr>";
+									}
+								?>
+							</tbody>
+						</table>
+					</div><!-- /.box-body -->
+				</div>
+			</div><!--box box-success-->
+			<div class="col-md-4">
+					<div class="box">
+						<div class="box-header with-border">	
+							<h3 class="box-title">Information</h3>
+						</div>
+						<?php 	
+							foreach($info as $row){ 
+								$event_id = $row->id;
+								
+							?>
+							
+						<div class="box-body">
+							<label>Name : </label><?php echo " ".$row->name; ?></br>
+							<label >Date Created : </label><?php echo  " ".$row->created_at; ?></br>
+							<label >Description: </label><?php echo  " ".$row->description; ?></br>
+						<?php } 	?>
+						</div>
+						<div class="box-footer">
+							<button title='Add Attendance' data-toggle='modal' data-target='#add' class="btn btn-block btn-info">Add </button>
+						</div>
+					</div>
 			</div>
 		</div>
 	</div>
-</div>
 <!-- MODAL -->
 <div id="add" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="addModal">
 	<div class="modal-dialog">
@@ -125,7 +126,7 @@
 				 }
 			  }
 			  
-			  xmlhttp.open("GET","../searchMeeting/"+p_id+"/"+str,true);
+			  xmlhttp.open("GET","../searchProject/"+p_id+"/"+str,true);
 			  xmlhttp.send();
 			  
 			}

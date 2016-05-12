@@ -15,6 +15,7 @@ class CreateTableEvents extends Migration
          Schema::create('events', function(Blueprint $table) {
 			$table->increments('id');
             $table->string('eventtype')->default('otherevents');
+				$table->string('organizer');
 			$table->integer('user_id')->unsigned();
 			$table->string('name');
 			$table->longText('description');

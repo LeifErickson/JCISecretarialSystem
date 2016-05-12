@@ -49,8 +49,11 @@
                             'style' => 'display:inline',
                             'class' => 'delete_form'
                         ]) !!}
-                            <button class="btn btn-danger btn-xs">Delete</button>
+                            <button class="btn btn-danger btn-xs">Delete</button>  / 
                         {!! Form::close() !!}
+								<a  href='../attendance/projectsAttendance/{{ $item->id }}'  ><button class="btn btn-success btn-xs">Attendance</button></a>  /
+								<a href="../../post/project/{{ $item->id }}" ><button class="btn btn-primary btn-xs">Preview</button></a> 
+								
                     </td>
                 </tr>
             @endforeach

@@ -7,16 +7,17 @@
 						<div class="col-md-8 ">
 							<div class="col-md-12">
 										<?php foreach($data as $events){?>
-											<div class="col-md-12" style="background-color:rgb(43, 169, 230);margin-bottom: 15px;border-radius: 5px;">
+											<div class="col-md-12" style="margin-bottom: 15px;border-radius: 5px;">
 												<div class="page-header"  style="margin-left:10px">
-													<h2><a style="color:white;" href="#"><?php echo $events->name?></a></h2>
-													<h5><span class="glyphicon glyphicon-time"></span> Posted on: <?php echo date("M j, Y", strtotime($events->created_at));?></h5>
+													<h2><a style="color:black;" href="post/event/<?php echo $events->id; ?>" ><?php echo $events->name; ?></a></h2>
+													<h5><span class="glyphicon glyphicon-time"></span> Posted on: <?php echo date("M j, Y", strtotime($events->created_at)); ?></h5>
 												
 												</div>
 												<div class="page-body">
 													<?php 
-													$string = $events->description;
-													echo substr($string, 0, -1); ?>
+														$string = $events->description;
+														echo $string;
+													?>
 												</div>
 												<div class="page-footer">
 												
@@ -27,20 +28,7 @@
 										<?php }?>
 							</div>
 						</div><!-- panel -->
-						<div class="col-md-4">
-							<div class="panel panel-default">
-								 <div class="panel-heading">
-									<div class="page-header">  <h3><i class="glyphicon glyphicon-calendar">
-										</i> Upcoming Events</h3>
-									</div>
-									  <ul>
-											<li><a href="#" >Event 1</a></li>
-											<li><a href="#" >Event 2</a></li>
-											<li><a href="#" >Event 3</a></li>
-									  </ul>
-								 </div>
-							</div><!-- panel -->
-						</div>
+						@include('frontend.includes.sidebar')
         </div><!-- col-md-10 -->
        
 

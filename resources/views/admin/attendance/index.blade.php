@@ -23,16 +23,13 @@
 					<tbody>
 						<?php
 							$id = $data_id;
-							
-							
-							
 							foreach($data as $row){
 								echo "<tr>
 											<td>".$row->lastname.",".$row->firstname." ".$row->middlename."</td>
 											<td>".$row->year."</td>
 											<td>".$row->status."</td>
 											<td>
-												<a href='deleteattendance/".$row->member_id."' > <button onclick='return confirm(\"Are you want to delete?\")' data-placement='top' data-toggle='tooltip' data-original-title='Delete'  class='btn btn-danger btn-xs'>Delete</button></a>
+												<a href='../deleteattendance/".$row->member_id."' > <button onclick='return confirm(\"Are you want to delete?\")' data-placement='top' data-toggle='tooltip' data-original-title='Delete'  class='btn btn-danger btn-xs'>Delete</button></a>
 											</td>
 										</tr>";
 							}
@@ -55,14 +52,14 @@
 				
 			<div class="box-body">
 				<label>Name : </label><?php echo " ".$row->name; ?></br>
-				<label >Date Created : </label><?php echo  " ".$row->year; ?></br>
-				<label >Description: </label><?php echo  " ".$row->description; ?></br>
-				<label >Sponsored by: </label>
+				<label >Organizer : </label><?php echo " ".$row->organizer; ?></br>
+				<label >Date Created : </label><?php echo " ".date("M j, Y", strtotime($row->year)); ?></br>
+				<label >Sponsored by: </label></br>
 			<?php } 
 				$name = "";
 				foreach($sponsors as $row){ 
-					$name = $row->firstname." ".$row->lastname;
-					echo $name."</br>";
+					$name = $row->name;
+					echo " - ".$name."</br>";
 				}
 				?>
 			</div>

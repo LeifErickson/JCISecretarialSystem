@@ -17,7 +17,7 @@ class CreateprojectsTable extends Migration
             $table->increments('id');
             $table->string('eventtype')->default('projects');
             $table->string('name');
-            $table->string('description');
+            $table->longText('description');
             $table->string('chapter');
             $table->string('mailingaddress');
             $table->string('nationalorganization');

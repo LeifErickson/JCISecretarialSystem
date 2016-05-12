@@ -14,12 +14,11 @@ class CreateTableFinance extends Migration
     {
          Schema::create('finances', function(Blueprint $table) {
 				$table->increments('id');
-				$table->integer('member_id')->unsigned();
+				$table->string('name');
 				$table->integer('event_id')->unsigned();
-				$table->string('amount');
-				$table->foreign('member_id')->references('id')->on('members');
+				$table->string('donation');
 				$table->foreign('event_id')->references('id')->on('events');
-                $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
 			});
     }

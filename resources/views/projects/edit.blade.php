@@ -30,3 +30,14 @@
 			  </div>
 		  </div>
 @stop
+
+@section('after-scripts-end')
+	<script src="{{ URL::asset('ckeditor/ckeditor.js') }}"></script>
+		 
+		 
+		<script>
+			// Replace the <textarea id="editor1"> with a CKEditor
+			// instance, using default configuration.
+			CKEDITOR.replace( 'editor1' );
+		</script>
+@stop
