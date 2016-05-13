@@ -153,6 +153,22 @@ return [
                 ],
             ],
 
+            'allevents' => [
+                'create' => 'Create Event',
+                'edit' => 'Edit Event',
+                'management' => 'All Events',
+                'active' => 'Projects | Meetings | Other Events',
+                'show' => 'Event info',
+
+                'table' => [
+                    'number_of_users' => 'Number of Users',
+                    'permissions' => 'Permissions',
+                    'role' => 'Role',
+                    'sort' => 'Sort',
+                    'total' => 'role total|roles total',
+                ],
+            ],
+
             'users' => [
                 'active' => 'Active Users',
                 'all_permissions' => 'All Permissions',
