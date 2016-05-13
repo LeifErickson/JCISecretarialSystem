@@ -38,4 +38,4 @@
         </ul>
     @endif
 
-@endsection
+@stop

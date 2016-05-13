@@ -42,4 +42,4 @@
         </ul>
     @endif
 
-@endsection
+@stop

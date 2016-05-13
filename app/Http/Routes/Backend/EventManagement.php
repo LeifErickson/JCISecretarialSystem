@@ -7,12 +7,16 @@ Route::group([
 ], function() {
     
 	 Route::get('/', [
-        'as'   => 'events::dashboard',
+        'as'   => 'eventsdashboard',
         'uses' => '\App\Http\Controllers\Admin\EventsController@index',
     ]);
 	 Route::get('add', [
         'as'   => 'events::dashboard',
         'uses' => '\App\Http\Controllers\Admin\EventsController@addEventForm',
+    ]);
+	 Route::get('viewEvent/{id}', [
+        'as'   => 'events::dashboard',
+        'uses' => '\App\Http\Controllers\Admin\EventsController@viewEvent',
     ]);
 	 Route::post('addEvent', [
         'as'   => 'events::dashboard',
@@ -22,7 +26,7 @@ Route::group([
         'as'   => 'events::dashboard',
         'uses' => '\App\Http\Controllers\Admin\EventsController@delete',
     ]);  
-	  Route::get('EditProject/{id}', [
+	  Route::get('editEvent/{id}', [
         'as'   => 'events::dashboard',
         'uses' => '\App\Http\Controllers\Admin\EventsController@updateForm',
     ]);

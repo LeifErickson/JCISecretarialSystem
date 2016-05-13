@@ -10,6 +10,7 @@ use App\Project as Project;
 use Illuminate\Http\Request;
 use DB;
 use DateTime;
+use Session;
 
 class EventsController extends Controller
 {
@@ -17,6 +18,15 @@ class EventsController extends Controller
 	{
 		$result = DB::table('events')->orderBy('year', 'desc')->get();
 		return view('admin.event.index')->with('data',$result);
+	}
+	
+	public function viewEvent($id)
+	{
+		$result = DB::select('SELECT * FROM `events`  WHERE  `id`=?',[$id]);
+		$finance = DB::select('SELECT `name`,`donation` FROM `finances` WHERE
+					`event_id` = ?',[$id]);
+					
+		return view('admin.event.viewEvent',['events'=>$result,'sponsors'=>$finance]);
 	}
 	public function addEventForm()
 	{
@@ -29,8 +39,9 @@ class EventsController extends Controller
 		$description = $request->input('description');
 		$date = $request->input('date');
 		$Sponsors = $request->input('sponsors');
-		DB::insert('INSERT INTO `events`(`user_id`,`name`, `description`,`year`) 
-		VALUES (?,?,?,?)', [1,"$title","$description","$date"]);
+		$organizer = $request->input('event_organizer');
+		DB::insert('INSERT INTO `events`(`user_id`,`name`, `description`,`year`,`organizer`) 
+		VALUES (?,?,?,?,?)', [1,"$title","$description","$date","$organizer"]);
 		
 		
 		$result = DB::select('SELECT max(`id`) as id FROM `events`');
@@ -39,11 +50,11 @@ class EventsController extends Controller
 			$id = $lastInsert->id;
 		}
 		 //"hello";
-		$split = explode("\n", $Sponsors);
+		$split = explode("][", $Sponsors);
 		$num = 0;
 		for($i=0;$i < count($split)-1;$i++){
-			$str = explode(",", $split[$i]);
-			DB::insert('INSERT INTO `finances` (`member_id`, `event_id`, `amount` )
+			$str = explode("|", $split[$i]);
+			DB::insert('INSERT INTO `finances` (`name`, `event_id`, `donation` )
 			VALUES (?,?,?)', [$str[0],$id,$str[1]]);
 		}
 		
@@ -51,14 +62,26 @@ class EventsController extends Controller
     }
 	public function delete($id)
 	{
-		DB::insert('DELETE FROM `events` WHERE `id`=?', [$id]);
-		return back();
+		try 
+		{
+			//DB::enableQueryLog();
+			DB::insert('DELETE FROM `events` WHERE `id`=?', [$id]);
+		   
+		}
+		catch(\Exception $e){
+			 Session::flash('flash_message', 'nya ga foreign key ka?!');
+			 //return redirect('admin/events');
+			return redirect('admin/events');
+			
+		}
+		
+		
 	}
 	public function updateForm($id)
 	{	
 		$result = DB::select('SELECT * FROM `events`  WHERE  `id`=?',[$id]);
-		$finance = DB::select('SELECT `members`.`id`,`firstname`,`lastname`,`amount` FROM `finances`,`members` WHERE `member_id` = `members`.`id`
-					AND `event_id` = ?',[$id]);
+		$finance = DB::select('SELECT `name`,`donation` FROM `finances` WHERE
+					`event_id` = ?',[$id]);
 		
 		
 		return view('admin.event.updateEvent', ['data' => $result,'finance'=> $finance]);
@@ -70,16 +93,16 @@ class EventsController extends Controller
 		$description = $request->input('description');
 		$date = $request->input('date');
 		$Sponsors = $request->input('sponsors');
-		
-		DB::insert('UPDATE `events` SET `name`=?,`description`=?, `year`=?
-		WHERE `id`=?', ["$title","$description","$date ",$id]);
+		$organizer = $request->input('event_organizer');
+		DB::insert('UPDATE `events` SET `name`=?,`description`=?, `year`=? ,`organizer`=?
+		WHERE `id`=?', ["$title","$description","$date ","$organizer",$id]);
 		
 		DB::insert('DELETE FROM `finances` WHERE `event_id`=?', [$id]);
-		$split = explode("\n", $Sponsors);
+		$split = explode("][", $Sponsors);
 		$num = 0;
 		for($i=0;$i < count($split)-1;$i++){
-			$str = explode(",", $split[$i]);
-			DB::insert('INSERT INTO `finances` (`member_id`, `event_id`, `amount` )
+			$str = explode("|", $split[$i]);
+			DB::insert('INSERT INTO `finances` (`name`, `event_id`, `donation` )
 			VALUES (?,?,?)', [$str[0],$id,$str[1]]);
 		}
 		 return redirect('admin/events');

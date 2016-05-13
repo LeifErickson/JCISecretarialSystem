@@ -5,15 +5,14 @@
 @section('page-header')
     <h1>
         {{ trans('labels.backend.access.member.management') }}
-        <small>{{ trans('labels.backend.access.member.active') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
 <div style="margin-left: 20px">
 	<div class="box box-success">
 		<div class="box-header">
-			<h1>Create New Member</h1>
+			<h3 class="box-title">New Member</h3>
 			<div class="box-tools pull-left" style="margin-left: 20px">
 			  <a href="{{ url('admin/members') }}" class="btn btn-primary pull-right btn-sm">Go Back</a>
 			</div>
@@ -21,8 +20,8 @@
 		<div class="box-footer">
 			<ul class="nav nav-tabs">
 			  <li id="form1" value="form1" class="active"><a data-toggle="tab" href="#first">FORM 1</a></li>
-			  <li id="form2" value="form2" ><a data-toggle="tab" href="#second">FORM 2</a></li>
-			  <li id="form3"  value="form3" style="display:none"><a data-toggle="tab" href="#third">FORM 3</a></li>
+			  <li id="form2" onclick="enableButton('FORM2')" value="form2" ><a data-toggle="tab" href="#second">FORM 2</a></li>
+			  <li id="form3" onclick="enableButton('FORM3')" value="form3" style="display:none"><a data-toggle="tab" href="#third">FORM 3</a></li>
 			</ul>
 		</div>
 	</div>
@@ -332,12 +331,14 @@
     <a id="get_third" style="cursor:pointer; font-size:45px; margin-left: 25px;">3</a>
 </div>
 -->
-<div id="fourth">
-    <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-3">
-            {!! Form::submit('Create', ['id' => 'submit','class' => 'btn btn-block btn-info btn-lg','disabled'=> 'true']) !!}
-        </div>
-    </div>
+<div class="box box-success">
+	<div class="box-header">
+		 <div class="form-group">
+			  <div class="col-sm-offset-9 col-sm-3">
+					{!! Form::submit('Create', ['id' => 'submit','class' => 'btn btn-block btn-info btn-lg','disabled'=> 'true']) !!}
+			 </div>
+		 </div>
+	 </div>
 </div>
     {!! Form::close() !!}
 
@@ -349,7 +350,7 @@
         </ul>
     @endif
 </div>
-@endsection
+@stop
 
 @section('before-scripts-end')
     <script>
@@ -372,7 +373,7 @@
 			} else if(a == "FORM3"){
 				document.getElementById('submit').disabled = false;
 			} else {
-				document.getElementById('submit').disabled = ture;
+				document.getElementById('submit').disabled = true;
 			}
 			//document.getElementById('form3').style.display = "none";
 		}
@@ -422,4 +423,4 @@
         });
 */
     </script>
-@endsection
+@stop

@@ -1,13 +1,13 @@
 @extends ('backend.layouts.master')
 
-@section ('title', trans('labels.backend.access.project.management'))
+@section ('title', trans('labels.backend.access.allevents.management'))
 
 @section('page-header')
     <h1>
-        {{ trans('labels.backend.access.project.management') }}
-        <small>{{ trans('labels.backend.access.project.active') }}</small>
+        {{ trans('labels.backend.access.allevents.management') }}
+        <small>{{ trans('labels.backend.access.allevents.active') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
     <script>
@@ -42,22 +42,14 @@
       }
     </script>
     <div class="box box-success">
-        <div class="box-header with-border">
-            <h3 class="box-title">All Events</h3>
-
-            <div class="box-tools pull-right">
-                <a href="{{ url('admin/events/projects/create') }}" class="btn btn-primary pull-right btn-sm">Add New Project</a>
-            </div>
-        </div><!-- /.box-header -->
-
         <div class="clearfix"></div>
 
         @include('flash::message')
 
         <div class="clearfix"></div>
-
+    <div class="box-body">
     <div class="table">
-        <table id="example1" class="table table-bordered table-striped table-hover">
+        <table id="example2" class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
                     <th>Event name</th><th>Type</th><th>Date Created</th><th>Actions</th>
@@ -130,7 +122,8 @@
             </tbody>
         </table>
     </div>
-@endsection
+    </div>
+@stop
 
 @section('after-scripts-end')
     <!-- DataTables -->
@@ -216,4 +209,4 @@
         });
       });
     </script>
-@endsection
+@stop

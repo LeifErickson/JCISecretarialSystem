@@ -6,6 +6,19 @@
 Route::get('/', 'FrontendController@index')->name('frontend.index');
 Route::get('macros', 'FrontendController@macros')->name('frontend.macros');
 
+Route::group([
+    'prefix'     => 'post',
+], function() {
+    Route::get('event/{id}', [
+        'uses' => '\App\Http\Controllers\Frontend\FrontendController@eventPost',
+    ]);
+	  Route::get('project/{id}', [
+        'uses' => '\App\Http\Controllers\Frontend\FrontendController@projectPost',
+    ]);
+	  Route::get('meeting/{id}', [
+        'uses' => '\App\Http\Controllers\Frontend\FrontendController@meetingPost',
+    ]);
+ });
 /**
  * These frontend controllers require the user to be logged in
  */

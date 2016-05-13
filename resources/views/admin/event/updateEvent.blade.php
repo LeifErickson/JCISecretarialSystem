@@ -1,15 +1,20 @@
 @extends('backend.layouts.master')
 
 @section('page-header')
-    <h2>
-        Update Event
-    </h2>
-	 
-@endsection
+    <h1>
+        Event
+    </h1>
+@stop
 @section('content')
-    <div id="page-wrapper">
-		<div class="container-fluid">
-			 <div class="row">
+	<div class="box box-success">
+		<div class="box-header">
+			<h3 class="box-title">Update Event</h3>
+			<div class="box-tools pull-left" style="margin-left: 20px">
+			  <a href="{{ url('admin/events') }}" class="btn btn-primary pull-right btn-sm">Go Back</a>
+			</div>
+		</div>
+		<div class="box-body">
+			<div class="row">
 				<div class="col-md-8">
 					<div class="box box-primary">
 						{{  Form::open(array('url' => 'admin/events/updateEvent', 'method' => 'post')) }}
@@ -52,8 +57,19 @@
 									</div>
 								</div>
 							</div>
-							<?php } ?>
+							
 					</div>
+					<div class="box box-info">
+						<div class="box-header with-border">
+							<h3 class="box-title">Event Organizer</h3>
+						</div>
+							<div class="box-body">
+								<div class="form-group">
+									<input name="event_organizer" class="form-control" value="<?php echo $row->organizer;?>" type="text" placeholder="Organizer" required >
+								</div>
+							</div>
+					</div>
+					<?php } ?>
 					<div class="box box-info">
 						<div class="box-header with-border">
 							<h3 class="box-title">Sponsor(s)</h3>
@@ -64,12 +80,12 @@
 								$textAReaValue = "";
 								$sponsorRow="";
 								foreach($finance as $row){ 
-									$id =$row->id;$amount= $row->amount ;$name = $row->firstname ." ". $row->lastname;
-									$textAReaValue .= $id.",".$amount."\n";
-									$sponsorRow = "<tr id='".$id."'>
+									$donation= $row->donation ;$name = $row->name;
+									$textAReaValue .= $name."|".$donation."][";
+									$sponsorRow .= "<tr id='".$name."'>
 													<td>". $name."</td>
-													<td>".$amount."</td>
-													<td><a  class='btn btn-xs btn-danger' onclick='delRow(".$id.")' ><i class='fa fa-trash' title='' data-placement='top' data-toggle='tooltip' data-original-title='Delete'></i></a></td>
+													<td>".$donation."</td>
+													<td><a  class='btn btn-xs btn-danger' onclick='delRow(\"".$name."\")' ><i class='fa fa-trash' title='' data-placement='top' data-toggle='tooltip' data-original-title='Delete'></i></a></td>
 												</tr>";
 								}			
 							?>
@@ -77,7 +93,7 @@
 							<table  class="table table-bordered">
 								<thead>	
 									<th>Name</th>
-									<th>Amount</th>
+									<th>Donation</th>
 									<th>Action</th>
 								</thead>
 								<tbody id="SponsorsTable">
@@ -99,7 +115,7 @@
 								
 							</div>
 							<div class="form-group">
-								<input id="amount" class="form-control" type="number" placeholder="Amount" required/>
+								<textarea id="donation" class="form-control" type="text" placeholder="Donation" required/></textarea>
 							</div>
 						</div>
 						<div  class="box-footer">
@@ -110,7 +126,7 @@
 			</div>
 		</div>
 	</div>
-@endsection
+@stop
 
 @section('after-scripts-end')
 		 <script src="{{ URL::asset('datepicker/test.js') }}"></script>
@@ -132,14 +148,14 @@
 			function addSponsor(){
 				var s_id = document.getElementById("sponsor_id").value;
 				var name = document.getElementById("name").value;
-				var amount = document.getElementById("amount").value;
+				var donation = document.getElementById("donation").value;
 				var list = document.getElementById("list_of_sponsors").value;
 				
 				
 				if(list != ""){
-					document.getElementById("list_of_sponsors").value = list+""+s_id+","+amount+"\n";
+					document.getElementById("list_of_sponsors").value = list+""+name+"|"+donation+"][";
 				} else {
-					document.getElementById("list_of_sponsors").value = s_id+","+amount+"\n";
+					document.getElementById("list_of_sponsors").value = name+"|"+donation+"][";
 				}
 					
 				var tr  = document.createElement("TR");
@@ -150,7 +166,7 @@
 				tr.appendChild(td1);
 				
 				var td2 = document.createElement("TD");
-				var t2 = document.createTextNode(amount);
+				var t2 = document.createTextNode(donation);
 				td2.appendChild(t2);
 				tr.appendChild(td2);
 				
@@ -170,7 +186,7 @@
 				document.getElementById("SponsorsTable").appendChild(tr);
 				document.getElementById("sponsor_id").value = "";
 				document.getElementById("name").value = "";
-				document.getElementById("amount").value = "";
+				document.getElementById("donation").value = "";
 			}
 			//search
 			function setVal(a,b){
@@ -213,14 +229,14 @@
 				if(con){
 					var val = document.getElementById("list_of_sponsors").value;
 					var j = 0;
-					var str = val.split("\n");
+					var str = val.split("][");
 					var newStr = "";
 					for(j;j < str.length;j++){
-						var values = str[j].split(",");
+						var values = str[j].split("|");
 						
 						if(id != values[0]){
 							 if(newStr != "")
-								newStr = newStr +"\n"+str[j];
+								newStr = newStr +"]["+str[j];
 							else
 								newStr = str[j];
 						} 

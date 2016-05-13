@@ -10,37 +10,6 @@
 @stop
 
 @section('content')
-    <script>
-      function ConfirmDelete()
-      {
-       event.preventDefault();
-       swal({   
-        title: "Are you sure?",   
-        text: "You will not be able to recover this data!",   
-        type: "warning",   
-        showCancelButton: true,   
-        confirmButtonColor: "#DD6B55",   
-        confirmButtonText: "Yes, delete it!",   
-        cancelButtonText: "No, cancel it!",   
-        closeOnConfirm: false,  
-        closeOnCancel: false
-         }, 
-         function(isConfirm)
-         {   
-            if (isConfirm)
-             {     
-                swal("Deleted!", "The data will be deleted in a moment.", "success"); 
-                document.forms['delete'].submit();  
-            }
-             else 
-            {     
-                swal("Cancelled", "The data is safe :)", "error");   
-                return false;
-            } 
-        });
-
-      }
-    </script>
     <div class="box box-success">
         <div class="box-header with-border">
             <h3 class="box-title">Members</h3>
@@ -49,7 +18,7 @@
                 <a href="{{ url('admin/members/create') }}" class="btn btn-primary pull-right btn-sm">Add New Member</a>
             </div>
         </div><!-- /.box-header -->
-		  <div class="box-body">
+    <div class="box-body">
     <div class="table">
     <label for='radio4'><input id='radio3' type='radio' name='RadioGroup1' value='all' checked />All</label>
     <!-- default filter is 'show everything' so make it checked -->
@@ -72,15 +41,14 @@
                     <td>
                         <a href="{{ url('admin/members/' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
-                        </a> /
+                        </a> 
                         {!! Form::open([
-                            'id' => 'delete',
                             'method'=>'DELETE',
-                            'url' => ['admin/members', $item->id],
+                            'route' => ['admin.members.destroy', $item->id],
                             'style' => 'display:inline',
-                            'onsubmit' => 'return ConfirmDelete()'
+                            'class' => 'delete_form'
                         ]) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                            <button class="btn btn-danger btn-xs">Delete</button>
                         {!! Form::close() !!}
                     </td>
                 </tr>
@@ -88,6 +56,7 @@
             </tbody>
         </table>
         <div class="pagination"> {!! $members->render() !!} </div>
+    </div>
     </div>
  </div>
 </div>
@@ -105,6 +74,42 @@
     <script src="{{ asset('/plugins/datatables/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('/plugins/datatables/buttons.print.min.js') }}"></script>
     <script src="{{ asset('/plugins/datatables/buttons.colVis.min.js') }}"></script>
+
+    <!--delete script-->
+    <script type="text/javascript">
+      $('button.btn-danger').on('click', function(e){
+      {
+       event.preventDefault();
+       var self = $(this)
+       swal({   
+        title: "Are you sure?",   
+        text: "You will not be able to recover this data!",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Yes, delete it!",   
+        cancelButtonText: "No, cancel it!",   
+        closeOnConfirm: false,  
+        closeOnCancel: false
+         }, 
+         function(isConfirm)
+         {   
+            if (isConfirm)
+             {     
+                swal("Deleted!", "The data will be deleted in a moment.", "success"); 
+                self.parents(".delete_form").submit();
+            }
+             else 
+            {     
+                swal("Cancelled", "The data is safe :)", "error");   
+                return false;
+            } 
+        });
+
+      }
+    });
+    </script>
+
     <!-- page script -->
     <script>
       $(function () {
@@ -241,7 +246,7 @@
     });
 
     // On click, get the value of the selected radio
-    $("input[name='RadioGroup1']").on('change', function () {
+    $("#filter").on('change', function () {
         // $radio = $("input[name='RadioGroup1']:checked").val();
         $radio = $(this).val();
         $dTable.fnDraw(); // refresh the dataTable

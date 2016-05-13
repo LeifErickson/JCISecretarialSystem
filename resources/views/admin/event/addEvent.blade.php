@@ -1,14 +1,20 @@
 @extends('backend.layouts.master')
 
 @section('page-header')
-    <h2>
-        Add Event
-    </h2>
+    <h1>
+        Event
+    </h1>
 	 
-@endsection
+@stop
 @section('content')
-    <div id="page-wrapper">
-		<div class="container-fluid">
+	<div class="box box-success">
+		<div class="box-header">
+			<h3 class="box-title">Create Event</h3>
+			<div class="box-tools pull-left" style="margin-left: 20px">
+			  <a href="{{ url('admin/events') }}" class="btn btn-primary pull-right btn-sm">Go Back</a>
+			</div>
+		</div>
+		<div class="box-body">
 			 <div class="row">
 				<div class="col-md-8">
 					<div class="box box-primary">
@@ -25,7 +31,7 @@
 							</div>
 							<div class="box-footer">
 								<div class="form-group">
-									<button class="btn btn-info pull-right" type="submit" >Publish</button>
+									<button class="btn btn-info pull-right" type="submit" >Create</button>
 								</div>
 							</div>
 					</div>
@@ -50,6 +56,16 @@
 					</div>
 					<div class="box box-info">
 						<div class="box-header with-border">
+							<h3 class="box-title">Event Organizer</h3>
+						</div>
+							<div class="box-body">
+								<div class="form-group">
+									<input name="event_organizer" class="form-control" type="text" placeholder="Organizer" required >
+								</div>
+							</div>
+					</div>
+					<div class="box box-info">
+						<div class="box-header with-border">
 							<h3 class="box-title">Sponsor(s)</h3>
 						</div>
 						<div class="box-body">
@@ -57,7 +73,7 @@
 							<table  class="table table-bordered">
 								<thead>	
 									<th>Name</th>
-									<th>Amount</th>
+									<th>Donation</th>
 								</thead>
 								<tbody id="SponsorsTable">
 								</tbody>
@@ -77,7 +93,7 @@
 								
 							</div>
 							<div class="form-group">
-								<input id="amount" class="form-control" type="number" placeholder="Amount" required/>
+								<textarea id="donation" class="form-control" type="number" placeholder="Donation. . ." required /></textarea>
 							</div>
 						</div>
 						<div  class="box-footer">
@@ -87,8 +103,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
-@endsection
+@stop
 
 @section('after-scripts-end')
 		 <script src="{{ URL::asset('datepicker/test.js') }}"></script>
@@ -110,13 +125,13 @@
 			function addSponsor(){
 				var s_id = document.getElementById("sponsor_id").value;
 				var name = document.getElementById("name").value;
-				var amount = document.getElementById("amount").value;
+				var donation = document.getElementById("donation").value;
 				var list = document.getElementById("list_of_sponsors").value;
 				
 				if(list != ""){
-					document.getElementById("list_of_sponsors").value = list+""+s_id+","+amount+"\n";
+					document.getElementById("list_of_sponsors").value = list+""+name+"|"+donation+"][";
 				} else {
-					document.getElementById("list_of_sponsors").value = s_id+","+amount+"\n";
+					document.getElementById("list_of_sponsors").value = name+"|"+donation+"][";
 				}
 					
 				var tr  = document.createElement("TR");
@@ -127,7 +142,7 @@
 				tr.appendChild(td1);
 			
 				var td2 = document.createElement("TD");
-				var t2 = document.createTextNode(amount);
+				var t2 = document.createTextNode(donation);
 				td2.appendChild(t2);
 				tr.appendChild(td2);
 				
@@ -146,7 +161,7 @@
 				document.getElementById("SponsorsTable").appendChild(tr);
 				document.getElementById("sponsor_id").value = "";
 				document.getElementById("name").value = "";
-				document.getElementById("amount").value = "";
+				document.getElementById("donation").value = "";
 			}
 			//search
 			function setVal(a,b){

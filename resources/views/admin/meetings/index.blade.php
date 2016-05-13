@@ -7,40 +7,9 @@
         {{ trans('labels.backend.access.meeting.management') }}
         <small>{{ trans('labels.backend.access.meeting.active') }}</small>
     </h1>
-@endsection
+@stop
 
 @section('content')
-    <script>
-      function ConfirmDelete()
-      {
-       event.preventDefault();
-       swal({   
-        title: "Are you sure?",   
-        text: "You will not be able to recover this data!",   
-        type: "warning",   
-        showCancelButton: true,   
-        confirmButtonColor: "#DD6B55",   
-        confirmButtonText: "Yes, delete it!",   
-        cancelButtonText: "No, cancel it!",   
-        closeOnConfirm: false,  
-        closeOnCancel: false
-         }, 
-         function(isConfirm)
-         {   
-            if (isConfirm)
-             {     
-                swal("Deleted!", "The data will be deleted in a moment.", "success"); 
-                document.forms['delete'].submit();  
-            }
-             else 
-            {     
-                swal("Cancelled", "The data is safe :)", "error");   
-                return false;
-            } 
-        });
-
-      }
-    </script>
     <div class="box box-success">
         <div class="box-header with-border">
             <h3 class="box-title">Meetings</h3>
@@ -49,6 +18,7 @@
                 <a href="{{ url('admin/events/meetings/create') }}" class="btn btn-primary pull-right btn-sm">Add New Meeting</a>
             </div>
         </div><!-- /.box-header -->
+    <div class="box-body">
     <div class="table">
         <table id="table" class="table table-bordered table-striped table-hover">
             <thead>
@@ -68,23 +38,27 @@
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
                         </a> /
                         {!! Form::open([
-                            'id' => 'delete',
                             'method'=>'DELETE',
-                            'url' => ['admin/events/meetings', $item->id],
+                            'route' => ['admin.events.meetings.destroy', $item->id],
                             'style' => 'display:inline',
-                            'onsubmit' => 'return ConfirmDelete()'
+                            'class' => 'delete_form'
                         ]) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                            <button class="btn btn-danger btn-xs">Delete</button> /
                         {!! Form::close() !!}
+								<a href='../attendance/meetingAttendance/{{ $item->id }}' > <button data-placement='top' data-toggle='tooltip' data-original-title='Attendance'  class='btn btn-success btn-xs'>Attendance</button></a> /
+								<a href="../../post/meeting/{{ $item->id }}">
+                            <button class="btn btn-primary btn-xs">Preview</button>
+                        </a>
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
         <div class="pagination"> {!! $meetings->render() !!} </div>
+        </div>
     </div>
 
-@endsection
+@stop
 
 @section('after-scripts-end')
     <!-- DataTables -->
@@ -99,6 +73,41 @@
     <script src="{{ asset('/plugins/datatables/buttons.print.min.js') }}"></script>
     <script src="{{ asset('/plugins/datatables/buttons.colVis.min.js') }}"></script>
     
+    <!--delete script-->
+    <script type="text/javascript">
+      $('button.btn-danger').on('click', function(e){
+      {
+       event.preventDefault();
+       var self = $(this)
+       swal({   
+        title: "Are you sure?",   
+        text: "You will not be able to recover this data!",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Yes, delete it!",   
+        cancelButtonText: "No, cancel it!",   
+        closeOnConfirm: false,  
+        closeOnCancel: false
+         }, 
+         function(isConfirm)
+         {   
+            if (isConfirm)
+             {     
+                swal("Deleted!", "The data will be deleted in a moment.", "success"); 
+                self.parents(".delete_form").submit();
+            }
+             else 
+            {     
+                swal("Cancelled", "The data is safe :)", "error");   
+                return false;
+            } 
+        });
+
+      }
+    });
+    </script>
+
     <!-- page script -->
     <script>
       $(function () {
@@ -157,4 +166,4 @@
         });
       });
     </script>
-@endsection
+@stop

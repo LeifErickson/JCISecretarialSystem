@@ -1,19 +1,19 @@
 <!-- Invoiceno Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('invoiceno', 'Invoiceno:') !!}
+    {!! Form::label('invoiceno', 'Invoice no:') !!}
     {!! Form::text('invoiceno', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Invoicedate Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('invoicedate', 'Invoicedate:') !!}
+    {!! Form::label('invoicedate', 'Invoice date:') !!}
     {!! Form::date('invoicedate', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Terms Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('terms', 'Terms:') !!}
-    {!! Form::text('terms', null, ['class' => 'form-control']) !!}
+    {!! Form::label('duetype', 'Due type:') !!}
+    {!! Form::text('duetype', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Duedate Field -->
@@ -28,40 +28,10 @@
     {!! Form::text('billto', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Description Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('description', 'Description:') !!}
-    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Quantity Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('quantity', 'Quantity:') !!}
-    {!! Form::text('quantity', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Price Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('price', 'Price:') !!}
-    {!! Form::text('price', null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Amount Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('amount', 'Amount:') !!}
-    {!! Form::text('amount', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Subtotal Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('subtotal', 'Subtotal:') !!}
-    {!! Form::text('subtotal', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Total Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('total', 'Total:') !!}
-    {!! Form::text('total', null, ['class' => 'form-control']) !!}
+    {!! Form::label('amountpaid', 'Amount paid:') !!}
+    {!! Form::text('amountpaid', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Notes Field -->

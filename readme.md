@@ -26,8 +26,11 @@ member management that can,
 - [x] CRUD Membership 
 - [x] CRUD Events 
 - [x] CRUD Payments
-- [x] Attendance Module (80% done)
-- [x] Generate Report (60% done)
+- [x] Attendance Module
+- [x] Generate Report
 - [x] Search Module 
 - [x] Calendar of Events
-- [ ] Notifications (Currently Working)
+- [x] Notifications
+
+## NOW ON TESTING AND DEBUGGING PART
+- 50% progress
