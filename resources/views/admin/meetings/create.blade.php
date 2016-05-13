@@ -5,19 +5,15 @@
 @section('page-header')
     <h1>
         {{ trans('labels.backend.access.meeting.management') }}
-        <small>{{ trans('labels.backend.access.meeting.active') }}</small>
     </h1>
 @stop
 
 @section('content')
 	<div class="box box-success">
-                <div class="box-header with-border">
+      <div class="box-header with-border">
                   <h3 class="box-title">Create New Meeting</h3>
-                </div>
-                <div class="box-body">
-    <h1>Create New Meeting</h1>
-    <hr/>
-
+      </div>
+		<div class="box-body">
     {!! Form::open(['url' => 'admin/events/meetings', 'class' => 'form-horizontal']) !!}
             <div class="form-group {{ $errors->has('title') ? 'has-error' : ''}}">
                 {!! Form::label('title', 'Title: ', ['class' => 'col-sm-3 control-label']) !!}

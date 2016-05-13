@@ -17,7 +17,7 @@ class AttendanceController extends Controller
 	public function eventsAttendance($id)
 	{			
 		
-		$result = DB::select('SELECT `events_attended`.`member_id`,`firstname`, `lastname`, `middlename`,`status`,`events_attended`.`year`
+		$result = DB::select('SELECT `events_attended`.`member_id`,`firstname`, `lastname`, `middlename`,`memberstatus`,`events_attended`.`year`
 					FROM `events_attended`,`members`  WHERE 
 					`events_attended`.`event_id` = ? AND 
 					`members`.`id` = `events_attended`.`member_id`',[$id]);

@@ -135,9 +135,3 @@
         {!! Form::radio('approvedbychapterpresident', "No", null) !!} No
     </label>
 </div>
-
-<!-- Submit Field -->
-<div class="form-group col-sm-12">
-    {!! Form::submit('Create', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('admin.events.projects.index') !!}" class="btn btn-default">Cancel</a>
-</div>

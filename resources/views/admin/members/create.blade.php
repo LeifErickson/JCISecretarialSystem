@@ -5,7 +5,6 @@
 @section('page-header')
     <h1>
         {{ trans('labels.backend.access.member.management') }}
-        <small>{{ trans('labels.backend.access.member.active') }}</small>
     </h1>
 @stop
 

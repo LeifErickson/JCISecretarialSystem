@@ -19,6 +19,15 @@ class EventsController extends Controller
 		$result = DB::table('events')->orderBy('year', 'desc')->get();
 		return view('admin.event.index')->with('data',$result);
 	}
+	
+	public function viewEvent($id)
+	{
+		$result = DB::select('SELECT * FROM `events`  WHERE  `id`=?',[$id]);
+		$finance = DB::select('SELECT `name`,`donation` FROM `finances` WHERE
+					`event_id` = ?',[$id]);
+					
+		return view('admin.event.viewEvent',['events'=>$result,'sponsors'=>$finance]);
+	}
 	public function addEventForm()
 	{
 		return view('admin.event.addEvent');
