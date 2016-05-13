@@ -26,14 +26,22 @@ class DashboardController extends Controller
     			 ->addNumberColumn('Registered');
 
     // Data For Member Chart
-    $total = 120;
-
+    
     $registereddate = DB::table("members")
     ->take(120)
     ->orderBy('membersince', 'desc')
 	->lists("membersince"); // "=" is optional
 
-	for ($i=0; $i < $total; $i++) 
+    if (count($registereddate) > 120)
+    {
+        $total = 120;
+    }
+    else
+    {
+        $total = count($registereddate);
+    }
+
+	for ($i=0; $i < count($registereddate); $i++) 
 	{ 
 		$members[$i] = DB::table("members")
 				 ->select('id')
@@ -44,7 +52,6 @@ class DashboardController extends Controller
     for ($a = 0; $a < $total; $a++)
     {
         $rowData = [
-          // "2014-8-$a", rand(800,1000), rand(800,1000)
         	$registereddate[$a],$members[$a]
         ];
 
@@ -65,13 +72,21 @@ class DashboardController extends Controller
     $projectsTable->addDateColumn('Day')
     			  ->addNumberColumn('Completed');
 
-    // Data For Member Chart
-    $total = 120;
+    // Data For Projects Chart
 
     $datecompleted = DB::table("projects")
     ->take(120)
     ->orderBy('datecompleted', 'desc')
 	->lists("datecompleted"); // "=" is optional
+
+    if (count($datecompleted) > 120)
+    {
+        $total = 120;
+    }
+    else
+    {
+        $total = count($datecompleted);
+    }
 
 	for ($i=0; $i < $total; $i++) 
 	{ 
@@ -84,7 +99,6 @@ class DashboardController extends Controller
     for ($a = 0; $a < $total; $a++)
     {
         $rowData = [
-          // "2014-8-$a", rand(800,1000), rand(800,1000)
         	$datecompleted[$a],$projects[$a]
         ];
 
