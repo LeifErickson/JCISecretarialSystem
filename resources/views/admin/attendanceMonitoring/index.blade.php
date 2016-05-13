@@ -6,37 +6,6 @@
     </h1>
 @stop
 @section('content')
-	 <script>
-      function ConfirmDelete()
-      {
-       event.preventDefault();
-       swal({   
-        title: "Are you sure?",   
-        text: "You will not be able to recover this data!",   
-        type: "warning",   
-        showCancelButton: true,   
-        confirmButtonColor: "#DD6B55",   
-        confirmButtonText: "Yes, delete it!",   
-        cancelButtonText: "No, cancel it!",   
-        closeOnConfirm: false,  
-        closeOnCancel: false
-         }, 
-         function(isConfirm)
-         {   
-            if (isConfirm)
-             {     
-                swal("Deleted!", "The data will be deleted in a moment.", "success"); 
-                document.forms['delete'].submit();  
-            }
-             else 
-            {     
-                swal("Cancelled", "The data is safe :)", "error");   
-                return false;
-            } 
-        });
-
-      }
-    </script>
 	<div class="box box-success">
 		<div class="box-header with-border">
 			<form >
@@ -49,8 +18,8 @@
 		</div>
 		<div class="box-body">	
 			<label for="radio4">Filter By: </label>
-			<select>
-				<option>All</option>
+			<select id="filter">
+				<option value="all">All</option>
 				<option>Present</option>
 				<option>Absent</option>
 			</select>
@@ -114,16 +83,26 @@
     
     <!-- page script -->
     <script>
-      $(function () {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": true,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false,
-           dom: 'Bfrtip',
+// Just wrapping in a function to prevent global $radio, $dTable, etc...
+(function encapsulate() {
+    var $radio = 'all'; // set to initial filter value, show all (RadioGroup1.radio3.value)
+    // This function filters the dataTable rows
+    $.fn.dataTableExt.afnFiltering.push(function(oSettings, aData, iDataIndex) {
+        // show everything
+        if ($radio == "all")
+            return true;
+        else // Filter column 1 where matches RadioGroup1.value
+            return aData[2] == $radio;
+    });
+    var $dTable = $("#example2").dataTable({
+        "sPaginationType": "full_numbers",
+        "bPaginate": true,
+        "bScrollCollapse": true,
+        "iDisplayLength": 15,
+        //"bFilter": false,
+        // "bJQueryUI": true,
+        //"aoColumnDefs": [{ "bVisible": false, "aTargets": [0] }], // first field is hidden
+        dom: 'Bfrtip',
             stateSave: true,
             buttons: [
                 
@@ -164,22 +143,19 @@
                             columns: ':visible'
                         }
                     },
-                    {
-                        extend: 'print',
-                        text: 'Print selected',
-                        exportOptions: {
-                            modifier: {
-                                selected: true
-                            },
-                        }
-                    }
-                ],
-                select: true
+                ]
             }
              
             ]
 
-        });
-      });
+    });
+
+    // On click, get the value of the selected radio
+    $("#filter").on('change', function () {
+        // $radio = $("input[name='RadioGroup1']:checked").val();
+        $radio = $(this).val();
+        $dTable.fnDraw(); // refresh the dataTable
+    });
+    })();
     </script>
 @stop
