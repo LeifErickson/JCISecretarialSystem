@@ -92,7 +92,7 @@ $('#calendar').fullCalendar({
       },
 
     <?php  
-    echo "eventSources:[".$variable2.",".$variable3."]";
+    echo "eventSources:[".$variable2.",".$variable3.",".$variable4."]";
 
     ?>
 

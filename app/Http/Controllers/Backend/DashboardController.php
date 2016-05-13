@@ -156,6 +156,28 @@ class DashboardController extends Controller
     ->orderBy('dateset', 'desc')
     ->lists('id'); // "=" is optional
 
+
+    $dates2 = DB::table("events")
+    ->take(120)
+    ->orderBy('year', 'desc')
+    ->lists('year');
+    
+    $details2 = DB::table("events")
+    ->take(120)
+    ->orderBy('year', 'desc')
+    ->lists('name');
+
+    $type2 = DB::table("events")
+    ->take(120)
+    ->orderBy('year', 'desc')
+    ->lists('eventtype');
+
+    $id2 = DB::table("events")
+    ->take(120)
+    ->orderBy('year', 'desc')
+    ->lists('id'); // "=" is optional
+
+//======================================== Array to JSON =========================================
     for($i=0;$i < count($dates);$i++){
         $event_array[] = array(
             'id' => $id[$i],
@@ -178,28 +200,61 @@ class DashboardController extends Controller
     }
 
     $variable3 = json_encode($event_array);
+    $event_array = array();
 
-    // $date = strtotime($dates1[0]);
-    // $date = $date - time();
-
-    
-
-    for($i=0;$i < count($dates1);$i++){
-        $date = strtotime($dates1[$i]) - time();
-            if ($date > 0)
-                {
-                    $date_array[$i] = $date;
-                };
+    for($i=0;$i < count($dates2);$i++){
+        $event_array[] = array(
+            'id' => $id2[$i],
+            'type' => $type2[$i],
+            'title' => $details2[$i],
+            'start' => $dates2[$i],
+        );
     }
-        sort($date_array);
 
-        $days_remaining = floor($date_array[0] / 86400);
-        $hours_remaining = floor(($date_array[0] % 86400) / 3600);
+    $variable4 = json_encode($event_array);
+//======================================== Array to JSON END=========================================
 
-    //dashboard view
+//======================================== Add Events to Calendar =====================================
+
+    $allevents = array_merge($dates, $dates1, $dates2);
+    // $date = strtotime($allevents[0]);
+    // $date = $date - time();
+    $date_array[] = array();
+    for($i=0;$i < count($allevents);$i++){
+        $date = strtotime($allevents[$i]) - time();
+            if ($date > 0)
+            {
+                $date_array[$i] = $date; //Saves to upcoming events array
+            }
+            // else
+            // {
+            //     $date = strtotime('+1 day') - strtotime($allevents[$i]) - 86400; //Checks if date is ongoing and has still remaining time 
+            //     if ($date > 0)
+            //     {
+            //          $date_array[$i] = $date;
+            //     }
+            // }
+    };
+        sort($date_array);//Sorts upcoming events array then gets the near one
+        
+        if ($date_array[0] != null) // check if array is not null
+        {
+            $days_remaining = floor($date_array[0] / 86400);
+            $hours_remaining = floor(($date_array[0] % 86400) / 3600);
+        }
+        else
+        {
+            $days_remaining = 90;
+            $hours_remaining = 90;
+        }
+
+//==================================================================================================
+
+//================================dashboard view====================================================
 	return view('backend.dashboard')
         ->with('variable2', $variable2)
         ->with('variable3', $variable3)
+        ->with('variable4', $variable4)
         ->with('days_remaining',$days_remaining)
         ->with('hours_remaining',$hours_remaining);
 
