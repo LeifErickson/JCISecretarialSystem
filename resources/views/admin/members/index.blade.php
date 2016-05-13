@@ -20,11 +20,11 @@
         </div><!-- /.box-header -->
     <div class="box-body">
     <div class="table">
-    <label for='radio4'><input id='radio3' type='radio' name='RadioGroup1' value='all' checked />All</label>
+    <label for='radio4'><input id='radio4' type='radio' name='RadioGroup1' value='all' checked />All</label>
     <!-- default filter is 'show everything' so make it checked -->
     <label for='radio1'><input id='radio1' type='radio' name='RadioGroup1' value='Baby JC' />Baby</label>
     <label for='radio2'><input id='radio2' type='radio' name='RadioGroup1' value='Regular' />Regular</label>
-    <label for='radio3'><input id='radio2' type='radio' name='RadioGroup1' value='Associate' />Associate</label>
+    <label for='radio3'><input id='radio3' type='radio' name='RadioGroup1' value='Associate' />Associate</label>
             <table id="example1" class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
@@ -246,7 +246,7 @@
     });
 
     // On click, get the value of the selected radio
-    $("#filter").on('change', function () {
+    $("input[name='RadioGroup1']").on('change', function () {
         // $radio = $("input[name='RadioGroup1']:checked").val();
         $radio = $(this).val();
         $dTable.fnDraw(); // refresh the dataTable
