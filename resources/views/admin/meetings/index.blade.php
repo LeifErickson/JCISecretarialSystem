@@ -5,7 +5,6 @@
 @section('page-header')
     <h1>
         {{ trans('labels.backend.access.meeting.management') }}
-        <small>{{ trans('labels.backend.access.meeting.active') }}</small>
     </h1>
 @stop
 
@@ -23,7 +22,7 @@
         <table id="table" class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>ID</th><th>Title</th><th>Description</th><th>Agenda</th><th>Type</th><th>Actions</th>
+                    <th>ID</th><th>Title</th><th>Agenda</th><th>Type</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,7 +31,7 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td><a href="{{ url('admin/events/meetings', $item->id) }}">{{ $item->title }}</a></td><td>{{ $item->description }}</td><td>{{ $item->agenda }}</td><td>{{ $item->type }}</td>
+                    <td><a href="{{ url('admin/events/meetings', $item->id) }}">{{ $item->title }}</a></td><td>{{ $item->agenda }}</td><td>{{ $item->type }}</td>
                     <td>
                         <a href="{{ url('admin/events/meetings/' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>

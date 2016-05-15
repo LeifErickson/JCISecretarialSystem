@@ -11,7 +11,7 @@
 								<h2><?php echo $row->name; ?></h2>
 								<h5><span class="glyphicon glyphicon-time"></span> Posted on: <?php echo date("M j, Y", strtotime($row->created_at)); ?></h5>
 								<a href="{{ URL::previous() }}" ><< BACK </a>
-								<?php $organizer = $row->description; ?>
+								<?php $organizer = $row->organizer; ?>
 							</div>
 
 							<div class="panel-body panel-info">
