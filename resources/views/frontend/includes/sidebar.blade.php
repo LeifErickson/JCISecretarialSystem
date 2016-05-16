@@ -25,7 +25,7 @@
 			<div class="page-body">
 					 <ul>	
 					<?php foreach($projects as $projects){?>
-							<li><a  href="post/event/<?php echo $projects->id; ?>" ><?php echo $projects->name; ?></a></li>				
+							<li><a  href="post/project/<?php echo $projects->id; ?>" ><?php echo $projects->name; ?></a></li>				
 					<?php }?>
 				  </ul>
 			</div>

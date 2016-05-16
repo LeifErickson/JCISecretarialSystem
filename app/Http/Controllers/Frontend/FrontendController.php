@@ -43,7 +43,7 @@ class FrontendController extends Controller
     {
 		  
 		  $result = DB::select('SELECT * FROM `projects` WHERE `id`=?;',[$id]);
-        return view('frontend.postProjects',['data'=> $result]);
+        return view('frontend.postProject',['data'=> $result]);
     }
 	public function meetingPost($id)
     {

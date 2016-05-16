@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use DB;
 use DateTime;
 use Session;
-
+use URL;
 class EventsController extends Controller
 {
 	public function index()
@@ -64,15 +64,11 @@ class EventsController extends Controller
 	{
 		try 
 		{
-			//DB::enableQueryLog();
 			DB::insert('DELETE FROM `events` WHERE `id`=?', [$id]);
-		   
+			return redirect('admin/events');
 		}
 		catch(\Exception $e){
-			 Session::flash('flash_message', 'nya ga foreign key ka?!');
-			 //return redirect('admin/events');
-			return redirect('admin/events');
-			
+			return redirect()->back()->with('data', ['some kind of data']);
 		}
 		
 		
