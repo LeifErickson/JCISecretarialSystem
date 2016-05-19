@@ -32,6 +32,13 @@ class FrontendController extends Controller
         return view('frontend.macros');
     }
 	 
+    public function activeMember()
+    {
+		$result = DB::select('SELECT * FROM `members` WHERE  `memberstatus` = ?',['active']);
+	 
+        return view('frontend.activeMember',['activeMember' => $result]);
+    }
+	 
 	  public function eventPost($id)
     {
 		  //$resultProjects = DB::select('SELECT * FROM `projects` WHERE `year` between DATE_SUB(curdate(),INTERVAL 30 DAY) and DATE_ADD(curdate(),INTERVAL 30 DAY) ORDER BY `year` DESC');

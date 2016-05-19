@@ -16,8 +16,8 @@
         <!-- Styles -->
         @yield('before-styles-end')
         {!! Html::style(elixir('css/frontend.css')) !!}
+		  
         @yield('after-styles-end')
-
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
     </head>

@@ -6,37 +6,6 @@
     </h1>
 @stop
 @section('content')
-	 <script>
-      function ConfirmDelete()
-      {
-       event.preventDefault();
-       swal({   
-        title: "Are you sure?",   
-        text: "You will not be able to recover this data!",   
-        type: "warning",   
-        showCancelButton: true,   
-        confirmButtonColor: "#DD6B55",   
-        confirmButtonText: "Yes, delete it!",   
-        cancelButtonText: "No, cancel it!",   
-        closeOnConfirm: false,  
-        closeOnCancel: false
-         }, 
-         function(isConfirm)
-         {   
-            if (isConfirm)
-             {     
-                swal("Deleted!", "The data will be deleted in a moment.", "success"); 
-                document.forms['delete'].submit();  
-            }
-             else 
-            {     
-                swal("Cancelled", "The data is safe :)", "error");   
-                return false;
-            } 
-        });
-
-      }
-    </script>
 	<div class="box box-success">
 		<div class="box-header with-border">
 			<form >
@@ -49,7 +18,7 @@
 		</div>
 		<div class="box-body">	
 			<label for="radio4">Filter By: </label>
-			<select>
+			<select id="filter" onchange="filterFunction()">
 				<option>All</option>
 				<option>Present</option>
 				<option>Absent</option>
@@ -181,5 +150,26 @@
 
         });
       });
+		
+		function filterFunction(){
+			var text = document.getElementById("filter").value;
+			alert(text);
+			/*
+			if (text.length == 0) { 
+				document.getElementById("txtHint").innerHTML = "";
+				return;
+			} else {
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						 document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+						  $('.dropdown-menu').dropdown().toggle();
+					}
+				};
+				xmlhttp.open("GET", "lib/getPerson.php?text=" + text+"&id="+id, true);
+				xmlhttp.send();
+			}
+			*/
+		}
     </script>
 @stop
