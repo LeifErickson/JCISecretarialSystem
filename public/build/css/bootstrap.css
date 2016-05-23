@@ -8,7 +8,7 @@ font-family:sans-serif;
 -ms-text-size-adjust:100%
 }
 body{
-margin:0
+margin:0;
 }
 article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{
 display:block
@@ -1030,7 +1030,7 @@ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
 font-size:14px;
 line-height:1.42857143;
 color:#333;
-background-color:#fff
+background-color:wheat
 }
 button,input,select,textarea{
 font-family:inherit;
@@ -1448,7 +1448,7 @@ margin-left:-15px
 position:relative;
 min-height:1px;
 padding-right:15px;
-padding-left:15px
+padding-left:15px;
 }
 .col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9{
 float:left
@@ -1611,7 +1611,8 @@ margin-left:0
 float:left
 }
 .col-sm-12{
-width:100%
+width:100%;
+margin-top: -50px;
 }
 .col-sm-11{
 width:91.66666667%
@@ -3962,7 +3963,7 @@ border-color:#EC7F22
 color:white
 }
 .navbar-inverse .navbar-brand:focus,.navbar-inverse .navbar-brand:hover{
-color:#fff;
+color:#FFA705;
 background-color:transparent
 }
 .navbar-inverse .navbar-text{

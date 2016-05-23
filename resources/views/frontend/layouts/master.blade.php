@@ -20,6 +20,43 @@
         @yield('after-styles-end')
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+		  <link href="{!! asset('/dist_pagination/css/jplist.demo-pages.min.css') !!}" rel="stylesheet" type="text/css" />
+				
+		 <!-- jQuery lib -->
+		 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+			<!-- jPList core js and css  -->
+		 <link href="{!! asset('/dist_pagination/css/jplist.core.min.css') !!}" rel="stylesheet" type="text/css" />
+		 <script src="{!! asset('dist_pagination/js/jplist.core.min.js') !!}"></script>
+
+		 <!-- jPList sort bundle -->
+		 <script src="{!! asset('/dist_pagination/js/jplist.sort-bundle.min.js') !!}"></script>
+
+		 <!-- jPList textbox filter control -->
+		 <script src="{!! asset('/dist_pagination/js/jplist.textbox-filter.min.js') !!}"></script>
+		 <link href="{!! asset('/dist_pagination/css/jplist.textbox-filter.min.css') !!}" rel="stylesheet" type="text/css" />
+
+		 <!-- jPList pagination bundle -->
+		 <script src="{!! asset('/dist_pagination/js/jplist.pagination-bundle.min.js') !!}"></script>
+		 <link href="{!! asset('/dist_pagination/css/jplist.pagination-bundle.min.css') !!}" rel="stylesheet" type="text/css" />
+
+		 <!-- jPList history bundle -->
+		 <script src="{!! asset('/dist_pagination/js/jplist.history-bundle.min.js') !!}"></script>
+		 <link href="{!! asset('/dist_pagination/css/jplist.history-bundle.min.css') !!}" rel="stylesheet" type="text/css" />
+
+		 <!-- jPList toggle bundle -->
+		 <script src="{!! asset('/dist_pagination/js/jplist.filter-toggle-bundle.min.js') !!}"></script>
+		 <link href="{!! asset('/dist_pagination/css/jplist.filter-toggle-bundle.min.css') !!}" rel="stylesheet" type="text/css" />
+		   <script>
+        $('document').ready(function(){
+
+            $('#demo').jplist({
+                itemsBox: '.list'
+                ,itemPath: '.list-item'
+                ,panelPath: '.jplist-panel'
+            });
+        });
+    </script>
     </head>
     <body id="app-layout" >
 
@@ -30,9 +67,10 @@
 			 <!-- container -->
 			</div>
         <!-- JavaScripts -->
-       <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+       <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
+		   -->
         {!! Html::script('js/vendor/bootstrap/bootstrap.min.js') !!}
 
         @yield('before-scripts-end')

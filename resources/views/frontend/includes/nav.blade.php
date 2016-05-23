@@ -11,8 +11,8 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{!! route('frontend.index') !!}">
-                {!! app_name() !!}
+            <a style="font-weight:bold;" class="navbar-brand" href="{!! route('frontend.index') !!}">
+                {!! app_name() !!}  
             </a>
         </div><!--navbar-header-->
 
@@ -20,6 +20,8 @@
 				<ul class="nav navbar-nav">
                 <li><a href="../public">Home</a></li>
 					 <li><a href="../public/activeMembers">Active Members</a></li>
+					 <li><a href="http://www.jciiligan.org/">About Us</a></li>
+					 <li><a href="http://www.jciiligan.org/news-updates/">News and Updates</a></li>
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">

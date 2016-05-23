@@ -53,14 +53,17 @@
 </div>
 
 <!-- Datebegun Field -->
+<?php 
+if(isset($dates)){
+foreach($dates as $date){?>
 <div class="form-group col-sm-6">
     {!! Form::label('datebegun', 'Date begun:') !!}
 	 <div class="input-group">
-			<input name="datebegun" id="datepicker" class="form-control" type="date" placeholder="Event Set" required >
+			<input type="date" name="datebegun" class="form-control" value="<?php echo $date->datebegun; ?>">
 			<div class="input-group-btn">
-				<button class="btn btn-primary btn-flat">
+				<div class="btn btn-primary btn-flat">
 					<i class="fa fa-calendar"></i>
-				</button>
+				</div>
 			</div>
 		</div>
 </div>
@@ -69,15 +72,39 @@
 <div class="form-group col-sm-6">
     {!! Form::label('datecompleted', 'Date completed:') !!}
 		<div class="input-group">
-			<input name="datecompleted" id="datepicker" class="form-control" type="date" placeholder="Event Set" required >
+			<input type="date" name="datecompleted" class="form-control" value="<?php echo $date->datecompleted; ?>">
 			<div class="input-group-btn">
-				<button class="btn btn-primary btn-flat">
+				<div class="btn btn-primary btn-flat">
 					<i class="fa fa-calendar"></i>
-				</button>
+				</div>
+			</div>
+		</div>
+</div>
+<?php } } else {?>
+<div class="form-group col-sm-6">
+    {!! Form::label('datebegun', 'Date begun:') !!}
+	 <div class="input-group">
+			<input type="date" name="datebegun" class="form-control" >
+			<div class="input-group-btn">
+				<div class="btn btn-primary btn-flat">
+					<i class="fa fa-calendar"></i>
+				</div>
 			</div>
 		</div>
 </div>
 
+<div class="form-group col-sm-6">
+    {!! Form::label('datecompleted', 'Date completed:') !!}
+		<div class="input-group">
+			<input type="date" name="datecompleted" class="form-control" >
+			<div class="input-group-btn">
+				<div class="btn btn-primary btn-flat">
+					<i class="fa fa-calendar"></i>
+				</div>
+			</div>
+		</div>
+</div>
+<?php } ?>
 <!-- Totalincomeprojected Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('totalincomeprojected', 'Total Income projected:') !!}
@@ -92,8 +119,8 @@
 
 <!-- Expendituresprojected Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('numMembersCom', 'Number of Members on the Committee:') !!}
-    {!! Form::number('numMembersCom', null, ['class' => 'form-control']) !!}
+    {!! Form::label('numberofmembercom', 'Number of Members on the Committee:') !!}
+    {!! Form::number('numberofmembercom', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Numberofvolunteers Field -->

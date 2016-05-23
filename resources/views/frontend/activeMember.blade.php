@@ -4,34 +4,32 @@
 <div class="container" style="margin-top:-50px;">
    <div class="row">
 			<div class="col-lg-12">
-						<div class="col-md-12">								
-								<div class="col-md-12" style="margin-bottom: 15px;border-radius: 5px;">
-									<div class="page-header"  style="margin-left:10px">
-										<h2>Active Members</h2>
-									</div>
-									<div class="box-body table-responsive no-padding">
-										<table class="table table-hover" id="dataTables-members" >
-											<thead>
-												<th>Name</th>
-												<th>Membership Type</th>
-												<th>Member Since</th>
-											</thead>
-										  <tbody>
-												<?php foreach($activeMember as $active){?>
-													<tr>
-														<td><?php echo $active->firstname." ".$active->lastname[0]." ".$active->lastname; ?></td>
-														<td><?php echo $active->membershiptype; ?></td>
-														<td><?php echo date("d M Y ",strtotime($active->membersince)); ?></td>
-													</tr>	
-												<?php }?>	
-											</tbody>
-										</table>
-									 </div>
-								</div>
+				<div class="box">
+					<div class="center">
+						<div class="page-header"  style="margin-left:10px">
+							<h2>Active Members</h2>
+						</div>
+						<div class="box-body" style="margin-top: -40px;margin-bottom: 20px;">
+							<table class="table table-hover table-responsive " id="dataTables-members" >
+								<thead style="margin-top: -55px;">
+									<th>Name</th>
+									<th>Membership Type</th>
+									<th>Member Since</th>
+								</thead>
+							  <tbody>
+									<?php foreach($activeMember as $active){?>
+										<tr>
+											<td><?php echo $active->firstname." ".$active->lastname[0]." ".$active->lastname; ?></td>
+											<td><?php echo $active->membershiptype; ?></td>
+											<td><?php echo date("d M Y ",strtotime($active->membersince)); ?></td>
+										</tr>	
+									<?php }?>	
+								</tbody>
+							</table>
 						</div><!-- panel -->
+					</div>
+				</div>
         </div><!-- col-md-10 -->
-       
-
    </div><!--row-->
 </div>
 @stop

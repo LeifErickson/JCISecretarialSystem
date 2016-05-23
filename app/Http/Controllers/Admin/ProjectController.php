@@ -13,7 +13,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\Project;
 use Session;
-
+use DB;
 class ProjectController extends AppBaseController
 {
     /** @var  ProjectRepository */
@@ -96,14 +96,14 @@ class ProjectController extends AppBaseController
     public function edit($id)
     {
         $project = $this->projectRepository->findWithoutFail($id);
-
+			$dates = DB::select('SELECT `datebegun`,`datecompleted` FROM `projects` WHERE  `id` = ?',[$id]);
         if (empty($project)) {
             Flash::error('Project not found');
 
             return redirect(route('admin.events.projects.index'));
         }
 
-        return view('projects.edit')->with('project', $project);
+        return view('projects.edit')->with('project', $project)->with('dates', $dates);
     }
 
     /**

@@ -1007,7 +1007,7 @@ font-family:Lato,Helvetica Neue,Helvetica,Arial,sans-serif;
 font-size:14px;
 line-height:1.428571429;
 color:#333;
-background-color:#fff
+background-color:wheat
 }
 button,input,select,textarea{
 font-family:inherit;
@@ -1443,7 +1443,7 @@ clear:both
 position:relative;
 min-height:1px;
 padding-right:7px;
-padding-left:7px
+padding-left:7px;
 }
 .col-xs-1,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-10,.col-xs-11,.col-xs-12{
 float:left

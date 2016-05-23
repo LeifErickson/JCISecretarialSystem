@@ -1,5 +1,7 @@
-<div class="col-md-4">
-	<div class="col-md-12">
+<div class="col-md-4" >
+	<div class="box">
+    <div class="center">
+	<div class="col-md-12" >
 		<div class="col-md-12" style="margin-bottom: 15px;border-radius: 5px;">
 			<div class="page-header">  
 				<h3><i class="glyphicon glyphicon-calendar"></i> Upcoming Events</h3>
@@ -29,6 +31,8 @@
 					<?php }?>
 				  </ul>
 			</div>
+		</div>
+	</div>
 		</div>
 	</div>
 </div>
