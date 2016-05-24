@@ -169,9 +169,7 @@
              
             ],
              select: true
-
         });
-		 
       });
 		$.fn.dataTable.ext.search.push(
 			 function( settings, data, dataIndex ) {
