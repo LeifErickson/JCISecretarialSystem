@@ -162,6 +162,7 @@
                     },
                     {
                         extend: 'print',
+								autoPrint: false,
                         exportOptions: {
                             columns: ':visible'
                         }
@@ -169,17 +170,17 @@
                     {
                         extend: 'print',
                         text: 'Print selected',
+								autoPrint: false,
                         exportOptions: {
                             modifier: {
                                 selected: true
-                            },
+                            }
                         }
                     }
-                ],
-                select: true
+                ]
             }
              
-            ]
+            ], select: true
 
         });
       });

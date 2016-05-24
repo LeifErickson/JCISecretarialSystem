@@ -52,12 +52,91 @@
 	</div><!--box box-success-->
 @stop
 @section('after-scripts-end')
-
-	<link href="{{ asset('tables/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css') }}" rel="stylesheet">
-	<link href="{{ asset('tables/datatables-responsive/css/dataTables.responsive.css') }}" rel="stylesheet">
-	<script src="{{ asset('tables/datatables/media/js/jquery.dataTables.min.js') }}"></script>
-	<script src="{{ asset('tables/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>
+ <!-- DataTables -->
+    <script src="{{ asset('/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('/plugins/datatables/buttons.colVis.min.js') }}"></script>
+	<script src="{{ asset('/plugins/datatables/dataTables.select.min.js') }}"></script>
+	
 	<script type="text/javascript">
+		  $(document).ready(function () {
+       $('#dataTables-events').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": true,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false,
+				dom: 'Bfrtip',
+            stateSave: true,
+            buttons: [
+                
+                'colvis',
+                {
+                extend: 'collection',
+                text: 'Export',
+                autoClose: true,
+                buttons: 
+                [
+                    {
+                        extend: 'copy',
+                        exportOptions: {
+									 columns: ':visible'
+									 
+                        }
+                    },
+                    {
+                        extend: 'csv',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'print',
+								 text: 'Print',
+								 autoPrint: false,
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        text: 'Print selected',
+								autoPrint: false,
+                        exportOptions: {
+                            modifier: {
+                                selected: true
+                            }
+                        }
+                    }
+                ]
+            }
+             
+            ],
+             select: true
+
+        });
+		 
+      });
     function del(id) {
        event.preventDefault();
        swal({   
@@ -86,12 +165,4 @@
         });
     }
     </script>
-	
-	<script>
-		 $(document).ready(function() {
-			  $('#dataTables-events').DataTable({
-						 responsive: true
-			  });
-		 });
-	</script>
 @stop

@@ -56,8 +56,8 @@
 						</form>
 				</div>
 			
-			 <div class="table">
-        <table id="example2" class="table table-bordered table-striped table-hover">
+			<div class="table" style="margin-top: 45px;">
+        <table id="example2" style="" class="table table-bordered table-striped table-hover">
 				<thead>
 					 <th>ID</th>
 					 <th>Name</th>
@@ -102,15 +102,15 @@
     
     <!-- page script -->
     <script>
-      $(function () {
-        $('#example2').DataTable({
+      $(document).ready(function () {
+       $('#example2').DataTable({
           "paging": true,
           "lengthChange": false,
           "searching": true,
           "ordering": true,
           "info": true,
           "autoWidth": false,
-           dom: 'Bfrtip',
+				dom: 'Bfrtip',
             stateSave: true,
             buttons: [
                 
@@ -124,7 +124,8 @@
                     {
                         extend: 'copy',
                         exportOptions: {
-                            columns: ':visible'
+									 columns: ':visible'
+									 
                         }
                     },
                     {
@@ -147,6 +148,8 @@
                     },
                     {
                         extend: 'print',
+								 text: 'Print',
+								 autoPrint: false,
                         exportOptions: {
                             columns: ':visible'
                         }
@@ -154,17 +157,18 @@
                     {
                         extend: 'print',
                         text: 'Print selected',
+								autoPrint: false,
                         exportOptions: {
                             modifier: {
                                 selected: true
-                            },
+                            }
                         }
                     }
-                ],
-                select: true
+                ]
             }
              
-            ]
+            ],
+             select: true
 
         });
 		 
