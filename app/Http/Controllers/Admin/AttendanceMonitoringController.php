@@ -43,7 +43,7 @@ class AttendanceMonitoringController extends Controller
 		} else {
 			$events = DB::select('SELECT `id`,`name` FROM `events`');
 			
-			$default = DB::select('SELECT `name` FROM `events` WHERE `id`=?',[$id]);
+			$default = DB::select('SELECT `id`,`name` FROM `events` WHERE `id`=?',[$id]);
 			
 			$attendance = DB::select("SELECT t1.`id`,t1.`firstname`, t1.`lastname`,IFNULL(t2.Present,0) as Present 	FROM
 			(SELECT `members`.`id`,`firstname`, `lastname` FROM `members`) t1
@@ -62,26 +62,5 @@ class AttendanceMonitoringController extends Controller
 		
 	}
 	
-	
-	function filter($id){
-		$attendance = DB::select("
-			SELECT `members`.`id`,`firstname`, `lastname`,count(`members`.`id`) as Present
-			FROM `events_attended`,`members`
-			WHERE 
-			`events_attended`.`member_id` = `members`.`id` AND
-			`events_attended`.`event_id` = ? 
-			GROUP BY `members`.`id`
-		",[$event_id]);
-	
-		/*
-			SELECT `members`.`id`,`firstname`, `lastname`
-			FROM `members`
-WHERE NOT EXISTS(SELECT `events_attended`.`member_id` FROM `events_attended` WHERE `events_attended`.`event_id` = 1)
-			WHERE 
-			NOT EXISTS(SELECT `events_attended`.`member_id` FROM `events_attended` WHERE `events_attended`.`event_id` = 1)
-			
-			
-			*/
-	}
 	
 }

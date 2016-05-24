@@ -3877,7 +3877,7 @@ background-color:transparent
 }
 .navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.active>a:focus,.navbar-inverse .navbar-nav>.active>a:hover{
 color:#fff;
-background-color:#090909
+background-color:rgba(138, 79, 18, 0.36)
 }
 .navbar-inverse .navbar-nav>.disabled>a,.navbar-inverse .navbar-nav>.disabled>a:focus,.navbar-inverse .navbar-nav>.disabled>a:hover{
 color:#444;

@@ -62,14 +62,11 @@ class EventsController extends Controller
     }
 	public function delete($id)
 	{
-		try 
-		{
+			DB::insert('DELETE FROM `finances` WHERE `event_id`=?', [$id]);
+			DB::insert('DELETE FROM `events_attended` WHERE `event_id`=?', [$id]);
 			DB::insert('DELETE FROM `events` WHERE `id`=?', [$id]);
 			return redirect('admin/events');
-		}
-		catch(\Exception $e){
-			return redirect()->back()->with('data', ['some kind of data']);
-		}
+		
 		
 		
 	}

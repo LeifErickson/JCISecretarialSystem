@@ -196,7 +196,7 @@
 							  <!-- data -->
 							  <div class="block">
 									<p class="date"><span class="glyphicon glyphicon-time"></span> Posted on: <?php echo date("M j, Y", strtotime($proj->created_at)); ?></p>
-									<p class="title"><a href="post/event/<?php echo $proj->id; ?>" ><?php echo $proj->name; ?></a></p>
+									<p class="title"><a href="post/project/<?php echo $proj->id; ?>" ><?php echo $proj->name; ?></a></p>
 									<p class="desc"><?php echo $proj->description; ?></p>
 									<p class="theme">
 										 <span class="project">Type: Project</span>

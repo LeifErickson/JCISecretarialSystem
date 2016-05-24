@@ -29,7 +29,7 @@
         <table id="example2" class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>ID</th><th>Project Name</th><th>Description</th><th>Date begun</th><th>Date finished</th><th>Actions</th>
+                    <th>ID</th><th>Project Name</th><th>Date begun</th><th>Date finished</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,7 +38,7 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td><a href="{{ url('admin/events/projects', $item->id) }}">{{ $item->name }}</a></td><td>{{ $item->description }}</td><td>{{ $item->datebegun }}</td><td>{{ $item->datecompleted }}</td>
+                    <td><a href="{{ url('admin/events/projects', $item->id) }}">{{ $item->name }}</a></td><td>{{ $item->datebegun }}</td><td>{{ $item->datecompleted }}</td>
                     <td>
                         <a href="{{ url('admin/events/projects/' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>

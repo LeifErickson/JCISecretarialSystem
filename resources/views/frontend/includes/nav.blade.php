@@ -18,8 +18,8 @@
 
         <div class="collapse navbar-collapse" id="frontend-navbar-collapse">
 				<ul class="nav navbar-nav">
-                <li><a href="../public">Home</a></li>
-					 <li><a href="../public/activeMembers">Active Members</a></li>
+                <li class="{{ Active::pattern('/') }}"><a href="{!! url('/') !!}">Home</a></li>
+					 <li class="{{ Active::pattern('activeMembers') }}" ><a href="{!! url('activeMembers') !!}">Active Members</a></li>
 					 <li><a href="http://www.jciiligan.org/">About Us</a></li>
 					 <li><a href="http://www.jciiligan.org/news-updates/">News and Updates</a></li>
             </ul>

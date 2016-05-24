@@ -18,6 +18,10 @@
                 <a href="{{{ URL::previous() }}}" class="btn btn-primary pull-right btn-sm">Go Back</a>
             </div>
         </div><!-- /.box-header -->
+		  <div class="box-body">
+				@include('admin.members.table')
+		  </div>
+		  <!--
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -70,6 +74,7 @@
             </tbody>     
         </table>
         </div>
+		  -->
     </div>
 
 @stop

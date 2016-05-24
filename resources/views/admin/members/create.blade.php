@@ -224,7 +224,7 @@
 							 </div>
 						</div>
 						<div class="form-group {{ $errors->has('lomhighestposition') ? 'has-error' : ''}}">
-							 {!! Form::label('lomhighestposition', 'lomhighestposition: ', ['class' => 'col-sm-3 control-label']) !!}
+							 {!! Form::label('lomhighestposition', 'Lom Highest Position: ', ['class' => 'col-sm-3 control-label']) !!}
 							 <div class="col-sm-6">
 								  {!! Form::text('lomhighestposition', null, ['class' => 'form-control']) !!}
 								  {!! $errors->first('lomhighestposition', '<p class="help-block">:message</p>') !!}
@@ -239,7 +239,7 @@
 						<div class="form-group {{ $errors->has('lomhighestpositionyear') ? 'has-error' : ''}}">
 							 {!! Form::label('lomhighestpositionyear', 'Lom Highest Position Year: ', ['class' => 'col-sm-3 control-label']) !!}
 							 <div class="col-sm-6">
-								  {!! Form::text('lomhighestpositionyear', null, ['class' => 'form-control']) !!}
+								  {!! Form::text('Lom Highest Position Year', null, ['class' => 'form-control']) !!}
 								  {!! $errors->first('lomhighestpositionyear', '<p class="help-block">:message</p>') !!}
 							 </div>
 						</div>
@@ -260,7 +260,7 @@
 						<div class="form-group {{ $errors->has('areahighestpositionyear') ? 'has-error' : ''}}">
 							 {!! Form::label('areahighestpositionyear', 'Area Highest Position Year: ', ['class' => 'col-sm-3 control-label']) !!}
 							 <div class="col-sm-6">
-								  {!! Form::text('areahighestpositionyear', null, ['class' => 'form-control']) !!}
+								  {!! Form::text('Area Highest Position Year', null, ['class' => 'form-control']) !!}
 								  {!! $errors->first('areahighestpositionyear', '<p class="help-block">:message</p>') !!}
 							 </div>
 						</div>

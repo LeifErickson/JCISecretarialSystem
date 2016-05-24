@@ -22,9 +22,10 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 		  <link href="{!! asset('/dist_pagination/css/jplist.demo-pages.min.css') !!}" rel="stylesheet" type="text/css" />
 				
-		 <!-- jQuery lib -->
+		 <!-- jQuery lib 
+		<script src="{!! asset('/build/js/jquery-1.11.1.min.js') !!}"></script>-->
+		
 		 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-
 			<!-- jPList core js and css  -->
 		 <link href="{!! asset('/dist_pagination/css/jplist.core.min.css') !!}" rel="stylesheet" type="text/css" />
 		 <script src="{!! asset('dist_pagination/js/jplist.core.min.js') !!}"></script>
