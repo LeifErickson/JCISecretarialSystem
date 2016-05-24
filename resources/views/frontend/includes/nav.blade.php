@@ -11,13 +11,18 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{!! route('frontend.index') !!}">
-                {!! app_name() !!}
+            <a style="font-weight:bold;" class="navbar-brand" href="{!! route('frontend.index') !!}">
+                {!! app_name() !!}  
             </a>
         </div><!--navbar-header-->
 
         <div class="collapse navbar-collapse" id="frontend-navbar-collapse">
-
+				<ul class="nav navbar-nav">
+                <li class="{{ Active::pattern('/') }}"><a href="{!! url('/') !!}">Home</a></li>
+					 <li class="{{ Active::pattern('activeMembers') }}" ><a href="{!! url('activeMembers') !!}">Active Members</a></li>
+					 <li><a href="http://www.jciiligan.org/">About Us</a></li>
+					 <li><a href="http://www.jciiligan.org/news-updates/">News and Updates</a></li>
+            </ul>
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
 
@@ -26,6 +31,7 @@
                     <li>{!! link_to('login', trans('navs.frontend.login')) !!}</li>
                    <!--  <li>{!! link_to('register', trans('navs.frontend.register')) !!}</li> -->
                 @else
+							
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>

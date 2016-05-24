@@ -10,43 +10,59 @@
 		<div class="box-header with-border">
 			<form >
 			<h3 class="box-title" >Event Name: <?php 
+					$eventName = "";
+					$event_id = 0;
 					foreach($title as $row){
-						echo $row->name; 
+						$event_id = $row->id;
+						$eventName =  $row->name; 
 					}
+					echo $eventName;
 			?> 
 			</h3>
 		</div>
-		<div class="box-body">	
-			<label for="radio4">Filter By: </label>
-			<select id="filter">
-				<option value="all">All</option>
-				<option>Present</option>
-				<option>Absent</option>
-			</select>
-			 <div class="table">
-        <table id="example2" class="table table-bordered table-striped table-hover">
+		<div class="box-body">					
+			<div class="col-lg-12" style="margin-bottom: 9px;">
+				<div class="col-lg-1">
+				<label style="margin-top: 9px;">Filter By:</label>
+				</div>
+				<div class="col-lg-2">
+					<select id="filter" class="form-control"  onchange="filterFunction()">
+						<option value="0" >All</option>
+						<option value="Present" >Present</option>
+						<option value="Absent" >Absent</option>
+					</select>
+				</div>
+				<div class="col-lg-1">
+				<label style="margin-top: 9px;">Event:</label>
+				</div>
+				<div class="col-lg-2">
+					<form action="test.php">
+							<div class="dropdown" >
+							<button type="button" class="form-control" data-toggle="dropdown" aria-expanded="false">
+							  <?php echo $eventName;?> <span class="caret"></span>
+							</button>
+							
+							<ul  class="dropdown-menu" role="menu">
+								<?php
+									
+									foreach($events as $row){
+											echo "<li><a href='./".$row->id."' >".$row->name."</a></li>";
+									}
+								?>
+							</ul>
+							</div>
+						</form>
+				</div>
+			
+			<div class="table" style="margin-top: 45px;">
+        <table id="example2" style="" class="table table-bordered table-striped table-hover">
 				<thead>
 					 <th>ID</th>
 					 <th>Name</th>
-					 <th>
-						<form action="test.php">
-						<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-						  Events Name <span class="caret"></span>
-						</button>
-						
-						<ul class="dropdown-menu" role="menu">
-							<?php
-								foreach($events as $row){
-										echo "<li><a href='./".$row->id."' >".$row->name."</a></li>";
-								}
-							?>
-						</ul>
-						</form>
-					 </th>
+					 <th>Attendance</th>
 				</thead>
 				<tbody id="events_table">
 					<?php
-						
 						foreach($attendance as $row){
 							$check = "";
 							if($row->Present == 1)
@@ -62,6 +78,7 @@
 					?>
 				</tbody>
 			</table>
+			</div>
 	  </div><!-- /.box-body -->
 	</div><!--box box-success-->
 	</div>
@@ -83,26 +100,15 @@
     
     <!-- page script -->
     <script>
-// Just wrapping in a function to prevent global $radio, $dTable, etc...
-(function encapsulate() {
-    var $radio = 'all'; // set to initial filter value, show all (RadioGroup1.radio3.value)
-    // This function filters the dataTable rows
-    $.fn.dataTableExt.afnFiltering.push(function(oSettings, aData, iDataIndex) {
-        // show everything
-        if ($radio == "all")
-            return true;
-        else // Filter column 1 where matches RadioGroup1.value
-            return aData[2] == $radio;
-    });
-    var $dTable = $("#example2").dataTable({
-        "sPaginationType": "full_numbers",
-        "bPaginate": true,
-        "bScrollCollapse": true,
-        "iDisplayLength": 15,
-        //"bFilter": false,
-        // "bJQueryUI": true,
-        //"aoColumnDefs": [{ "bVisible": false, "aTargets": [0] }], // first field is hidden
-        dom: 'Bfrtip',
+      $(document).ready(function () {
+       $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": true,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false,
+				dom: 'Bfrtip',
             stateSave: true,
             buttons: [
                 
@@ -116,7 +122,8 @@
                     {
                         extend: 'copy',
                         exportOptions: {
-                            columns: ':visible'
+									 columns: ':visible'
+									 
                         }
                     },
                     {
@@ -139,23 +146,47 @@
                     },
                     {
                         extend: 'print',
+								 text: 'Print',
+								 autoPrint: false,
                         exportOptions: {
                             columns: ':visible'
                         }
                     },
+                    {
+                        extend: 'print',
+                        text: 'Print selected',
+								autoPrint: false,
+                        exportOptions: {
+                            modifier: {
+                                selected: true
+                            }
+                        }
+                    }
                 ]
             }
              
-            ]
-
-    });
-
-    // On click, get the value of the selected radio
-    $("#filter").on('change', function () {
-        // $radio = $("input[name='RadioGroup1']:checked").val();
-        $radio = $(this).val();
-        $dTable.fnDraw(); // refresh the dataTable
-    });
-    })();
+            ],
+             select: true
+        });
+      });
+		$.fn.dataTable.ext.search.push(
+			 function( settings, data, dataIndex ) {
+				  var text = document.getElementById("filter").value;
+				  var d = data[2] ; // use data for the age column
+		 
+				  if ( d == text)
+				  {
+						return true;
+				  } else if(text == 0){
+						return true;
+				  }
+				  return false;
+			 }
+		);
+		function filterFunction(){
+			
+			var table = $('#example2').DataTable();
+			   table.draw();
+		}
     </script>
 @stop

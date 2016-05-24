@@ -11,5 +11,6 @@ Route::group([
         'uses' => '\App\Http\Controllers\Admin\AttendanceMonitoringController@index',
     ]);
 	
+	
 });
 

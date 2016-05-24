@@ -43,7 +43,7 @@ class AttendanceMonitoringController extends Controller
 		} else {
 			$events = DB::select('SELECT `id`,`name` FROM `events`');
 			
-			$default = DB::select('SELECT `name` FROM `events` WHERE `id`=?',[$id]);
+			$default = DB::select('SELECT `id`,`name` FROM `events` WHERE `id`=?',[$id]);
 			
 			$attendance = DB::select("SELECT t1.`id`,t1.`firstname`, t1.`lastname`,IFNULL(t2.Present,0) as Present 	FROM
 			(SELECT `members`.`id`,`firstname`, `lastname` FROM `members`) t1
@@ -61,5 +61,6 @@ class AttendanceMonitoringController extends Controller
 		}
 		
 	}
+	
 	
 }

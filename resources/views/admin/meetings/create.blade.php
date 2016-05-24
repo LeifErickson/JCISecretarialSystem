@@ -11,7 +11,10 @@
 @section('content')
 	<div class="box box-success">
       <div class="box-header with-border">
-                  <h3 class="box-title">Create New Meeting</h3>
+			<h3 class="box-title">Create New Meeting</h3>
+			<div class="box-tools pull-left" style="margin-left: 20px">
+			  <a href="{{ url('admin/events/meetings') }}" class="btn btn-primary pull-right btn-sm">Go Back</a>
+			</div>
       </div>
 		<div class="box-body">
     {!! Form::open(['url' => 'admin/events/meetings', 'class' => 'form-horizontal']) !!}
@@ -44,7 +47,7 @@
                 </div>
             </div>
             <div class="form-group {{ $errors->has('dateset') ? 'has-error' : ''}}">
-                {!! Form::label('dateset', 'Dateset: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('dateset', 'Date Set: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-8">
                     {!! Form::date('dateset', null, ['class' => 'form-control', 'required' => 'required']) !!}
                     {!! $errors->first('dateset', '<p class="help-block">:message</p>') !!}
@@ -58,14 +61,14 @@
                 </div>
             </div>
             <div class="form-group {{ $errors->has('leadby') ? 'has-error' : ''}}">
-                {!! Form::label('leadby', 'Leadby: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('leadby', 'Lead By: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-8">
                     {!! Form::text('leadby', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('leadby', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('minutetaker') ? 'has-error' : ''}}">
-                {!! Form::label('minutetaker', 'Minutetaker: ', ['class' => 'col-sm-3 control-label']) !!}
+                {!! Form::label('minutetaker', 'Minute Taker: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-8">
                     {!! Form::text('minutetaker', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('minutetaker', '<p class="help-block">:message</p>') !!}

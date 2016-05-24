@@ -74,7 +74,7 @@
     <script src="{{ asset('/plugins/datatables/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('/plugins/datatables/buttons.print.min.js') }}"></script>
     <script src="{{ asset('/plugins/datatables/buttons.colVis.min.js') }}"></script>
-
+	<script src="{{ asset('/plugins/datatables/dataTables.select.min.js') }}"></script>
     <!--delete script-->
     <script type="text/javascript">
       $('button.btn-danger').on('click', function(e){
@@ -161,10 +161,20 @@
                             columns: ':visible'
                         }
                     },
+						   {
+                        extend: 'print',
+                        text: 'Print selected',
+								autoPrint: false,
+                        exportOptions: {
+                            modifier: {
+                                selected: true
+                            }
+                        }
+                    }
                 ]
             }
              
-            ]
+            ], select: true
         });
         $('#example2').DataTable({
           "paging": true,
@@ -238,10 +248,20 @@
                             columns: ':visible'
                         }
                     },
+						   {
+                        extend: 'print',
+                        text: 'Print selected',
+								autoPrint: false,
+                        exportOptions: {
+                            modifier: {
+                                selected: true
+                            }
+                        }
+                    }
                 ]
             }
              
-            ]
+            ], select: true
 
     });
 

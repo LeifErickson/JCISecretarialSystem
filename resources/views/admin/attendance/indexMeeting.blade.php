@@ -11,7 +11,7 @@
 		<div class="box-header">
 			<h3 class="box-title">Meeting Attendance</h3>
 			<div class="box-tools pull-right">
-				 <a href="{{ URL::previous() }}" class="btn btn-primary pull-right btn-sm">Back</a>
+				 <a href="{!! url('admin/events/meetings') !!}" class="btn btn-primary pull-right btn-sm">Back</a>
 			</div>
 		</div>
 		<div class="box-body">
