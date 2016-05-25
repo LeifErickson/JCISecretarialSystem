@@ -85,20 +85,20 @@ class AttendanceMonitoringController extends Controller
 					break;
 				case "m":
 					
-					$default = DB::select('SELECT `id`,`name` FROM `events` WHERE `id`=?',[$id]);
+					$default = DB::select('SELECT `id`,`name` FROM `events` WHERE `id`=?',[$choice[1]]);
 					
 					$attendance = DB::select("SELECT t1.`id`,t1.`firstname`, t1.`lastname`,IFNULL(t2.Present,0) as Present 	FROM
 					(SELECT `members`.`id`,`firstname`, `lastname` FROM `members`) t1
 					LEFT JOIN 
 					(SELECT `members`.`id`,count(`members`.`id`) as Present
-					FROM `events_attended`,`members`
+					FROM `meetings_attended`,`members`
 					WHERE 
-					`events_attended`.`member_id` = `members`.`id` AND
-					`events_attended`.`meeting_id` = ?
+					`meetings_attended`.`member_id` = `members`.`id` AND
+					`meetings_attended`.`meeting_id` = ?
 					GROUP BY `members`.`id`
 					) t2
 					ON
-					t1.`id` = t2.`id`",[$id]);
+					t1.`id` = t2.`id`",[$choice[1]]);
 					return view('admin.attendanceMonitoring.index',['projects' => $projects,'meetings' => $meetings,'events' => $events, 'attendance'=> $attendance,'title'=>$default]);
 					break;
 			}
