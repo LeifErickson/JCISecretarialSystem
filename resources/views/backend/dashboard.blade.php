@@ -81,7 +81,7 @@ $('#calendar').fullCalendar({
             trigger : 'click',
             animation : 'true', 
             container: 'body',
-            content: 'ID: ' + event.id +" <br> " + 'Type: ' + event.type
+            content: 'Type: ' + event.type +" <br> " + 'Details: ' + event.description
         });
 
         $('body').on('click', function (e) 

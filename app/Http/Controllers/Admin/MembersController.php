@@ -39,7 +39,7 @@ class MembersController extends Controller
 						ON t1.`id` = t2.`id`) tableChange
 						ON `members`.`id` = tableChange.`id`
 						SET `members`.`memberstatus`=?
-						WHERE tableChange.participate/tableChange.total < 0.80',['inactive']);
+						WHERE tableChange.participate/tableChange.total < 0.50',['inactive']);
 			DB::insert('UPDATE  `members`
 						INNER JOIN  
 						(SELECT t1.`id`,IFNULL(t2.participate,0) as participate,(SELECT count(`id`) FROM `events` ) as total 
@@ -55,7 +55,7 @@ class MembersController extends Controller
 						ON t1.`id` = t2.`id`) tableChange
 						ON `members`.`id` = tableChange.`id`
 						SET `members`.`memberstatus`=?
-						WHERE tableChange.participate/tableChange.total > 0.80',['active']);
+						WHERE tableChange.participate/tableChange.total > 0.50',['active']);
 
         return view('admin.members.index', compact('members'));
     }
@@ -142,9 +142,9 @@ class MembersController extends Controller
      */
     public function destroy($id)
     {
-        Member::destroy($id);
+        DB::insert('UPDATE  `members` set `memberstatus`=? WHERE `members`.`id` = ?', ['active',$id]);
 
-        Session::flash('flash_message', 'Member deleted!');
+        Session::flash('flash_message', 'Member updated!');
 
         return redirect('admin/members');
     }

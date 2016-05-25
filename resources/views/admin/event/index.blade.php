@@ -39,7 +39,6 @@
 										<td><a href='events/viewEvent/".$id."' >".$row->name."</td>
 										<td>
 											<a href='events/editEvent/".$id."' > <button data-placement='top' data-toggle='tooltip' data-original-title='Update'  class='btn btn-primary btn-xs'>Update</button></a> /
-											<a href='events/deleteEvent/".$id."' > <button onclick='del(".$id.")'  data-event-id='".$id."' data-placement='top' data-toggle='tooltip' data-original-title='Delete'  class='btn btn-danger btn-xs'>Delete</button></a> /
 											<a href='attendance/eventsAttendance/".$id."' > <button data-placement='top' data-toggle='tooltip' data-original-title='Attendance'  class='btn btn-success btn-xs'>Attendance</button></a> /
 											<a href='../post/event/".$id."' > <button data-placement='top' data-toggle='tooltip' data-original-title='Attendance'  class='btn btn-primary btn-xs'>Preview</button></a> 
 										</td>

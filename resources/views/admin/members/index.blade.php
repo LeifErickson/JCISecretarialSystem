@@ -20,15 +20,31 @@
         </div><!-- /.box-header -->
     <div class="box-body">
     <div class="table">
-    <label for='radio4'><input id='radio4' type='radio' name='RadioGroup1' value='all' checked />All</label>
-    <!-- default filter is 'show everything' so make it checked -->
-    <label for='radio1'><input id='radio1' type='radio' name='RadioGroup1' value='Baby JC' />Baby</label>
-    <label for='radio2'><input id='radio2' type='radio' name='RadioGroup1' value='Regular' />Regular</label>
-    <label for='radio3'><input id='radio3' type='radio' name='RadioGroup1' value='Associate' />Associate</label>
+    <div style=  "width: 70px;" class="col-lg-1">
+                <label style="margin-top: 9px;">View:</label>
+                </div>
+                <div class="col-lg-2">
+                    <select id="filter" class="form-control"  onchange="filterFunction()">
+                        <option value="0" >All</option>
+                        <option value="active" >Active</option>
+                        <option value="inactive" >Inactive</option>
+                    </select>
+                </div>
+                <div style = "width: 95px;" class="col-lg-2">
+                <label style="margin-top: 9px;">Filter by:</label>
+                </div>
+                <div class="col-lg-4">
+                    <label style="margin-top: 9px;" for='radio4'><input id='radio4' type='radio' name='RadioGroup1' value='all' checked />All</label>
+                    <!-- default filter is 'show everything' so make it checked -->
+                    <label style="margin-top: 9px;" for='radio1'><input id='radio1' type='radio' name='RadioGroup1' value='Baby JC' />Baby</label>
+                    <label style="margin-top: 9px;" for='radio2'><input id='radio2' type='radio' name='RadioGroup1' value='Regular' />Regular</label>
+                    <label style="margin-top: 9px;" for='radio3'><input id='radio3' type='radio' name='RadioGroup1' value='Associate' />Associate</label>
+                </div>
+    
             <table id="example1" class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>ID</th><th>Type</th><th>Firstname</th><th>Lastname</th><th>Middlename</th><th>Actions</th>
+                    <th>ID</th><th>Type</th><th>Firstname</th><th>Lastname</th><th>Middlename</th><th>Status</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,19 +53,24 @@
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->membershiptype }}</td><td><a href="{{ url('admin/members', $item->id) }}">{{ $item->firstname }}</a></td><td>{{ $item->lastname }}</td><td>{{ $item->middlename }}</td>
+                    <td>{{ $item->membershiptype }}</td><td><a href="{{ url('admin/members', $item->id) }}">{{ $item->firstname }}</a></td><td>{{ $item->lastname }}</td><td>{{ $item->middlename }}</td><td>{{ $item->memberstatus }}</td>
                     <td>
                         <a href="{{ url('admin/members/' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
                         </a> 
-                        {!! Form::open([
+                        <!-- {!! Form::open([
                             'method'=>'DELETE',
                             'route' => ['admin.members.destroy', $item->id],
                             'style' => 'display:inline',
-                            'class' => 'delete_form'
+                            'class' => 'status_form'
                         ]) !!}
-                            <button class="btn btn-danger btn-xs">Delete</button>
-                        {!! Form::close() !!}
+                          <?php
+                            //if($item->memberstatus == "inactive")
+                               //echo "<button class='btn btn-danger btn-xs'>Inactive</button>";
+                            //else
+                               //echo "<button class='btn btn-success btn-xs'>Active</button>";
+                            ?>
+                        {!! Form::close() !!} -->
                     </td>
                 </tr>
             @endforeach
@@ -83,11 +104,11 @@
        var self = $(this)
        swal({   
         title: "Are you sure?",   
-        text: "You will not be able to recover this data!",   
+        text: "This Member will be set as Inactive",   
         type: "warning",   
         showCancelButton: true,   
         confirmButtonColor: "#DD6B55",   
-        confirmButtonText: "Yes, delete it!",   
+        confirmButtonText: "Yes, Archive it!",   
         cancelButtonText: "No, cancel it!",   
         closeOnConfirm: false,  
         closeOnCancel: false
@@ -96,12 +117,12 @@
          {   
             if (isConfirm)
              {     
-                swal("Deleted!", "The data will be deleted in a moment.", "success"); 
-                self.parents(".delete_form").submit();
+                swal("Success!", "Member set to Inactive", "success"); 
+                self.parents(".status_form").submit();
             }
              else 
             {     
-                swal("Cancelled", "The data is safe :)", "error");   
+                swal("Cancelled", "Nothing was changed :)", "error");   
                 return false;
             } 
         });
@@ -272,5 +293,26 @@
         $dTable.fnDraw(); // refresh the dataTable
     });
     })();
+
+    $.fn.dataTable.ext.search.push(
+             function( settings, data, dataIndex ) {
+                  var text = document.getElementById("filter").value;
+                  var d = data[5] ; // use data for the age column
+         
+                  if ( d == text)
+                  {
+                        return true;
+                  } else if(text == 0){
+                        return true;
+                  }
+                  return false;
+             }
+        );
+
+    function filterFunction(){
+            
+            var table = $('#example1').DataTable();
+               table.draw();
+        }
     </script>
 @stop

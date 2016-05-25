@@ -148,6 +148,10 @@ class DashboardController extends Controller
     ->orderBy('datebegun', 'desc')
     ->lists('id'); // "=" is optional
 
+    $description = DB::table("projects")
+    ->take(120)
+    ->orderBy('datebegun', 'desc')
+    ->lists('description');
 
 
     $dates1 = DB::table("meetings")
@@ -170,6 +174,11 @@ class DashboardController extends Controller
     ->orderBy('dateset', 'desc')
     ->lists('id'); // "=" is optional
 
+    $description1 = DB::table("meetings")
+    ->take(120)
+    ->orderBy('dateset', 'desc')
+    ->lists('description');
+
 
     $dates2 = DB::table("events")
     ->take(120)
@@ -191,6 +200,11 @@ class DashboardController extends Controller
     ->orderBy('year', 'desc')
     ->lists('id'); // "=" is optional
 
+    $description2 = DB::table("events")
+    ->take(120)
+    ->orderBy('year', 'desc')
+    ->lists('description');
+
 //======================================== Array to JSON =========================================
     for($i=0;$i < count($dates);$i++){
         $event_array[] = array(
@@ -198,6 +212,7 @@ class DashboardController extends Controller
             'type' => $type[$i],
             'title' => $details[$i],
             'start' => $dates[$i],
+            'description' => $description[$i],
         );
     }
     
@@ -210,6 +225,7 @@ class DashboardController extends Controller
             'type' => $type1[$i],
             'title' => $details1[$i],
             'start' => $dates1[$i],
+            'description' => $description1[$i],
         );
     }
 
@@ -222,6 +238,7 @@ class DashboardController extends Controller
             'type' => $type2[$i],
             'title' => $details2[$i],
             'start' => $dates2[$i],
+            'description' => $description2[$i],
         );
     }
 

@@ -64,16 +64,7 @@
                     <td>
                         <a href="{{ url('admin/events/projects/' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
-                        </a> /
-                        {!! Form::open([
-                            'id' => 'delete',
-                            'method'=>'DELETE',
-                            'url' => ['admin/events/projects', $item->id],
-                            'style' => 'display:inline',
-                            'onsubmit' => 'return ConfirmDelete()'
-                        ]) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
-                        {!! Form::close() !!}
+                        </a> 
                     </td>
                 </tr>
             @endforeach
@@ -85,16 +76,7 @@
                     <td>
                         <a href="{{ url('admin/events/meetings' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
-                        </a> /
-                        {!! Form::open([
-                            'id' => 'delete',
-                            'method'=>'DELETE',
-                            'url' => ['admin/events/meetings', $item->id],
-                            'style' => 'display:inline',
-                            'onsubmit' => 'return ConfirmDelete()'
-                        ]) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
-                        {!! Form::close() !!}
+                        </a> 
                     </td>
                 </tr>
             @endforeach
@@ -106,16 +88,7 @@
                     <td>
                         <a href="{{ url('admin/events' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
-                        </a> /
-                        {!! Form::open([
-                            'id' => 'delete',
-                            'method'=>'DELETE',
-                            'url' => ['admin/events', $item->id],
-                            'style' => 'display:inline',
-                            'onsubmit' => 'return ConfirmDelete()'
-                        ]) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
-                        {!! Form::close() !!}
+                        </a> 
                     </td>
                 </tr>
             @endforeach

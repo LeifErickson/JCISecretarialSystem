@@ -36,14 +36,14 @@
                         <a href="{{ url('admin/events/meetings/' . $item->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
                         </a> /
-                        {!! Form::open([
+                        <!-- {!! Form::open([
                             'method'=>'DELETE',
                             'route' => ['admin.events.meetings.destroy', $item->id],
                             'style' => 'display:inline',
                             'class' => 'delete_form'
                         ]) !!}
                             <button class="btn btn-danger btn-xs">Delete</button> /
-                        {!! Form::close() !!}
+                        {!! Form::close() !!} -->
 								<a href='../attendance/meetingAttendance/{{ $item->id }}' > <button data-placement='top' data-toggle='tooltip' data-original-title='Attendance'  class='btn btn-success btn-xs'>Attendance</button></a> /
 								<a href="../../post/meeting/{{ $item->id }}">
                             <button class="btn btn-primary btn-xs">Preview</button>
