@@ -24,7 +24,7 @@
 			
 			
 			<div class="col-lg-12" style="margin-bottom: 9px;">
-				<div class="col-lg-1">
+				<div class="col-lg-2" style="margin-right: -80px;">
 				<label style="margin-top: 9px;">Filter By:</label>
 				</div>
 				<div class="col-lg-2">
@@ -37,7 +37,7 @@
 				<div class="col-lg-1">
 				<label style="margin-top: 9px;">Event:</label>
 				</div>
-				<div class="col-lg-2">
+				<div class="col-lg-3">
 					<form action="test.php">
 							<div class="dropdown" >
 							<button type="button" class="form-control" data-toggle="dropdown" aria-expanded="false">
@@ -48,7 +48,13 @@
 								<?php
 									
 									foreach($events as $row){
-											echo "<li><a href='./".$row->id."' >".$row->name."</a></li>";
+											echo "<li><a href='./e_".$row->id."' >".$row->name."</a></li>";
+									}
+									foreach($projects as $row){
+											echo "<li><a href='./p_".$row->id."' >".$row->name."</a></li>";
+									}
+									foreach($meetings as $row){
+											echo "<li><a href='./m_".$row->id."' >".$row->title."</a></li>";
 									}
 								?>
 							</ul>

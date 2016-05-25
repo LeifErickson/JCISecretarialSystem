@@ -24,6 +24,9 @@ class AttendanceMonitoringController extends Controller
 			}
 
 			$events = DB::select('SELECT `id`,`name` FROM `events`');
+			$projects = DB::select('SELECT `id`,`name` FROM `projects`');
+			$meetings = DB::select('SELECT `id`,`title` FROM `meetings`');
+			
 
 			$eventTitle = DB::select('SELECT `id`,`name` FROM `events` WHERE `id`=?',[$event_id]);
 			
@@ -39,25 +42,67 @@ class AttendanceMonitoringController extends Controller
 			) t2
 			ON
 			t1.`id` = t2.`id`",[$event_id]);
-			return view('admin.attendanceMonitoring.index',['events' => $events, 'attendance'=> $attendance,'title'=>$eventTitle]);
+			return view('admin.attendanceMonitoring.index',['projects' => $projects,'meetings' => $meetings,'events' => $events, 'attendance'=> $attendance,'title'=>$eventTitle]);
 		} else {
+			$choice = explode("_", $id);
 			$events = DB::select('SELECT `id`,`name` FROM `events`');
+			$projects = DB::select('SELECT `id`,`name` FROM `projects`');
+			$meetings = DB::select('SELECT `id`,`title` FROM `meetings`');
 			
-			$default = DB::select('SELECT `id`,`name` FROM `events` WHERE `id`=?',[$id]);
-			
-			$attendance = DB::select("SELECT t1.`id`,t1.`firstname`, t1.`lastname`,IFNULL(t2.Present,0) as Present 	FROM
-			(SELECT `members`.`id`,`firstname`, `lastname` FROM `members`) t1
-			LEFT JOIN 
-			(SELECT `members`.`id`,count(`members`.`id`) as Present
-			FROM `events_attended`,`members`
-			WHERE 
-			`events_attended`.`member_id` = `members`.`id` AND
-			`events_attended`.`event_id` = ?
-			GROUP BY `members`.`id`
-			) t2
-			ON
-			t1.`id` = t2.`id`",[$id]);
-			return view('admin.attendanceMonitoring.index',['events' => $events, 'attendance'=> $attendance,'title'=>$default]);
+			switch($choice[0]){
+				case "e":
+					$default = DB::select('SELECT `id`,`name` FROM `events` WHERE `id`=?',[$choice[1]]);
+					
+					$attendance = DB::select("SELECT t1.`id`,t1.`firstname`, t1.`lastname`,IFNULL(t2.Present,0) as Present 	FROM
+					(SELECT `members`.`id`,`firstname`, `lastname` FROM `members`) t1
+					LEFT JOIN 
+					(SELECT `members`.`id`,count(`members`.`id`) as Present
+					FROM `events_attended`,`members`
+					WHERE 
+					`events_attended`.`member_id` = `members`.`id` AND
+					`events_attended`.`event_id` = ?
+					GROUP BY `members`.`id`
+					) t2
+					ON
+					t1.`id` = t2.`id`",[$choice[1]]);
+					return view('admin.attendanceMonitoring.index',['events' => $events, 'attendance'=> $attendance,'title'=>$default]);
+					break;
+				case "p":
+					$default = DB::select('SELECT `id`,`name` FROM `events` WHERE `id`=?',[$choice[1]]);
+					
+					$attendance = DB::select("SELECT t1.`id`,t1.`firstname`, t1.`lastname`,IFNULL(t2.Present,0) as Present 	FROM
+					(SELECT `members`.`id`,`firstname`, `lastname` FROM `members`) t1
+					LEFT JOIN 
+					(SELECT `members`.`id`,count(`members`.`id`) as Present
+					FROM `projects_attended`,`members`
+					WHERE 
+					`projects_attended`.`member_id` = `members`.`id` AND
+					`projects_attended`.`event_id` = ?
+					GROUP BY `members`.`id`
+					) t2
+					ON
+					t1.`id` = t2.`id`",[$choice[1]]);
+					return view('admin.attendanceMonitoring.index',['events' => $events, 'attendance'=> $attendance,'title'=>$default]);
+					break;
+				case "m":
+					
+					$default = DB::select('SELECT `id`,`name` FROM `events` WHERE `id`=?',[$id]);
+					
+					$attendance = DB::select("SELECT t1.`id`,t1.`firstname`, t1.`lastname`,IFNULL(t2.Present,0) as Present 	FROM
+					(SELECT `members`.`id`,`firstname`, `lastname` FROM `members`) t1
+					LEFT JOIN 
+					(SELECT `members`.`id`,count(`members`.`id`) as Present
+					FROM `events_attended`,`members`
+					WHERE 
+					`events_attended`.`member_id` = `members`.`id` AND
+					`events_attended`.`event_id` = ?
+					GROUP BY `members`.`id`
+					) t2
+					ON
+					t1.`id` = t2.`id`",[$id]);
+					return view('admin.attendanceMonitoring.index',['events' => $events, 'attendance'=> $attendance,'title'=>$default]);
+					break;
+			}
 		}
 		
 	}
