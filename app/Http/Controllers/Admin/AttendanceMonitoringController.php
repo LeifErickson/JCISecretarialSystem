@@ -67,7 +67,7 @@ class AttendanceMonitoringController extends Controller
 					return view('admin.attendanceMonitoring.index',['projects' => $projects,'meetings' => $meetings,'events' => $events, 'attendance'=> $attendance,'title'=>$default]);
 					break;
 				case "p":
-					$default = DB::select('SELECT `id`,`name` FROM `events` WHERE `id`=?',[$choice[1]]);
+					$default = DB::select('SELECT `id`,`name` FROM `projects` WHERE `id`=?',[$choice[1]]);
 					
 					$attendance = DB::select("SELECT t1.`id`,t1.`firstname`, t1.`lastname`,IFNULL(t2.Present,0) as Present 	FROM
 					(SELECT `members`.`id`,`firstname`, `lastname` FROM `members`) t1
@@ -85,7 +85,7 @@ class AttendanceMonitoringController extends Controller
 					break;
 				case "m":
 					
-					$default = DB::select('SELECT `id`,`name` FROM `events` WHERE `id`=?',[$choice[1]]);
+					$default = DB::select('SELECT `id`,`title` as name FROM `meetings` WHERE `id`=?',[$choice[1]]);
 					
 					$attendance = DB::select("SELECT t1.`id`,t1.`firstname`, t1.`lastname`,IFNULL(t2.Present,0) as Present 	FROM
 					(SELECT `members`.`id`,`firstname`, `lastname` FROM `members`) t1

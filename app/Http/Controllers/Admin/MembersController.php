@@ -27,7 +27,7 @@ class MembersController extends Controller
 			DB::insert('UPDATE  `members`
 						INNER JOIN  
 						(
-							SELECT events_proj.id,((events_proj.eve)+count(events_proj.proj)+count(meetings.participate)) AS Participation,((SELECT count(`id`) FROM `meetings` )+(SELECT count(`id`) FROM `events` )+(SELECT count(`id`) FROM `projects` )) as total 
+							SELECT events_proj.id,((events_proj.eve)+count(events_proj.proj)+count(meetings.participate)) AS Participation,((SELECT count(`id`) FROM `meetings` WHERE `dateset` between DATE_SUB(curdate(),INTERVAL 30 DAY) and DATE_ADD(curdate(),INTERVAL 30 DAY))+(SELECT count(`id`) FROM `events` WHERE `year` between DATE_SUB(curdate(),INTERVAL 30 DAY) and DATE_ADD(curdate(),INTERVAL 30 DAY))+(SELECT count(`id`) FROM `projects` WHERE `datecompleted` between DATE_SUB(curdate(),INTERVAL 30 DAY) and DATE_ADD(curdate(),INTERVAL 30 DAY))) as total 
 							FROM
 							(SELECT events.id as id, events.participate as eve,projects.participate as proj
 							FROM
