@@ -26,7 +26,7 @@ class MembersController extends Controller
 			
 			DB::insert('UPDATE  `members`
 						INNER JOIN  
-						(SELECT t1.`id`,IFNULL(t2.participate,0) as participate,(SELECT count(`id`) FROM `events` ) as total 
+						(SELECT t1.`id`,IFNULL(t2.participate,0) as participate,((SELECT count(`id`) FROM `meetings` )+(SELECT count(`id`) FROM `events` )+(SELECT count(`id`) FROM `projects` )) as total 
 						FROM 
 						(SELECT `members`.`id` FROM `members` ) t1
 						LEFT JOIN
@@ -40,9 +40,10 @@ class MembersController extends Controller
 						ON `members`.`id` = tableChange.`id`
 						SET `members`.`memberstatus`=?
 						WHERE tableChange.participate/tableChange.total < 0.50',['inactive']);
+						
 			DB::insert('UPDATE  `members`
 						INNER JOIN  
-						(SELECT t1.`id`,IFNULL(t2.participate,0) as participate,(SELECT count(`id`) FROM `events` ) as total 
+						(SELECT t1.`id`,IFNULL(t2.participate,0) as participate,((SELECT count(`id`) FROM `meetings` )+(SELECT count(`id`) FROM `events` )+(SELECT count(`id`) FROM `projects` )) as total 
 						FROM 
 						(SELECT `members`.`id` FROM `members` ) t1
 						LEFT JOIN
