@@ -29,7 +29,6 @@
                 <!-- Authentication Links -->
                 @if (Auth::guest())
                     <li>{!! link_to('login', trans('navs.frontend.login')) !!}</li>
-                    <li>{!! link_to('register', trans('navs.frontend.register')) !!}</li>
                 @else
 							
                     <li class="dropdown">

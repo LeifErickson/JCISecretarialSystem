@@ -105,6 +105,22 @@ return [
                 ],
             ],
 
+            'allevents' => [
+                'create' => 'Create Events',
+                'edit' => 'Edit Events',
+                'management' => 'Events Management',
+                'active' => 'All Events',
+                'show' => 'Event info',
+
+                'table' => [
+                    'number_of_users' => 'Number of Users',
+                    'permissions' => 'Permissions',
+                    'role' => 'Role',
+                    'sort' => 'Sort',
+                    'total' => 'role total|roles total',
+                ],
+            ],
+
             'project' => [
                 'create' => 'Create Project',
                 'edit' => 'Edit Project',
