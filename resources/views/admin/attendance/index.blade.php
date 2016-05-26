@@ -36,7 +36,7 @@
 												<td>".$row->year."</td>
 												<td>".$row->memberstatus."</td>
 												<td>
-													<a href='../deleteattendance/".$row->member_id."' > <button onclick='return confirm(\"Are you want to delete?\")' data-placement='top' data-toggle='tooltip' data-original-title='Delete'  class='btn btn-danger btn-xs'>Delete</button></a>
+													<a href='../deleteattendance/".$row->member_id."' > <button onclick='return confirm(\"Are you want to Remove?\")' data-placement='top' data-toggle='tooltip' data-original-title='Remove'  class='btn btn-danger btn-xs'>Remove</button></a>
 												</td>
 											</tr>";
 								}

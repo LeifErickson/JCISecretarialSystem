@@ -39,7 +39,7 @@
 													<td>".$row->year."</td>
 													<td>".$row->status."</td>
 													<td>
-														<a  class='btn btn-xs btn-danger'  href='../deleteattendanceProject/".$row->member_id."'><i class='fa fa-trash' title='' data-placement='top' data-toggle='tooltip' data-original-title='Delete'></i></a>
+														<a  class='btn btn-xs btn-danger'  href='../deleteattendanceProject/".$row->member_id."'><i class='fa fa-trash' title='' data-placement='top' data-toggle='tooltip' data-original-title='Remove'></i></a>
 													</td>
 												</tr>";
 									}

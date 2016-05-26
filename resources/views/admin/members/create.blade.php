@@ -170,7 +170,10 @@
 						<div class="form-group {{ $errors->has('birthdate') ? 'has-error' : ''}}">
 							 {!! Form::label('birthdate', 'Birthdate: ', ['class' => 'col-sm-5 control-label']) !!}
 							 <div class="col-sm-4">
-								  {!! Form::date('birthdate', null, ['class' => 'form-control', 'required' => 'required']) !!}
+								  <input name="birthdate" type="date" onchange="bday()" class="form-control" max="<?php 
+									$date = strtotime(date("Y/m/d").' -23 year');
+								  
+								  echo date('Y-m-d', $date); ?>" >
 								  {!! $errors->first('birthdate', '<p class="help-block">:message</p>') !!}
 							 </div>
 						</div>
@@ -354,6 +357,11 @@
 
 @section('before-scripts-end')
     <script>
+		function bday(){
+			//var bday = document.getElementById('bday').value;
+			alert("bday");
+		
+		}
 		function disableForm()
 		{	
 			var val = document.getElementById('membershipType').value;
