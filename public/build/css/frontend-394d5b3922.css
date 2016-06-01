@@ -4269,6 +4269,11 @@ background-color:#dff0d8;
 border-color:#d6e9c6;
 color:#3c763d
 }
+.alert-sidebar{
+background-color:#fafafa;
+border-bottom: 1px solid #FF3B0F;
+color:#737373
+}
 .alert-success hr{
 border-top-color:#c9e2b3
 }
@@ -8750,4 +8755,13 @@ transform:translateY(145%)
 	margin-left: 15px;
 	font-weight:1px
 }
+
+.myautoscroll {
+  max-height: 300px;
+  overflow: hidden;
+}
+.myautoscroll:hover {
+  overflow: auto;
+}
+
 

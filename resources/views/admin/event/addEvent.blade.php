@@ -38,10 +38,8 @@
 				</div>
 				<div class="col-md-4">
 					<div class="box box-info">
-						<div class="box-header with-border">
-							<h3 class="box-title">Date Held</h3>
-						</div>
 							<div class="box-body">
+								<label>Date</label>
 								<div class="form-group">
 									<div class="input-group">
 										<input name="date" id="datepicker" class="form-control" type="text" placeholder="Event Set" required >
@@ -51,6 +49,10 @@
 											</button>
 										</div>
 									</div>
+								</div>
+								<label>Time</label>
+								<div class="form-group">
+									<input name="time" type="time" class="form-control">
 								</div>
 							</div>
 					</div>

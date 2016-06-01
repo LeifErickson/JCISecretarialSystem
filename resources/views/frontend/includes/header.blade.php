@@ -1,5 +1,7 @@
-<div style="margin-right:auto;margin-left:auto;margin-top: 50px;">
-		<div id="myCarousel" class="carousel" style="background-color:black">
+<div class="col-lg-12" style="margin-top:45px;">
+</div>
+<div style="margin-right:auto;margin-left:auto;">
+		<div id="myCarousel" class="carousel">
 			<ol class="carousel-indicators">
 				<li data-target="myCarousel" data-slide-to = "0" class="active" ></li>
 				<li data-target="myCarousel" data-slide-to = "1" ></li>
@@ -7,13 +9,13 @@
 			</ol>
 			<div class="carousel-inner" style="max-height:400px;margin-left:auto;margin-right:auto;">
 				<div class="item active">
-					<img  src="{{asset('images/1.png')}}" class="img-responsive">
+					<img  width="1500px"src="http://www.abc.net.au/radionational/image/6802366-3x2-700x467.jpg" class="img-responsive">
 				</div>
 				<div class="item">
-					<img  src="{{asset('images/2.jpg')}}" class="img-responsive">
+					<img width="1500px"   src="http://i.lv3.hbo.com/custom-assets/enrichments/series/wotn/images/bonusshorts/header-poverty-and-obesity-when-healthy-food-isnt-an-option.jpg" class="img-responsive">
 				</div>
 				<div class="item">
-					<img  src="{{asset('images/3.png')}}" class="img-responsive">
+					<img width="1500px" src="http://www.jciiligan.org/wp-content/uploads/2013/07/6.jpg" class="img-responsive">
 				</div>
 				
 					<!--
@@ -29,4 +31,3 @@
 			</a>
 		</div>
 </div>
-<hr>

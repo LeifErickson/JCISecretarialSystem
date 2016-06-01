@@ -20,6 +20,8 @@ class CreateTableEvents extends Migration
 			$table->string('name');
 			$table->longText('description');
 			$table->date('year');
+			$table->time('time');
+			$table->string('location');
 			$table->foreign('user_id')->references('id')->on('users');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));

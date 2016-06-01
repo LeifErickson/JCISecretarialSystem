@@ -39,9 +39,11 @@ class EventsController extends Controller
 		$description = $request->input('description');
 		$date = $request->input('date');
 		$Sponsors = $request->input('sponsors');
+		$time = $request->input('time').":00";
 		$organizer = $request->input('event_organizer');
-		DB::insert('INSERT INTO `events`(`user_id`,`name`, `description`,`year`,`organizer`) 
-		VALUES (?,?,?,?,?)', [1,"$title","$description","$date","$organizer"]);
+	
+		DB::insert('INSERT INTO `events`(`user_id`,`name`, `description`,`year`,`organizer`,`time`) 
+		VALUES (?,?,?,?,?,?)', [1,"$title","$description","$date","$organizer","$time"]);
 		
 		
 		$result = DB::select('SELECT max(`id`) as id FROM `events`');

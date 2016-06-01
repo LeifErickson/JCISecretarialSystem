@@ -4,12 +4,14 @@
 <div class="container" style="margin-top:-50px;">
    <div class="row">
 			<div class="col-lg-12">
-						<div class="col-md-8 " >
+						<!--<div class="col-md-8 " >
 							<div class="col-md-12">
-									@include('frontend.allPost')
+									
 							</div>
-						</div><!-- panel -->
-						@include('frontend.includes.sidebar')
+						</div>--><!-- panel -->
+						@include('frontend.projects')
+						@include('frontend.events')
+						
         </div><!-- col-md-10 -->
        
 

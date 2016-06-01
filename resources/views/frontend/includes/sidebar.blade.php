@@ -4,18 +4,37 @@
 	<div class="col-md-12" >
 		<div class="col-md-12" style="margin-bottom: 15px;border-radius: 5px;">
 			<div class="page-header">  
-				<h3><i class="glyphicon glyphicon-calendar"></i> Upcoming Events</h3>
-				<h4><span class="glyphicon glyphicon-time"></span> Date & Time:  <small id="date"></small></h4>
+				<h3 ><i class="glyphicon glyphicon-calendar"></i> Events</h3>
+				<!-- <h4><span class="glyphicon glyphicon-time"></span> Date & Time:  <small id="date"></small></h4>-->
 			</div>
-			<div class="page-body">
-					 <ul>	
+			<div class="page-body myautoscroll" >
 					<?php foreach($upcoming_Events as $events){?>
-							<li><a  href="post/event/<?php echo $events->id; ?>" ><?php echo $events->name; ?></a></li>				
+							<div class="alert alert-sidebar"><a  href="post/event/<?php echo $events->id; ?>" ><?php echo $events->name; ?></a></div>				
 					<?php }?>
 					<?php foreach($upcoming_Meeting as $meeting){?>
-							<li><a  href="post/meeting/<?php echo $meeting->id; ?>" ><?php echo $meeting->agenda; ?></a></li>				
+							<a  href="post/meeting/<?php echo $meeting->id; ?>" >
+							<div class="alert alert-sidebar">
+								<div class="row" style="margin-top:0px">
+									<div class="col-xs-3">
+										<div class="col-xs-12" style="color:#fe9322;font-size: 35px;padding-bottom:10px;padding-top: 5px;"><?php echo date("d",strtotime($meeting->dateset)); ?></div>
+										<div class="col-xs-12" style="font-size: 20px;font-weight:normal;"><?php echo date("M",strtotime($meeting->dateset)); ?></div>
+										</ul>
+									</div>
+									<div class="col-xs-9">
+										<h5 style="text-transform:uppercase;font-weight: bold;margin-top:0px"><?php echo $meeting->title; ?></h5>
+										<ul style="list-style-type: none;padding:0; margin:0;">
+											<li>
+												<i class="fa fa-clock-o"><?php echo " ".$meeting->started; ?></i>
+											</li>
+											<li>
+												<i class="fa fa-map-marker"><?php echo " ".$meeting->location; ?></i>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							</a>
 					<?php }?>
-				  </ul>
 			</div>
 		</div>
 	</div>
