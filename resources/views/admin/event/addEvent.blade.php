@@ -54,6 +54,10 @@
 								<div class="form-group">
 									<input name="time" type="time" class="form-control">
 								</div>
+								<label>Location</label>
+								<div class="form-group">
+									<input name="location" type="text" class="form-control">
+								</div>
 							</div>
 					</div>
 					<div class="box box-info">

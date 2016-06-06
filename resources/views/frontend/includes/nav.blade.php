@@ -12,7 +12,7 @@
 
             <!-- Branding Image -->
             <a style="font-weight:bold;" class="navbar-brand" href="{!! route('frontend.index') !!}">
-                {!! app_name() !!}  
+               <img  style="float:left;width:145px;height:65px;margin-top: -18px;" src="{!! asset('images/jci-logo.png') !!}" > {!! app_name() !!}  
             </a>
         </div><!--navbar-header-->
 

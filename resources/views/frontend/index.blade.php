@@ -17,7 +17,9 @@
 
    </div><!--row-->
 </div>
+@include('frontend.includes.footer')
 @stop
+
 
 @section('after-scripts-end')
     <script>

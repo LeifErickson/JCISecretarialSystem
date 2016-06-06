@@ -42,22 +42,27 @@
 				</div>
 				<div class="col-md-4">
 					<div class="box box-info">
-						<div class="box-header with-border">
-							<h3 class="box-title">Date Held</h3>
-						</div>
-							<div class="box-body">
-								<div class="form-group">
-									<div class="input-group">
-										<input name="date" id="datepicker"  value = "<?php echo $row->year;?>" class="form-control" type="text" placeholder="Event Set">
-										<div class="input-group-btn">
-											<button class="btn btn-primary btn-flat">
-												<i class="fa fa-calendar"></i>
-											</button>
-										</div>
+						<div class="box-body">
+							<label>Date</label>
+							<div class="form-group">
+								<div class="input-group">
+									<input name="date" id="datepicker" class="form-control" type="text"  value = "<?php echo $row->year;?>"  placeholder="Event Set" required >
+									<div class="input-group-btn">
+										<button class="btn btn-primary btn-flat">
+											<i class="fa fa-calendar"></i>
+										</button>
 									</div>
 								</div>
 							</div>
-							
+							<label>Time</label>
+							<div class="form-group">
+								<input name="time" type="time"  value = "<?php echo $row->time; ?>"   class="form-control">
+							</div>
+							<label>Location</label>
+							<div class="form-group">
+								<input name="location" type="text" value = "<?php echo $row->location; ?>" class="form-control">
+							</div>
+						</div>
 					</div>
 					<div class="box box-info">
 						<div class="box-header with-border">
