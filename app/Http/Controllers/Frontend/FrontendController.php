@@ -19,8 +19,8 @@ class FrontendController extends Controller
 		  //$resultProjects = DB::select('SELECT * FROM `projects` WHERE `year` between DATE_SUB(curdate(),INTERVAL 30 DAY) and DATE_ADD(curdate(),INTERVAL 30 DAY) ORDER BY `year` DESC');
 		  $result = DB::select('SELECT * FROM `events` WHERE `year` between DATE_SUB(curdate(),INTERVAL 30 DAY) and DATE_ADD(curdate(),INTERVAL 30 DAY) ORDER BY `year` DESC');
 		  $resultEvents = DB::select('SELECT * FROM `events` WHERE `year` between curdate() and DATE_ADD(curdate(),INTERVAL 30 DAY) ORDER BY `year` DESC');
-//		  $meeting = DB::select('SELECT * FROM `meetings` WHERE `dateset` between curdate() and DATE_ADD(curdate(),INTERVAL 100 DAY) ORDER BY `dateset` DESC');
-		  $meeting = DB::select('SELECT * FROM `meetings` WHERE `dateset` between DATE_SUB(curdate(),INTERVAL 100 DAY) and DATE_ADD(curdate(),INTERVAL 100 DAY) ORDER BY `dateset` DESC');
+		  $meeting = DB::select('SELECT * FROM `meetings` WHERE `dateset` between curdate() and DATE_ADD(curdate(),INTERVAL 100 DAY) ORDER BY `dateset` DESC');
+		 // $meeting = DB::select('SELECT * FROM `meetings` WHERE `dateset` between DATE_SUB(curdate(),INTERVAL 100 DAY) and DATE_ADD(curdate(),INTERVAL 100 DAY) ORDER BY `dateset` DESC');
 		  
 		  $projects = DB::select('SELECT * FROM `projects` WHERE `datecompleted` between  DATE_SUB(curdate(),INTERVAL 30 DAY)  and DATE_ADD(curdate(),INTERVAL 30 DAY) ORDER BY `datecompleted` DESC');
         return view('frontend.index',['data'=> $result,'upcoming_Events'=>$resultEvents, 'projects'=>$projects,'upcoming_Meeting'=>$meeting]);

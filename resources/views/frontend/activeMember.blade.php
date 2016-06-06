@@ -1,10 +1,9 @@
 @extends('frontend.layouts.master')
-@include('frontend.includes.header')
 @section('content')
+@include('frontend.includes.header')
 <div class="container" style="margin-top:-50px;">
    <div class="row">
-			<div class="col-lg-12">
-				<div class="box">
+			<div class="col-lg-12" style="padding-bottom: 50px;" >
 					<div class="center">
 						<div class="page-header"  style="margin-left:10px">
 							<h2>Active Members</h2>
@@ -28,10 +27,11 @@
 							</table>
 						</div><!-- panel -->
 					</div>
-				</div>
+				
         </div><!-- col-md-10 -->
    </div><!--row-->
 </div>
+@include('frontend.includes.footer')
 @stop
 
 @section('after-scripts-end')

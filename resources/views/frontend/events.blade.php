@@ -4,7 +4,22 @@
 			<div class="col-md-12" >
 				<div class="col-md-12" style="margin-bottom: 15px;border-radius: 5px;">
 					<div class="page-header">  
-						<h3 ><i class="glyphicon glyphicon-calendar"></i> Events And Meetings</h3>
+						<h3 >Philippine Time</h3>
+					</div>
+					<div class="page-body">
+						<label><i class="glyphicon glyphicon-calendar"></i> Date:</label> <label style="font-weight: normal;" id="date"></label></br>
+						<label><i class="glyphicon glyphicon-time"></i> Time: </label>	<label style="font-weight: normal;" id="time"></label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="box">
+		<div class="center">
+			<div class="col-md-12" >
+				<div class="col-md-12" style="margin-bottom: 15px;border-radius: 5px;">
+					<div class="page-header">  
+						<h3 >Events And Meetings</h3>
 						<!-- <h4><span class="glyphicon glyphicon-time"></span> Date & Time:  <small id="date"></small></h4>-->
 					</div>
 					<div class="page-body myautoscroll" >
@@ -21,7 +36,7 @@
 												<h5 style="text-transform:uppercase;font-weight: bold;margin-top:0px"><?php echo $meeting->title; ?></h5>
 												<ul style="list-style-type: none;padding:0; margin:0;">
 													<li>
-														<i class="fa fa-clock-o"><?php echo " ".$meeting->started; ?></i>
+														<i class="fa fa-clock-o"><?php echo " ".date('h:i:s a', strtotime($meeting->started)); ?></i>
 													</li>
 													<li>
 														<i class="fa fa-map-marker"><?php echo " ".$meeting->location; ?></i>
@@ -45,7 +60,7 @@
 												<h5 style="text-transform:uppercase;font-weight: bold;margin-top:0px"><?php echo $events->name; ?></h5>
 												<ul style="list-style-type: none;padding:0; margin:0;">
 													<li>
-														<i class="fa fa-clock-o"><?php echo " ".$events->time; ?></i>
+														<i class="fa fa-clock-o"><?php echo " ".date('h:i:s a', strtotime($events->time)); ?></i>
 													</li>
 													<li>
 														<i class="fa fa-map-marker"><?php echo " ".$events->location; ?></i>
@@ -61,10 +76,12 @@
 			</div>
 		</div>
 	</div>
+	
 </div>
 @section('after-scripts-end')
 <script>
 	var myVar = setInterval(timeToday ,1000);
+	
 	function timeToday() {
 		var d = new Date();
 		var hour = d.getHours() % 12;
@@ -74,7 +91,8 @@
 		if(d.getHours() >= 12) period = "PM"; else period = "AM"
 			
 		var time = hour +" : "+ mins + " : "+sec+" "+period;
-		 document.getElementById("date").innerHTML = d.toDateString()+" "+time;
+		 document.getElementById("date").innerHTML = d.toDateString();
+		 document.getElementById("time").innerHTML = time;
 	}
 </script>
 @stop

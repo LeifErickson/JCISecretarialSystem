@@ -1256,8 +1256,7 @@ a.bg-danger:focus,a.bg-danger:hover{
 background-color:#e4b9b9
 }
 .page-header{
-padding-bottom:9px;
-margin:15px 0 20px;
+margin:15px 0 5px;
 border-bottom:2px solid #FF3B0F;
 
 }
@@ -5298,6 +5297,7 @@ margin-left:auto;
 margin-right:auto;
 
 }
+
 @media (-webkit-transform-3d),all and (transform-3d){
 .carousel-inner>.item{
 transition:-webkit-transform .6s ease-in-out;
@@ -5328,7 +5328,7 @@ left:0
 display:block
 }
 .carousel-inner>.active{
-left:0
+left:0;
 }
 .carousel-inner>.next,.carousel-inner>.prev{
 position:absolute;
@@ -5523,10 +5523,13 @@ width:device-width
 .visible-lg,.visible-lg-block,.visible-lg-inline,.visible-lg-inline-block,.visible-md,.visible-md-block,.visible-md-inline,.visible-md-inline-block,.visible-sm,.visible-sm-block,.visible-sm-inline,.visible-sm-inline-block,.visible-xs,.visible-xs-block,.visible-xs-inline,.visible-xs-inline-block{
 display:none!important
 }
+
+
 @media (max-width:767px){
 .visible-xs{
 display:block!important
 }
+
 table.visible-xs{
 display:table!important
 }
@@ -7834,13 +7837,13 @@ display:none;
 z-index:99999
 }
 @media all and (max-width:540px){
-.sweet-alert{
-width:auto;
-margin-left:0;
-margin-right:0;
-left:15px;
-right:15px
-}
+	.sweet-alert{
+	width:auto;
+	margin-left:0;
+	margin-right:0;
+	left:15px;
+	right:15px
+	}
 
 }
 .sweet-alert h2{
@@ -8776,7 +8779,6 @@ transform:translateY(145%)
 }
 .page-body{
 	color:#3D3939;
-	margin-left: 15px;
 	font-weight:1px
 }
 
@@ -8788,4 +8790,21 @@ transform:translateY(145%)
   overflow: auto;
 }
 
-
+::-webkit-scrollbar {
+      width: 15px;
+} 
+::-webkit-scrollbar-track {
+      background-color: #b46868;
+} /* the new scrollbar will have a flat appearance with the set background color */
+ 
+::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2); 
+} /* this will style the thumb, ignoring the track */
+ 
+::-webkit-scrollbar-button {
+      background-color: #7c2929;
+} /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+ 
+::-webkit-scrollbar-corner {
+      background-color: black;
+} 

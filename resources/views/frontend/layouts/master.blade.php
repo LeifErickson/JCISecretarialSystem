@@ -21,7 +21,13 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 		  <link href="{!! asset('/dist_pagination/css/jplist.demo-pages.min.css') !!}" rel="stylesheet" type="text/css" />
-				
+		  <link rel="stylesheet" type="text/css" href="{!! asset('/slider/css/slider.css') !!}">
+			 <script type="text/javascript" src="{!! asset('/slider/js/jquery-1.11.3.min.js') !!}"></script>
+		 <script type="text/javascript" src="{!! asset('/slider/js/jssor.slider.mini.js') !!}"></script>
+		 <!-- use jssor.slider.debug.js instead for debug -->
+		 <script type="text/javascript" src="{!! asset('/slider/js/slider.js') !!}"></script>
+
+    
 		 <!-- jQuery lib 
 		<script src="{!! asset('/build/js/jquery-1.11.1.min.js') !!}"></script>-->
 		
