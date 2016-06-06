@@ -20,28 +20,36 @@
 								$first = 0;
 								foreach($projects as $projects){
 									if($first == 0){
-										echo "<div class='item active'>
-												<a  href='post/project/".$projects->id."' ><h4 style='color:#fe9322;text-transform:uppercase;font-weight:bold;'>".$projects->name."</h4></a>
-												<div class='col-md-12'>".$projects->description."</div>
-												
-												<ul style='list-style-type: none;padding:0; margin:0;'>
-													<li>
+										echo "<div class='item active' >
+													<div style='padding:15px;background:#FAFAFA;'>
+														<a  href='post/project/".$projects->id."' ><h4 style='color:#fe9322;text-transform:uppercase;font-weight:bold;'>".$projects->name."
+														<small style='float: right;text-transform: capitalize;'><i class='glyphicon glyphicon-time'></i> Date Posted: ".date('M d, Y', strtotime($projects->created_at))."</small>
+														
+														
+														</h4></a>
+														
+														<hr>
+														".$projects->description."
+														
+														<hr>
 														<i class='glyphicon glyphicon-user'> Volunteers: </i> ".$projects->numberofvolunteers."
-													</li>
-												</ul>
-											</div>";
+													</div>
+												</div>";
 											$first = 1;
 									}	else {
-										echo "<div class='item'>
-												<a  href='post/project/".$projects->id."' ><h4 style='color:#fe9322;text-transform:uppercase;font-weight:bold;'>".$projects->name."</h4></a>
-												<div class='col-md-12'>".$projects->description."</div>
-												
-												<ul style='list-style-type: none;padding:0; margin:0;'>
-													<li>
+										echo "<div class='item' >
+													<div style='background:#FAFAFA;padding-bottom:10px;'>
+														<a  href='post/project/".$projects->id."' ><h4 style='color:#fe9322;text-transform:uppercase;font-weight:bold;'>".$projects->name."
+														<small style='float: right;text-transform: capitalize;'><i class='glyphicon glyphicon-time'></i> Date Posted: ".date('M d, Y', strtotime($projects->created_at))."</small>
+														</h4></a>
+														
+														<hr>
+														".$projects->description."
+														
+														<hr>
 														<i class='glyphicon glyphicon-user'> Volunteers: </i> ".$projects->numberofvolunteers."
-													</li>
-												</ul>
-											</div>";
+													</div>
+												</div>";
 									}
 								}?>
 							</div>

@@ -8,7 +8,7 @@
 		</div>
 		<div class="col-sm-4" style="list-style-type: none;">
 			<div class="col-sm-6" style="float: none;margin: 0 auto 10px auto;">
-				<h3 class="line-bottom" style="color:white;">Page</h3>
+				<h3 class="line-bottom" style="color:white;">Pages</h3>
 				<ul class="list-border" >
 					 <li><a style="font-weight:normal;" href="{!! url('/') !!}">Home</a></li>
 					 
