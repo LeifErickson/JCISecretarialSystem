@@ -3,18 +3,14 @@
 		<div class="center">
 			<div class="col-md-12" >
 				<div class="col-md-12" style="margin-bottom: 15px;border-radius: 5px;">
-					<div class="page-header">  
-						<h3 > Projects
-						<!-- <h4><span class="glyphicon glyphicon-time"></span> Date & Time:  <small id="date"></small></h4>-->
-						
-								<small style="float:right;">
-								<a  style="background: transparent;color:black;" href="#project" data-slide="prev">
-									<button><i style="opacity:1;" class="glyphicon glyphicon-triangle-left"></i></button>
-								</a>
-								<a  style="background: transparent;color:black;" href="#project" data-slide="next">
-									<button ><i style="opacity:1;" type="button" class="glyphicon glyphicon-triangle-right"></i></button>
-								</a>
-								</small>
+					
+					<div class="line-bottom">  
+						<h3> 
+							Projects
+							<div style="float:right;">
+								<a style="color:black;"><i style="cursor:pointer;background:#ddd;" class="glyphicon glyphicon-chevron-left"  href="#project" data-slide="prev" ></i></a>
+								<a style="color:black;"><i style="cursor:pointer;background:#ddd;" class="glyphicon glyphicon-chevron-right"  href="#project"  data-slide="next"></i></a>
+							</div>
 						</h3>
 					</div>
 					<div class="page-body" >

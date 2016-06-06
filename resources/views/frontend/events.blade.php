@@ -1,9 +1,9 @@
 <div class="col-md-4" >
-	<div class="box">
+	<div class="box"  style="background:#fafafa;" >
 		<div class="center">
 			<div class="col-md-12" >
 				<div class="col-md-12" style="margin-bottom: 15px;border-radius: 5px;">
-					<div class="page-header">  
+					<div class="line-bottom">  
 						<h3 >Philippine Time</h3>
 					</div>
 					<div class="page-body">
@@ -14,11 +14,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="box">
+	<div class="box"  >
 		<div class="center">
 			<div class="col-md-12" >
 				<div class="col-md-12" style="margin-bottom: 15px;border-radius: 5px;">
-					<div class="page-header">  
+					<div class="line-bottom" >  
 						<h3 >Events And Meetings</h3>
 						<!-- <h4><span class="glyphicon glyphicon-time"></span> Date & Time:  <small id="date"></small></h4>-->
 					</div>

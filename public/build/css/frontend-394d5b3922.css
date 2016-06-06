@@ -1130,7 +1130,7 @@ font-size:36px
 font-size:30px
 }
 .h3,h3{
-font-size:24px
+font-size:20px
 }
 .h4,h4{
 font-size:18px
@@ -8808,3 +8808,20 @@ transform:translateY(145%)
 ::-webkit-scrollbar-corner {
       background-color: black;
 } 
+.line-bottom {
+    position: relative;
+    padding-bottom: 1px;
+    margin-bottom: 10px;
+	 text-transform:uppercase;
+	 font-weight:bold;
+}
+.line-bottom:after {
+    bottom: 0;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 50px;
+	 border: 1px solid #FF3B0F;
+}
+
