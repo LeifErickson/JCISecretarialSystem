@@ -78,7 +78,31 @@
 						<div style="position:absolute;display:block;background:url('{!! asset('/slider/img/loading.gif')!!}') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
 				  </div>
 			  <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 600px; height: 300px; overflow: hidden;">
-					<div data-p="112.50" style="display: none;">
+					
+						 <?php
+					
+								$URL = fopen(asset('/FrontEndImages/gallery/url.txt'), "r") or die("Unable to open file!");
+								//$text =  fread($URL,filesize("url.txt"));
+								$text = array();
+								$count = 0;
+								while(!feof($URL)) {
+								 $text[$count] = fgets($URL);
+								  echo "
+										<div data-p='112.50' style='display: none;'>	 
+											 <img data-u='image' src='$text[$count]' />
+											 <div data-u='thumb'>
+												  <img class='i' src='$text[$count]' />
+												  <div class='t'>JCI Image ".($count+1)."</div>
+												  
+											 </div>
+										</div>
+								  ";
+								 $count++;
+								}
+								fclose($URL);
+							?>
+					<!--
+					<div data-p="112.50" style="display: none;">	 
 						 <img data-u="image" src="{!! asset('/slider/img/002.jpg') !!}" />
 						 <div data-u="thumb">
 							  <img class="i" src="{!! asset('/slider/img/thumb-002.jpg') !!}" />
@@ -118,6 +142,7 @@
 							  <div class="c">Tab slider with auto play options</div>
 						 </div>
 					</div>
+					-->
 					<a data-u="ad" href="http://www.jssor.com" style="display:none">Bootstrap Slider</a>
 			  
 			  </div>

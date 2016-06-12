@@ -45,13 +45,13 @@
                     <a href="{!! url('admin/payments') !!}"><span>Manage Payments</span></a>
                 </li>
             </ul>
-				<!--START OF TEST SIDE BAR -->
-				<li class="{{ Active::pattern('admin/event*') }} treeview">
+				
+					<li class="{{ Active::pattern('admin/event*') }} treeview">
 					  <a href="{!! url('admin/events/all') !!}">
 					  <span>Event Management</span>
 					  <i class="fa fa-angle-left pull-right"></i>
 					  </a>
-				  </li>   
+					</li>   
                 <ul class="treeview-menu {{ Active::pattern('admin/events*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/events*', 'display: block;') }}">
                     <li class="{{ Active::pattern('admin/events/projects') }}">
                         <a href="{!! url('admin/events/projects') !!}">Projects</a>
@@ -77,8 +77,12 @@
                 </a>
 				</li>
 				<!--END OF TEST SIDE BAR -->
-				
-				
+				<li class="{{ Active::pattern('admin/header') }}">
+                <a href="{!! url('admin/template') !!}"><span>Header</span></a>
+            </li>
+				<li class="{{ Active::pattern('admin/gallery') }}">
+                <a href="{!! url('admin/template/gallery') !!}"><span>Gallery</span></a>
+            </li>
 				
             @permission('view-access-management')
                 <li class="{{ Active::pattern('admin/access/*') }}">

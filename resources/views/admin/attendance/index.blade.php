@@ -8,12 +8,12 @@
 @stop
 @section('content')
 <div class="box box-success">
-		<div class="box-header">
-			<h3 class="box-title">Event Attendance</h3>
-			<div class="box-tools pull-right">
-				 <a href="{!! url('admin/events') !!}" class="btn btn-primary pull-right btn-sm">Back</a>
-			</div>
+	<div class="box-header">
+		<h3 class="box-title">Event Attendance</h3>
+		<div class="box-tools pull-right">
+			 <a href="{!! url('admin/events') !!}" class="btn btn-primary pull-right btn-sm">Back</a>
 		</div>
+	</div>
 	<div class="box-body">
 		<div class="col-md-8">
 			<div class="box">
