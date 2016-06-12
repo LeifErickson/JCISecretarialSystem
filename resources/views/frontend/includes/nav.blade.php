@@ -87,16 +87,18 @@
 								$count = 0;
 								while(!feof($URL)) {
 								 $text[$count] = fgets($URL);
-								  echo "
-										<div data-p='112.50' style='display: none;'>	 
-											 <img data-u='image' src='$text[$count]' />
-											 <div data-u='thumb'>
-												  <img class='i' src='$text[$count]' />
-												  <div class='t'>JCI Image ".($count+1)."</div>
-												  
-											 </div>
-										</div>
-								  ";
+								 if(strcmp($text[$count],"") !== 0){
+									echo "
+											<div data-p='112.50' style='display: none;'>	 
+												 <img data-u='image' src='$text[$count]' />
+												 <div data-u='thumb'>
+													  <img class='i' src='$text[$count]' />
+													  <div class='t'>JCI Image ".($count+1)."</div>
+													  
+												 </div>
+											</div>
+									  ";
+								  }
 								 $count++;
 								}
 								fclose($URL);
