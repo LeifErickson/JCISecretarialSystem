@@ -20,7 +20,6 @@ member management that can,
   
 ### NOTES:
 => See Wiki for installation instructions
-=> System is still incomplete  
 
 ### Implementation of Features:
 - [x] CRUD Membership 
