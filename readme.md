@@ -33,4 +33,4 @@ member management that can,
 - [x] Notifications
 
 ## NOW ON TESTING AND DEBUGGING PART
-- 50% progress
+- 100% progress (DONE!)
